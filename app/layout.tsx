@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import KakaoInit from "./components/KakaoInit";
 import RegisterSW from "./components/RegisterSW";
 import Script from "next/script";
+import GoogleAnalytics from "./components/analytics/GoogleAnalytics";
+import PageViewTracker from "./components/analytics/PageViewTracker";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -113,8 +115,10 @@ export default function RootLayout({
 
         <body className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-black dark:text-white">
 
-        <KakaoInit />
+        <GoogleAnalytics />
+        <PageViewTracker />
 
+        <KakaoInit />
         <RegisterSW />
 
         {/* Google Analytics GA4 */}
