@@ -33,7 +33,9 @@ self.addEventListener("activate", (event) => {
 
 // fetch: Network First (온라인 우선, 실패 시 캐시)
 self.addEventListener("fetch", (event) => {
+    // GET 요청만 처리, chrome-extension 등 외부 스킴 제외
     if (event.request.method !== "GET") return;
+    if (!event.request.url.startsWith("http")) return;
 
     event.respondWith(
         fetch(event.request)
