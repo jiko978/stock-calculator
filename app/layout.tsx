@@ -49,7 +49,7 @@ export const metadata: Metadata = {
         description: "주식, 금융, 건강, 생활 등 다양한 계산기를 한 곳에서 사용하세요.",
         images: [
             {
-                url: "/kakao-thumbnail.png",
+                url: "${BASE_URL}/jiko-calculator-icon2.png",
                 width: 1200,
                 height: 630,
                 alt: "JIKO calculator",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "JIKO calculator",
         description: "주식, 금융, 건강, 생활 등 다양한 계산기를 한 곳에서 사용하세요.",
-        images: ["/kakao-thumbnail.png"],
+        images: ["${BASE_URL}/jiko-calculator-icon2.png"],
     },
 
     // ── robots ──
