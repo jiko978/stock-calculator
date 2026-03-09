@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SiteQR from "./components/SiteQR";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
                   className="bg-white dark:bg-gray-800 dark:text-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition text-center text-lg font-semibold">
                 🧮 기타
             </Link>
+            <SiteQR />
           </div>
         </div>
     </main>
