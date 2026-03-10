@@ -5,11 +5,11 @@ import NavBar from "@/app/components/NavBar";
 import { ANIMATION } from "@/app/config/animationConfig";
 
 export default function ProfitRate() {
-    const [buyPrice,     setBuyPrice]     = useState("");
+    const [buyPrice, setBuyPrice] = useState("");
     const [currentPrice, setCurrentPrice] = useState("");
-    const [quantity,     setQuantity]     = useState("");
+    const [quantity, setQuantity] = useState("");
     const [result, setResult] = useState<{ profit: number; rate: string; buyTotal: number; currentTotal: number } | null>(null);
-    const [copied,  setCopied]  = useState(false);
+    const [copied, setCopied] = useState(false);
     const [shaking, setShaking] = useState(false);
 
     const formatComma = (raw: string) =>
@@ -24,13 +24,13 @@ export default function ProfitRate() {
         };
 
     const handleCalculate = () => {
-        const buy          = Number(buyPrice.replace(/[^0-9]/g, ""));
-        const current      = Number(currentPrice.replace(/[^0-9]/g, ""));
-        const qty          = Number(quantity.replace(/[^0-9]/g, ""));
-        const buyTotal     = buy * qty;
+        const buy = Number(buyPrice.replace(/[^0-9]/g, ""));
+        const current = Number(currentPrice.replace(/[^0-9]/g, ""));
+        const qty = Number(quantity.replace(/[^0-9]/g, ""));
+        const buyTotal = buy * qty;
         const currentTotal = current * qty;
-        const profit       = currentTotal - buyTotal;
-        const rate         = buy > 0 ? (((current - buy) / buy) * 100).toFixed(2) : "0";
+        const profit = currentTotal - buyTotal;
+        const rate = buy > 0 ? (((current - buy) / buy) * 100).toFixed(2) : "0";
         setResult({ profit, rate, buyTotal, currentTotal });
     };
 
@@ -44,7 +44,7 @@ export default function ProfitRate() {
     const handleCopyResult = async () => {
         if (!result) return;
         const text = [
-            `매입 금액 : ${result.buyTotal.toLocaleString()} 원`,
+            `매수 금액 : ${result.buyTotal.toLocaleString()} 원`,
             `현재 금액 : ${result.currentTotal.toLocaleString()} 원`,
             `수익금   : ${result.profit.toLocaleString()} 원`,
             `수익률   : ${result.rate} %`,
@@ -60,7 +60,7 @@ export default function ProfitRate() {
         const max = Math.max(result.buyTotal, result.currentTotal);
         if (max === 0) return { buyWidth: 0, currentWidth: 0 };
         return {
-            buyWidth:     Math.round((result.buyTotal     / max) * 100),
+            buyWidth: Math.round((result.buyTotal / max) * 100),
             currentWidth: Math.round((result.currentTotal / max) * 100),
         };
     };
@@ -85,9 +85,9 @@ export default function ProfitRate() {
                 <div className="bg-white dark:bg-gray-800 shadow-md rounded-2xl p-8">
                     <div className="space-y-6">
                         {[
-                            { label: "매입가", unit: "원", value: buyPrice,     setter: setBuyPrice },
+                            { label: "매수가", unit: "원", value: buyPrice, setter: setBuyPrice },
                             { label: "현재가", unit: "원", value: currentPrice, setter: setCurrentPrice },
-                            { label: "수량",   unit: "개", value: quantity,     setter: setQuantity },
+                            { label: "수량", unit: "개", value: quantity, setter: setQuantity },
                         ].map(({ label, unit, value, setter }) => (
                             <div key={label} className="flex items-center gap-4">
                                 <label className="w-20 font-semibold text-gray-800 dark:text-gray-100 shrink-0">{label}</label>
@@ -108,11 +108,11 @@ export default function ProfitRate() {
                 {/* 버튼 */}
                 <div className="mt-6 flex justify-center gap-3">
                     <button onClick={handleReset}
-                            className={`px-6 py-3 min-h-[44px] border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 active:bg-gray-200 transition-colors duration-150 text-base ${ANIMATION.resetShake && shaking ? "animate-shake" : ""}`}>
+                        className={`px-6 py-3 min-h-[44px] border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 active:bg-gray-200 transition-colors duration-150 text-base ${ANIMATION.resetShake && shaking ? "animate-shake" : ""}`}>
                         초기화
                     </button>
                     <button onClick={handleCalculate}
-                            className="px-8 py-3 min-h-[44px] bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-colors duration-150 text-base">
+                        className="px-8 py-3 min-h-[44px] bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-colors duration-150 text-base">
                         계산하기
                     </button>
                 </div>
@@ -126,7 +126,7 @@ export default function ProfitRate() {
                             <div className="flex-1 bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-md space-y-3">
                                 <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">계산 결과</h2>
                                 <div className="flex justify-between items-center">
-                                    <span className="text-gray-600 dark:text-gray-300">매입 금액</span>
+                                    <span className="text-gray-600 dark:text-gray-300">매수 금액</span>
                                     <strong className="text-gray-800 dark:text-gray-100">{result.buyTotal.toLocaleString()} 원</strong>
                                 </div>
                                 <div className="flex justify-between items-center">
@@ -149,9 +149,8 @@ export default function ProfitRate() {
                                 {/* 복사 버튼 */}
                                 <div className="pt-2 border-t border-gray-100 dark:border-gray-700 flex justify-center">
                                     <button onClick={handleCopyResult}
-                                            className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                                                copied ? "bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400"
-                                                    : "bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                                        className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${copied ? "bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400"
+                                                : "bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
                                             }`}>
                                         {copied ? (
                                             <><svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>복사 완료!</>
@@ -178,10 +177,10 @@ export default function ProfitRate() {
 
                                 {/* 가로 막대 그래프 */}
                                 <div className="space-y-3">
-                                    {/* 매입금액 바 */}
+                                    {/* 매수금액 바 */}
                                     <div>
                                         <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
-                                            <span>매입 금액</span>
+                                            <span>매수 금액</span>
                                             <span>{result.buyTotal.toLocaleString()} 원</span>
                                         </div>
                                         <div className="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
@@ -211,7 +210,7 @@ export default function ProfitRate() {
                                 <div className="flex justify-center gap-4 mt-4 text-xs text-gray-400 dark:text-gray-500">
                                     <span className="flex items-center gap-1">
                                         <span className="w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-500 inline-block" />
-                                        매입
+                                        매수
                                     </span>
                                     <span className="flex items-center gap-1">
                                         <span className={`w-3 h-3 rounded-full inline-block ${isProfit ? "bg-red-400" : "bg-blue-400"}`} />

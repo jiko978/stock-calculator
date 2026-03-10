@@ -34,8 +34,8 @@ export const metadata: Metadata = {
         default: "JIKO calculator",
         template: "%s | JIKO calculator",
     },
-    description: "주식, 금융, 건강, 생활 등 다양한 계산기를 한 곳에서 사용하세요.",
-    keywords: ["계산기", "주식 계산기", "평단가 계산기", "수익률 계산기"],
+    description: "주식, 금융, 부동산, 건강, 생활 등 다양한 계산기를 한 곳에서 사용하세요.",
+    keywords: ["계산기", "주식 계산기", "금융 계산기", "부동산 계산기", "건강 계산기", "생활 계산기"],
     authors: [{ name: "JIKO calculator" }],
     creator: "JIKO calculator",
 
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
         url: BASE_URL,
         siteName: "JIKO calculator",
         title: "JIKO calculator",
-        description: "주식, 금융, 건강, 생활 등 다양한 계산기를 한 곳에서 사용하세요.",
+        description: "주식, 금융, 부동산, 건강, 생활 등 다양한 계산기를 한 곳에서 사용하세요.",
         images: [
             {
                 url: "${BASE_URL}/jiko-calculator-icon2.png",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     twitter: {
         card: "summary_large_image",
         title: "JIKO calculator",
-        description: "주식, 금융, 건강, 생활 등 다양한 계산기를 한 곳에서 사용하세요.",
+        description: "주식, 금융, 부동산, 건강, 생활 등 다양한 계산기를 한 곳에서 사용하세요.",
         images: ["${BASE_URL}/jiko-calculator-icon2.png"],
     },
 

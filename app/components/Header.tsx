@@ -37,6 +37,9 @@ export default function Header() {
                         💰 금융
                     </a>
                     <a href="/stock" className="hover:text-red-500">
+                        🏢 부동산
+                    </a>
+                    <a href="/stock" className="hover:text-red-500">
                         🏠 생활
                     </a>
                     <a href="/stock" className="hover:text-red-500">
