@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
     subsets: ["latin"],
 });
 
-const BASE_URL = "https://jiko-calculator-nine.vercel.app";
+const BASE_URL = "https://jiko.kr";
 
 // safe-area-inset 활성화 (아이폰 노치/홈바 대응)
 export const viewport = {

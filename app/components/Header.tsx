@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image"
 
 export default function Header() {
 
@@ -28,8 +29,13 @@ export default function Header() {
             <div className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
 
                 <div className="text-sm font-bold">
-                    <Link href="/" className="hover:text-red-500">
-                        JIKO 계산기
+                    <Link href="/" className="hover:text-red-500">JIKO
+                        <Image
+                            src="/icons/icon-512x512.png"
+                            alt="JIKO 계산기 로고"
+                            width={30}
+                            height={30}
+                        />
                     </Link>
                 </div>
 

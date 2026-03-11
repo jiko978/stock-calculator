@@ -5,7 +5,7 @@
 import type { Metadata } from "next";
 import ProfitRatePage from "./ProfitRate";
 
-const BASE_URL = "https://jiko-calculator-nine.vercel.app";
+const BASE_URL = "https://jiko.kr";
 
 export const metadata: Metadata = {
   title: "주식 수익률 계산기",

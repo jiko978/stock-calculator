@@ -5,7 +5,7 @@
 import type { Metadata } from "next";
 import AvgPriceCalculator from "./AvgPrice";
 
-const BASE_URL = "https://jiko-calculator-nine.vercel.app";
+const BASE_URL = "https://jiko.kr";
 
 export const metadata: Metadata = {
     title: "주식 평균 단가 계산기",

@@ -5,7 +5,7 @@
 
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://jiko-calculator-nine.vercel.app";
+const BASE_URL = "https://jiko.kr";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const routes = [
