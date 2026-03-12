@@ -29,7 +29,7 @@ export default function Header() {
             <div className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
 
                 <div className="text-sm font-bold">
-                    <Link href="/" className="hover:text-red-500">JIKO
+                    <Link href="/calculator" className="hover:text-red-500">JIKO
                         <Image
                             src="/icons/icon-512x512.png"
                             alt="JIKO 계산기 로고"
