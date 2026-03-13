@@ -27,7 +27,6 @@ export default function Header() {
     };
 
     const navLinks = [
-        { href: "/", label: "🏠 JIKO Platform" },
         { href: "/calculator/stock", label: "📈 주식" },
         { href: "/calculator/finance", label: "💰 금융" },
         { href: "/calculator/realstate", label: "🏢 부동산" },

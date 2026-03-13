@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PlatformQR from "./components/PlatformQR";
+import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "./utils/seo";
 
 export const metadata: Metadata = {
     title: "JIKO Platform",
@@ -82,8 +83,16 @@ const services: Service[] = [
 ];
 
 export default function Home() {
+    const breadcrumbLd = generateBreadcrumbJsonLd([
+        COMMON_BREADCRUMBS.HOME
+    ]);
+
     return (
         <div className="flex flex-col min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+            />
             <Header />
 
             <div className="w-full bg-white dark:bg-gray-900 flex-grow py-6 px-6 transition-colors">

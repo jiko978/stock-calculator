@@ -1,9 +1,20 @@
 import Link from "next/link";
 import NavBar from "@/app/calculator/components/NavBar";
+import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "../../utils/seo";
 
 export default function Home() {
+    const breadcrumbLd = generateBreadcrumbJsonLd([
+        COMMON_BREADCRUMBS.HOME,
+        COMMON_BREADCRUMBS.CALC_HOME,
+        COMMON_BREADCRUMBS.STOCK_HOME
+    ]);
+
     return (
         <main className="bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-items-start">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+            />
             <div className="flex-grow px-4 py-12">
                 <h1 className="text-4xl md:text-4xl font-bold mb-10 text-center text-gray-800 dark:text-gray-100">📈 주식 계산기</h1>
                 <p className="text-2xl md:text-2xl font-bold mb-10 text-center text-gray-800 dark:text-gray-100">필요한 계산기를 선택하세요.</p>

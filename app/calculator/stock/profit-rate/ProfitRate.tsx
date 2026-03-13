@@ -2,9 +2,14 @@
 
 import { useState } from "react";
 import NavBar from "@/app/calculator/components/NavBar";
+import InstallBanner from "@/app/calculator/components/InstallBanner";
 import { ANIMATION } from "@/app/config/animationConfig";
 
-export default function ProfitRate() {
+interface ProfitRateProps {
+    stockName?: string;
+}
+
+export default function ProfitRate({ stockName }: ProfitRateProps) {
     const [buyPrice, setBuyPrice] = useState("");
     const [currentPrice, setCurrentPrice] = useState("");
     const [quantity, setQuantity] = useState("");
@@ -76,8 +81,8 @@ export default function ProfitRate() {
             <div className={`max-w-2xl mx-auto px-4 py-6 pb-safe ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
 
                 <div className="flex justify-center mb-6">
-                    <span className="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm font-semibold">
-                        💰 수익률 계산기
+                    <span className="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm font-semibold italic">
+                        💰 {stockName ? `[${stockName}] ` : ""}수익률 계산기
                     </span>
                 </div>
 
@@ -222,6 +227,9 @@ export default function ProfitRate() {
                         </div>
                     </div>
                 )}
+
+                {/* PWA 설치 유도 배너 */}
+                <InstallBanner />
             </div>
         </div>
     );

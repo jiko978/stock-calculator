@@ -4,6 +4,7 @@
 
 import type { Metadata } from "next";
 import AvgPriceCalculator from "./AvgPrice";
+import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "../../../utils/seo";
 
 const BASE_URL = "https://jiko.kr";
 
@@ -80,8 +81,19 @@ const schema = {
 };
 
 export default function Page() {
+    const breadcrumbLd = generateBreadcrumbJsonLd([
+        COMMON_BREADCRUMBS.HOME,
+        COMMON_BREADCRUMBS.CALC_HOME,
+        COMMON_BREADCRUMBS.STOCK_HOME,
+        COMMON_BREADCRUMBS.AVG_PRICE
+    ]);
+
     return (
         <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+            />
             {/* JSON-LD */}
             <script
                 type="application/ld+json"

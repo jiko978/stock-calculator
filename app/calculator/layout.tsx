@@ -4,6 +4,7 @@ import "../globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import RegisterSW from "./components/RegisterSW";
+import { PWAInstallProvider } from "./components/PWAInstallProvider";
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
         template: "%s | JIKO calculator",
     },
     description: "주식, 금융, 부동산, 건강, 생활 등 다양한 계산기를 한 곳에서 사용하세요.",
-    keywords: ["계산기", "주식 계산기", "금융 계산기", "부동산 계산기", "건강 계산기", "생활 계산기"],
+    keywords: ["계산기", "JIKO 계산기", "주식 계산기", "금융 계산기", "부동산 계산기", "건강 계산기", "생활 계산기"],
     authors: [{ name: "JIKO calculator" }],
     creator: "JIKO calculator",
 
@@ -96,14 +97,14 @@ export default function RootLayout({
                 <meta name="theme-color" content="#3b82f6" />
 
                 <RegisterSW />
-
                 <Header />
 
-                <main className="flex-grow">
-                    {children}
-
-                </main>
-                <Footer />
+                <PWAInstallProvider>
+                    <main className="flex-grow">
+                        {children}
+                    </main>
+                    <Footer />
+                </PWAInstallProvider>
             </>
     );
 }
