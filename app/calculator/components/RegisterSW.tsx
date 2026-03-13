@@ -23,7 +23,7 @@ export default function RegisterSW() {
         // 운영 환경: SW 등록
         navigator.serviceWorker
             .register("/calculator/sw.js", {
-                scope: "/calculator/",
+                scope: "/calculator",
             })
             .then((reg) => console.log("SW registered:", reg.scope))
             .catch((err) => console.error("SW registration failed:", err));

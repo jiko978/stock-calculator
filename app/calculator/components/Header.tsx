@@ -85,7 +85,7 @@ export default function Header() {
 
             {/* 모바일 드롭다운 메뉴 */}
             {menuOpen && (
-                <div className="md:hidden px-4 pb-4 flex flex-col gap-3 text-sm font-medium">
+                <div className="md:hidden px-4 pb-4 border-t flex flex-col gap-3 text-sm font-medium">
                     {navLinks.map((link) => (
                         <Link
                             key={link.label}

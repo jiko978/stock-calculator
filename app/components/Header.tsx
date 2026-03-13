@@ -74,7 +74,7 @@ export default function Header() {
 
             {/* 모바일 화면 Nav Sheet */}
             {menuOpen && (
-                <div className="md:hidden mt-4 pt-4 border-t border-gray-700 flex flex-col gap-4 text-sm font-medium max-w-5xl mx-auto">
+                <div className="md:hidden mt-4 pt-4 border-t flex flex-col gap-4 text-sm font-medium max-w-5xl mx-auto">
                     {navLinks.map((link) => (
                         <Link
                             key={link.label}

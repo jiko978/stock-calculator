@@ -37,7 +37,15 @@ export const metadata: Metadata = {
     authors: [{ name: "JIKO Platform" }],
     creator: "JIKO Platform",
 
-    // ── Open Graph (카카오/페이스북/링크 미리보기) ──
+    icons: {
+        icon: [
+            { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+            { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        ],
+        apple: "/icons/apple-touch-icon.png",
+    },
+
+    // ── Open Graph ──
     openGraph: {
         type: "website",
         locale: "ko_KR",
@@ -47,7 +55,7 @@ export const metadata: Metadata = {
         description: "JIKO Platform",
         images: [
             {
-                url: `calculator/jiko-calculator-icon2.png`,
+                url: "/calculator/jiko-calculator-icon2.png",
                 width: 1200,
                 height: 630,
                 alt: "JIKO Platform",
