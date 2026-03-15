@@ -25,7 +25,11 @@ const getGrade = (rate: number) => {
     return { label: "야수의 심장", emoji: "🔥", color: "text-red-500 dark:text-red-400" };
 };
 
-export default function AvgPrice() {
+interface AvgPriceProps {
+    stockName?: string;
+}
+
+export default function AvgPrice({ stockName }: AvgPriceProps) {
     const [rows, setRows] = useState<Row[]>([
         createRow(1), createRow(2), createRow(3),
     ]);
@@ -191,7 +195,7 @@ export default function AvgPrice() {
                 <div className="flex justify-center items-center gap-3 mb-6 flex-wrap">
                     <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">💧 물타기</span>
                     <span className="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-semibold">🔥 불타기</span>
-                    <h1 className="px-3 py-1 font-bold text-gray-800 dark:text-gray-100">평균 단가 계산기</h1>
+                    <h1 className="px-3 py-1 font-bold text-gray-800 dark:text-gray-100">{stockName ? `${stockName} ` : ""}평균 단가 계산기</h1>
                 </div>
 
                 {/* 입력 테이블 */}

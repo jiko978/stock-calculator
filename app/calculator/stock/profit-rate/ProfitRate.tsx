@@ -4,7 +4,11 @@ import { useState } from "react";
 import NavBar from "@/app/calculator/components/NavBar";
 import { ANIMATION } from "@/app/config/animationConfig";
 
-export default function ProfitRate() {
+interface ProfitRateProps {
+    stockName?: string;
+}
+
+export default function ProfitRate({ stockName }: ProfitRateProps) {
     const [buyPrice, setBuyPrice] = useState("");
     const [currentPrice, setCurrentPrice] = useState("");
     const [quantity, setQuantity] = useState("");
@@ -77,7 +81,7 @@ export default function ProfitRate() {
 
                 <div className="flex justify-center mb-6">
                     <span className="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm font-semibold">
-                        💰 수익률 계산기
+                        💰 {stockName ? `${stockName} ` : ""}수익률 계산기
                     </span>
                 </div>
 
