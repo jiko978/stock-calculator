@@ -9,6 +9,10 @@ app/calculator/stock/[menu-name]/
 ㄴ page.tsx             # 기본 서버 컴포넌트 (범용 계산기)
 ㄴ [slug]/page.tsx      # 동적 서버 컴포넌트 (종목별 SEO 전용)
 ㄴ [ComponentName].tsx  # 실제 계산기 로직 (클라이언트 컴포넌트)
+
+**[신규] SEO Ticker 매핑 가이드**:
+- `[slug]/page.tsx`는 `stocks.json`을 참조하여 `findStock` 로직을 구현해야 합니다.
+- 사용자가 종목코드, 종목명, 혹은 `명칭-코드` 형태로 접속해도 정확한 데이터를 매핑하도록 설계합니다.
 ```
 
 ## 2. 필수 SEO 구현
