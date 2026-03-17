@@ -112,7 +112,7 @@ export default function Page() {
             />
 
             {/* 계산기 UI */}
-            <NavBar title="주식 평균 단가 계산기 | 투자 물타기 불타기 평균단가 계산 - JIKO" description="주식 평균 매입 단가를 간편하게 계산해보세요" position="top" />
+            <NavBar title="평균 단가 계산기" description="주식 평균 매입 단가를 간편하게 계산해보세요" position="top" />
             <AvgPriceCalculator />
 
             {/* SEO 및 정보 영역 (계산기 하단에 자연스럽게 배치) */}
@@ -121,7 +121,7 @@ export default function Page() {
                 {/* H1 및 소개문 (검색엔진 최적화 및 사용자 안내) */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">📈</span> 주식 평균 단가 계산기 (평단가 계산기)
+                        <span className="text-2xl">📈</span> 평균 단가 계산기
                     </h1>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
                         주식을 여러 번 나누어 매수했을 때 평균 매입 단가를 계산할 수 있는 계산기입니다.

@@ -116,7 +116,7 @@ export default function Page() {
       />
 
       {/* 계산기 UI */}
-      <NavBar title="주식 수익률 계산기 | 투자 수익률 목표 달성 계산 - JIKO" description="나의 주식 투자 수익금과 수익률을 계산해보세요" position="top" />
+      <NavBar title="수익률 계산기" description="나의 주식 투자 수익금과 수익률을 계산해보세요" position="top" />
       <ProfitRatePage />
 
       {/* SEO 및 정보 영역 (계산기 하단에 자연스럽게 배치) */}
@@ -125,7 +125,7 @@ export default function Page() {
         {/* H1 및 소개문 (검색엔진 최적화 및 사용자 안내) */}
         <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 mt-2">
           <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-            <span className="text-2xl">💰</span> 주식 수익률 계산기
+            <span className="text-2xl">💰</span> 수익률 계산기
           </h1>
           <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
             매수가, 현재가, 보유 수량을 입력하면 주식 투자 수익금과 수익률을

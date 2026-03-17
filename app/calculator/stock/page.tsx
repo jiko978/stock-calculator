@@ -38,7 +38,7 @@ export default function Home() {
                     </Link>
                 </div>
 
-                <NavBar title="주식 계산기" description="주식 평균단가, 수익률, 배당금, 수수료 등 필수 계산기 모음" position="static" />
+                <NavBar title="주식 계산기" description="주식 평균단가, 수익률, 배당금, 수수료, 세금 등 필수 계산기 모음" position="static" />
             </div>
         </main>
     );

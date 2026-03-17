@@ -96,7 +96,7 @@ export default async function Page({ params }: Props) {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
             />
-            <NavBar title={`${stockName} 수수료 계산기 | JIKO`} description={`${stockName} 주식 매수/매도 시 발생하는 수수료와 세금을 확인하세요.`} position="top" />
+            <NavBar title={`${stockName} 수수료 계산기`} description={`${stockName} 주식 매수/매도 시 발생하는 수수료와 세금을 확인하세요.`} position="top" />
             <StockFee stockName={stockName} initialCode={stockCode} />
 
             <main className="max-w-2xl mx-auto px-4 pb-16 space-y-8">
@@ -167,8 +167,6 @@ export default async function Page({ params }: Props) {
                         </div>
                     </div>
                 </section>
-
-                <hr className="border-gray-100 dark:border-gray-800" />
 
                 {/* [개별 카드세션] 1. 수수료와 세금 투자 지식 섹션 */}
                 <section className="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">

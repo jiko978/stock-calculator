@@ -90,7 +90,7 @@ export default function Page() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
             />
 
-            <NavBar title="주식 배당금 계산기 | 배당 수익률 목표 달성 계산 - JIKO" description="배당금과 배당 수익률을 한눈에 확인하세요" position="top" />
+            <NavBar title="배당금 계산기" description="배당금과 배당 수익률을 한눈에 확인하세요" position="top" />
 
             <main className="max-w-2xl mx-auto px-4 pb-16 space-y-8">
                 <Dividend />
@@ -98,7 +98,7 @@ export default function Page() {
                 {/* [공통 카드세션] 1. 메뉴 설명 */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">💰</span> 주식 배당금 계산기
+                        <span className="text-2xl">💰</span> 배당금 계산기
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
                         내가 보유한 주식의 배당금과 배당 수익률을 정확하게 시뮬레이션 해볼 수 있는 계산기입니다. 
@@ -160,8 +160,6 @@ export default function Page() {
                         </div>
                     </div>
                 </section>
-
-                <hr className="border-gray-100 dark:border-gray-800" />
 
                 {/* [개별 카드세션] 1. 투자 가이드 섹션 */}
                 <section className="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
