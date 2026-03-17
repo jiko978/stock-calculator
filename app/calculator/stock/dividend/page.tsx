@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     keywords: ["주식 배당금 계산기", "배당 수익률 계산", "배당금 세금 계산", "목표 배당금", "배당금 시뮬레이션", "주식 계산기"],
     alternates: { canonical: `${BASE_URL}/calculator/stock/dividend` },
     openGraph: {
-        title: "주식 배당금 계산기 | JIKO",
+        title: "주식 배당금 계산기 | 배당 수익률 목표 달성 계산 - JIKO",
         description: "나의 주식 배당금, 생활비로 환산하면 얼마일까?",
         url: `${BASE_URL}/calculator/stock/dividend`,
         images: [`${BASE_URL}/calculator/jiko-calculator-icon2.png`],
@@ -34,7 +34,7 @@ export default function Page() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
             />
 
-            <NavBar title="주식 배당금 계산기 | JIKO" description="배당금과 배당 수익률을 한눈에 확인하세요" position="top" />
+            <NavBar title="주식 배당금 계산기 | 배당 수익률 목표 달성 계산 - JIKO" description="배당금과 배당 수익률을 한눈에 확인하세요" position="top" />
 
             <main className="space-y-4">
                 <Dividend />

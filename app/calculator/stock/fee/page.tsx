@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     keywords: ["주식 수수료 계산기", "주식 수수료", "증권거래세 계산", "해외주식 양도소득세 계산", "최소 익절가", "주식 계산기"],
     alternates: { canonical: `${BASE_URL}/calculator/stock/fee` },
     openGraph: {
-        title: "주식 수수료 계산기 | JIKO",
+        title: "주식 수수료 계산기 | 국내/해외 주식 수수료 및 세금 계산 - JIKO",
         description: "수수료와 세금을 떼고 남는 진짜 내 수익은 얼마일까? 수수료 포함 손익을 완벽 반영!",
         url: `${BASE_URL}/calculator/stock/fee`,
         images: [`${BASE_URL}/calculator/jiko-calculator-icon2.png`],
@@ -33,7 +33,7 @@ export default function Page() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
             />
 
-            <NavBar title="주식 수수료 계산기" description="주식 매도 시 발생하는 수수료와 세금을 계산해보세요" position="top" />
+            <NavBar title="주식 수수료 계산기 | 국내/해외 주식 수수료 및 세금 계산 - JIKO" description="주식 매도 시 발생하는 수수료와 세금을 계산해보세요" position="top" />
             <StockFee />
 
             <div className="max-w-2xl mx-auto px-4 pb-16 space-y-8">

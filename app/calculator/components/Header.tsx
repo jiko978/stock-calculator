@@ -32,7 +32,7 @@ export default function Header() {
         { href: "/calculator/realstate", label: "🏢 부동산" },
         { href: "/calculator/life", label: "🏠 생활" },
         { href: "/calculator/health", label: "💪 건강" },
-        { href: "/calculator/other", label: "🧮 기타" },
+        { href: "/calculator/other", label: "🧾 세금" },
     ];
 
     return (

@@ -34,7 +34,7 @@ export default function Home() {
                     </Link>
                     <Link href="/calculator/stock/fee"
                         className="bg-white dark:bg-gray-800 dark:text-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition text-center text-lg font-semibold sm:col-span-2 md:col-span-1">
-                        ⚖️ 수수료
+                        💳️ 수수료
                     </Link>
                 </div>
 

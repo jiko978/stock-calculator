@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         // ── 주식 ──
         { url: "/calculator/stock/avg-price",  priority: 0.8, changeFrequency: "monthly" as const },
         { url: "/calculator/stock/profit-rate", priority: 0.8, changeFrequency: "monthly" as const },
+        { url: "/calculator/stock/dividend", priority: 0.8, changeFrequency: "monthly" as const },
+        { url: "/calculator/stock/fee", priority: 0.8, changeFrequency: "monthly" as const },
 
         // ── policy ──
         { url: "/policy/about", priority: 0.5, changeFrequency: "monthly" as const },

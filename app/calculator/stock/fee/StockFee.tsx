@@ -158,8 +158,8 @@ export default function StockFee({ stockName, initialCode }: StockFeeProps) {
                                 📊 {stockName} {initialCode ? `(${initialCode})` : ""}
                             </span>
                         )}
-                        <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">
-                            ⚖️ 수수료 계산기
+                        <span className="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm font-semibold">
+                            💳️️ 수수료 계산기
                         </span>
                     </div>
                 </div>

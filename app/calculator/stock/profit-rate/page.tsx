@@ -10,12 +10,12 @@ import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "../../../utils/seo
 const BASE_URL = "https://jiko.kr";
 
 export const metadata: Metadata = {
-  title: "주식 수익률 계산기",
+  title: "주식 수익률 계산기 | 투자 수익률 목표 달성 계산 - JIKO",
   description: "매수가, 현재가, 수량을 입력하면 수익금과 수익률을 자동으로 계산해드립니다.",
   keywords: ["주식 수익률 계산기", "주식 수익률", "수익금 계산", "투자 수익률"],
   alternates: { canonical: `${BASE_URL}/calculator/stock/profit-rate` },
   openGraph: {
-    title: "주식 수익률 계산기",
+    title: "주식 수익률 계산기 | 투자 수익률 목표 달성 계산 - JIKO",
     description: "매수가, 현재가, 수량을 입력하면 수익금과 수익률을 자동으로 계산해드립니다.",
     url: `${BASE_URL}/calculator/stock/profit-rate`,
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    title: "주식 수익률 계산기",
+    title: "주식 수익률 계산기 | 투자 수익률 목표 달성 계산 - JIKO",
     description: "매수가, 현재가, 수량을 입력하면 수익금과 수익률을 자동으로 계산해드립니다.",
   },
 };
@@ -116,7 +116,7 @@ export default function Page() {
       />
 
       {/* 계산기 UI */}
-      <NavBar title="주식 수익률 계산기" description="나의 주식 투자 수익금과 수익률을 계산해보세요" position="top" />
+      <NavBar title="주식 수익률 계산기 | 투자 수익률 목표 달성 계산 - JIKO" description="나의 주식 투자 수익금과 수익률을 계산해보세요" position="top" />
       <ProfitRatePage />
 
       {/* SEO 및 정보 영역 (계산기 하단에 자연스럽게 배치) */}

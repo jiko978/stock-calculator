@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         template: "%s | JIKO Platform",
     },
     description: "JIKO Platform",
-    keywords: ["계산기", "JIKO 계산기", "주식 계산기", "금융 계산기", "부동산 계산기", "건강 계산기", "생활 계산기"],
+    keywords: ["계산기", "JIKO 계산기", "주식 계산기", "금융 계산기", "부동산 계산기", "건강 계산기", "생활 계산기", "세금 계산기"],
     authors: [{ name: "JIKO Platform" }],
     creator: "JIKO Platform",
 

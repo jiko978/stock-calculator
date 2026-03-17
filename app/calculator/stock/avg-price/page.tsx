@@ -9,13 +9,13 @@ import NavBar from "@/app/calculator/components/NavBar";
 const BASE_URL = "https://jiko.kr";
 
 export const metadata: Metadata = {
-    title: "주식 평균 단가 계산기",
+    title: "주식 평균 단가 계산기 | 투자 물타기 불타기 평균단가 계산 - JIKO",
     description:
         "주식 물타기, 불타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다.",
     keywords: ["평단가 계산기", "주식 물타기", "주식 불타기", "평균 매입 단가"],
     alternates: { canonical: `${BASE_URL}/calculator/stock/avg-price` },
     openGraph: {
-        title: "주식 평균 단가 계산기",
+        title: "주식 평균 단가 계산기 | 투자 물타기 불타기 평균단가 계산 - JIKO",
         description:
             "주식 물타기, 불타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다.",
         url: `${BASE_URL}/calculator/stock/avg-price`,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         ],
     },
     twitter: {
-        title: "주식 평균 단가 계산기",
+        title: "주식 평균 단가 계산기 | 투자 물타기 불타기 평균단가 계산 - JIKO",
         description:
             "주식 물타기, 불타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다.",
     },
@@ -100,7 +100,7 @@ export default function Page() {
             />
 
             {/* 계산기 UI */}
-            <NavBar title="주식 평단가 계산기" description="주식 평균 매입 단가를 간편하게 계산해보세요" position="top" />
+            <NavBar title="주식 평균 단가 계산기 | 투자 물타기 불타기 평균단가 계산 - JIKO" description="주식 평균 매입 단가를 간편하게 계산해보세요" position="top" />
             <AvgPriceCalculator />
 
             {/* SEO 및 정보 영역 (계산기 하단에 자연스럽게 배치) */}

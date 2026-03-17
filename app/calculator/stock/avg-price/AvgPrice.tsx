@@ -201,8 +201,8 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
                         )}
                         <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full font-semibold">💧 물타기</span>
                         <span className="px-3 py-1 bg-red-100 text-red-600 rounded-full font-semibold">🔥 불타기</span>
+                        <span className="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full font-semibold">평균 단가 계산기</span>
                     </div>
-                    <h1 className="text-lg font-bold text-gray-800 dark:text-gray-100">평균 단가 계산기</h1>
                 </div>
 
                 {/* 입력 테이블 */}

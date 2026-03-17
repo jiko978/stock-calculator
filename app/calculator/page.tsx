@@ -38,9 +38,9 @@ export default function Home() {
             className="bg-white dark:bg-gray-800 dark:text-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition text-center text-lg font-semibold">
             💪 건강
           </Link>
-          <Link href="/calculator/other"
+          <Link href="/calculator/tax"
             className="bg-white dark:bg-gray-800 dark:text-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition text-center text-lg font-semibold">
-            🧮 기타
+            🧾 세금
           </Link>
         </div>
         <SiteQR />

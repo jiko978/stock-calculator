@@ -126,7 +126,7 @@ Tool Site.
 ㄴ [미정]BMR
 
 
-기타(other)
+세금(tax)
 ㄴ [미정]취득세 : 국세청 위텍스, 국토교통부 참고
 ㄴ [미정]양도세 : MoneyNest 참고 
 ㄴ [미정]종부세
@@ -188,7 +188,7 @@ Tool Site.
 3. 기초대사량 계산기 | 기초대사량 계산 BMR 측정 - JIKO calculator
 4. BMI 계산기 | 체질량지수 BMI 계산 - JIKO calculator
 
-기타(other)
+세금(tax)
 1. 취득세 계산기 | 취득세 세율 계산 - JIKO calculator
 2. 양도세 계산기 | 양도소득세 계산 - JIKO calculator
 3. 종부세 계산기 | 종합부동산세 계산 - JIKO calculator
@@ -196,8 +196,6 @@ Tool Site.
 5. 부가세 계산기 | 부가가치세 별도 포함 계산 - JIKO calculator
 6. 자동차세 계산기 | 배기량별 자동차세 계산 - JIKO calculator
 7. 종소세 계산기 | 종합소득세 세율 계산 - JIKO calculator
-8. 코인 세금 계산기 | 가상자산 소득세 계산 - JIKO calculator
-9. MBTI 검사/계산기 | MBTI 성격 유형 결과 확인 - JIKO calculator
 10. 자동차 할부 계산기 | 자동차 할부 원리금 상환 계산 - JIKO calculator
 
 ## 공통파일 관리
@@ -213,7 +211,7 @@ Tool Site.
 ㄴ 부동산 : `public/docs/realestate/[메뉴명]-기능명세서.md`
 ㄴ 생활 : `public/docs/life/[메뉴명]-기능명세서.md`
 ㄴ 건강 : `public/docs/health/[메뉴명]-기능명세서.md`
-ㄴ 기타 : `public/docs/other/[메뉴명]-기능명세서.md`
+ㄴ 세금 : `public/docs/tax/[메뉴명]-기능명세서.md`
 3. 기능명세서 1개로 메뉴 관리 가능 여부 : **가능합니다.**
 ㄴ **메뉴 당 1개의 기능명세서(.md)** 를 유지하는 것을 강력히 권장합니다. 화면 UI, 상태(State) 관리, 계산 로직 및 예외 처리 등을 하나의 파일에 담아 AI에게 프롬프트로 제공(바이브 코딩)하면 맥락(Context)을 잃지 않고 정확한 코드를 생성할 수 있습니다.
 

@@ -72,8 +72,8 @@ const services: Service[] = [
         ]
     },
     {
-        title: "🧮 기타",
-        href: "/calculator/other",
+        title: "🧾 세금",
+        href: "/calculator/tax",
         bgColor: "bg-gray-50 dark:bg-gray-800/50",
         borderColor: "border-gray-200 dark:border-gray-700",
         links: [
