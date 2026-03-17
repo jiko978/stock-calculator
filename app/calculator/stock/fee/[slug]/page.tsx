@@ -99,40 +99,107 @@ export default async function Page({ params }: Props) {
             <NavBar title={`${stockName} 수수료 계산기 | JIKO`} description={`${stockName} 주식 매수/매도 시 발생하는 수수료와 세금을 확인하세요.`} position="top" />
             <StockFee stockName={stockName} initialCode={stockCode} />
 
-            <main className="max-w-2xl mx-auto px-4 pb-16 space-y-6">
-                <section className="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                    <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
-                        📜 {stockName} 세금 및 실전 투자 분석 리포트
+            <main className="max-w-2xl mx-auto px-4 pb-16 space-y-8">
+                {/* [공통 카드세션] 1. 메뉴 설명 */}
+                <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
+                        <span className="text-2xl">📊</span> {stockName} 수수료 계산기
                     </h2>
-                    <div className="space-y-6">
-                        <div className="bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-800/50">
-                            <h3 className="font-bold text-blue-700 dark:text-blue-400 mb-2 text-sm flex items-center gap-1">
-                                🏢 {stockName} 국내 거래 시 유의사항
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 text-xs leading-relaxed">
-                                {stockName}({stockCode}) 종목을 국내 시장에서 매도할 경우, 2026년 기준 0.20%의 거래비용(증권거래세+농특세)이 발생합니다.
-                                손실 중이더라도 세금은 원천징수되므로 '최소 익절가'를 반드시 확인하여 실질 수익을 지키는 전략이 필요합니다.
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                        {stockName}({stockCode}) 종목 거래 시 발생하는 모든 수수료와 세금을 계산해 드립니다. 
+                        단순히 사고파는 가격 차이를 넘어, 실제 수익에 영향을 주는 모든 비용을 미리 모의계산하여 성공적인 투자 전략을 세워보세요.
+                    </p>
+                </section>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* [공통 카드세션] 2. 사용 방법 */}
+                    <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
+                            <span className="text-blue-500">💡</span> 사용 방법
+                        </h2>
+                        <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-2 list-disc list-inside">
+                            <li>거래하고자 하는 <strong>시장(국내/해외)</strong>을 선택합니다.</li>
+                            <li><strong>매수가, 매도가, 수량</strong> 등의 기본 거래 정보를 입력하세요.</li>
+                            <li>이용 중인 증권사의 <strong>수수료율</strong>이 있다면 수정하여 반영할 수 있습니다.</li>
+                            <li>'계산하기'를 클릭하면 수수료를 포함한 손익분기점과 최적의 매도 시점을 안내해 드립니다.</li>
+                        </ul>
+                    </section>
+
+                    {/* [공통 카드세션] 3. 계산 예시 */}
+                    <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
+                            <span className="text-green-500">📊</span> 계산 예시
+                        </h2>
+                        <div className="text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl space-y-1">
+                            <p>{stockName} 매도 금액: <strong>1,000,000원</strong></p>
+                            <p>거래세(0.18%): <strong>1,800원</strong> / 수수료(0.01%): <strong>100원</strong></p>
+                            <p className="border-t border-gray-200 dark:border-gray-600 pt-1 mt-1 text-red-500 font-bold">
+                                최종 차감 비용: 1,900원
+                            </p>
+                            <p className="text-blue-600 font-semibold text-xs leading-relaxed">
+                                * 매수 시 수수료도 합산되어 체결 단가에 반영됩니다.
                             </p>
                         </div>
+                    </section>
+                </div>
 
-                        <div className="bg-orange-50 dark:bg-orange-900/10 p-4 rounded-xl border border-orange-100 dark:border-orange-800/50">
-                            <h3 className="font-bold text-orange-700 dark:text-orange-400 mb-2 text-sm flex items-center gap-1">
-                                🌍 해외 투자 및 양도세 전략
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 text-xs leading-relaxed">
-                                만약 {stockName} 관련 해외 ETF나 ADR에 투자하신다면 연간 250만 원까지의 양도소득 공제 혜택을 활용하세요.
-                                수익이 250만 원을 초과할 경우 22%의 세율이 적용되므로, 연말에 손실 종목을 매도하여 수익을 상계하는 'Tax Loss Harvesting' 전략이 유효할 수 있습니다.
+                {/* [공통 카드세션] 4. FAQ */}
+                <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
+                        <span className="text-purple-500">❓</span> 자주 묻는 질문 (FAQ)
+                    </h2>
+                    <div className="space-y-4">
+                        <div>
+                            <p className="font-semibold text-gray-800 dark:text-gray-100 text-sm mb-1">
+                                Q. {stockName}의 최소 익절가는 왜 중요한가요?
+                            </p>
+                            <p className="text-sm text-gray-600 dark:text-gray-400 pl-4 border-l-2 border-purple-300 dark:border-purple-600 text-xs leading-relaxed">
+                                A. 매수가보다 조금이라도 높게 팔면 수익이라 생각하기 쉽지만, 매동/매수 수수료와 거래세를 합치면 약 0.2~0.3% 이상의 비용이 발생합니다. 이 비용을 제외하고도 내 자산이 실제로 늘어나는 지점이 바로 **최소 익절가**입니다.
                             </p>
                         </div>
-
-                        <div className="bg-green-50 dark:bg-green-900/10 p-4 rounded-xl border border-green-100 dark:border-green-800/50">
-                            <h3 className="font-bold text-green-700 dark:text-green-400 mb-2 text-sm flex items-center gap-1">
-                                💡 스마트한 매도 타이밍 잡기
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 text-xs leading-relaxed">
-                                {stockName}의 변동성에 대비하여 단순 매수가가 아닌 수수료를 포함한 **Break-even Point(손익분기점)**를 아는 것이 중요합니다.
-                                JIKO가 제공하는 최소 익절가 가이드를 통해 세금 떼고도 남는 진짜 수익 구간에서 현명한 결정을 내리세요.
+                        <div>
+                            <p className="font-semibold text-gray-800 dark:text-gray-100 text-sm mb-1">
+                                Q. 해외 주식 250만 원 공제는 어떻게 적용되나요?
                             </p>
+                            <p className="text-sm text-gray-600 dark:text-gray-400 pl-4 border-l-2 border-purple-300 dark:border-purple-600 text-xs leading-relaxed">
+                                A. 1월 1일부터 12월 31일까지 결제일 기준 전체 실현 손익에서 250만 원을 뺀 나머지 금액에 대해 22%의 양도소득세가 부과됩니다. {stockName} 손실이 난 종목이 있다면 함께 매도하여 전체 수익을 낮추는 절세 전략이 가능합니다.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <hr className="border-gray-100 dark:border-gray-800" />
+
+                {/* [개별 카드세션] 1. 수수료와 세금 투자 지식 섹션 */}
+                <section className="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+                        📊 주식 매매 시 꼭 알아야 할 수수료 및 세금 상식
+                    </h2>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 font-medium">
+                        주식 투자에서 가장 중요한 것은 '벌었을 때 얼마나 지키느냐'입니다. 
+                        수익이 났더라도 수수료와 세금을 고려하지 않으면 실질적인 이익이 생각보다 작을 수 있습니다.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                        <div className="space-y-3">
+                            <h3 className="font-bold text-blue-600 flex items-center gap-1">
+                                <span className="w-1 h-3 bg-blue-600 rounded-full" /> {stockName} 국내 거래 (거래세)
+                            </h3>
+                            <ul className="list-disc list-inside text-gray-500 space-y-1">
+                                <li>매도 시점에 즉시 부과됩니다.</li>
+                                <li>2026년 기준 코스피/코스닥 공통 0.18%</li>
+                                <li>손실이 나더라도 수수료와 세금은 발생합니다.</li>
+                            </ul>
+                        </div>
+                        <div className="space-y-3">
+                            <h3 className="font-bold text-orange-600 flex items-center gap-1">
+                                <span className="w-1 h-3 bg-orange-600 rounded-full" /> {stockName} 해외 거래 (양도세)
+                            </h3>
+                            <ul className="list-disc list-inside text-gray-500 space-y-1">
+                                <li>수익이 발생했을 때만 납부합니다.</li>
+                                <li>연간 합산 수익 250만 원까지 공제</li>
+                                <li>공제액 초과 수익에 대해 22% 부과</li>
+                            </ul>
                         </div>
                     </div>
                 </section>
