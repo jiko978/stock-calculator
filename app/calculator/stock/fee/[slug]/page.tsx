@@ -90,12 +90,26 @@ export default async function Page({ params }: Props) {
         { name: `${stockName} 수수료 계산`, item: `/calculator/stock/fee/${slug}` }
     ]);
 
+    const stockSchema = stockCode ? {
+        "@context": "https://schema.org",
+        "@type": "InvestmentOrDeposit",
+        "name": stockName,
+        "tickerSymbol": stockCode,
+        "url": `${BASE_URL}/calculator/stock/fee/${slug}`
+    } : null;
+
     return (
         <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
             />
+            {stockSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(stockSchema) }}
+                />
+            )}
             <NavBar title={`${stockName} 수수료 계산기 | JIKO`} description={`${stockName} 주식 매수/매도 시 발생하는 수수료와 세금을 확인하세요.`} position="top" />
             <StockFee stockName={stockName} initialCode={stockCode} />
 

@@ -69,9 +69,15 @@
 2. **코드**: `005930` (6자리 숫자인 경우 `stocks.json`에서 검색)
 3. **이름**: `삼성전자` (`stocks.json`에서 검색하거나 직접 이름으로 사용)
 
-### 4.2 SEO 메타데이터 패턴
-사용자 제안에 따라 4가지 정보(종목명, 종목코드, 주요 기능, 브랜드)를 조합하여 외부 검색 엔진 노출을 극대화합니다.
-- 예: `005930 삼성전자 수익률 계산기 | 삼성전자 투자 수익 계산 - JIKO`
+### 4.2 SEO 메타데이터 표준화 (Standard SEO Set)
+모든 계산기 페이지는 외부 유입 극대화를 위해 아래 5가지 구성 요소를 표준 패키지로 포함합니다.
+1. **Metadata**: Next.js `Metadata` 객체를 통한 Title, Description, Canonical URL 관리
+2. **JSON-LD (SoftwareApplication)**: 도구의 성격, OS, 가격(무료) 정보 명시
+3. **FAQ JSON-LD (FAQPage)**: 검색 결과 화면에 풍부한 스니펫(Rich Snippets) 노출 유도
+4. **Schema (InvestmentOrDeposit)**: 금융 투자 도구로서의 의미론적 데이터 제공
+5. **Breadcrumb JSON-LD (BreadcrumbList)**: 사이트 구조를 검색 엔진에 명확히 전달
+
+- 키워드 조합 패턴: `${종목코드} ${종목명} ${기능명} | ${서브설명} - JIKO`
 
 ---
 

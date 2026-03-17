@@ -5,6 +5,7 @@
 import type { Metadata } from "next";
 import AvgPriceCalculator from "./AvgPrice";
 import NavBar from "@/app/calculator/components/NavBar";
+import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "../../../utils/seo";
 
 const BASE_URL = "https://jiko.kr";
 
@@ -81,8 +82,19 @@ const schema = {
 };
 
 export default function Page() {
+    const breadcrumbLd = generateBreadcrumbJsonLd([
+        COMMON_BREADCRUMBS.HOME,
+        COMMON_BREADCRUMBS.CALC_HOME,
+        COMMON_BREADCRUMBS.STOCK_HOME,
+        COMMON_BREADCRUMBS.AVG_PRICE
+    ]);
+
     return (
         <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+            />
             {/* JSON-LD */}
             <script
                 type="application/ld+json"
@@ -100,7 +112,7 @@ export default function Page() {
             />
 
             {/* 계산기 UI */}
-            <NavBar title="주식 평균 단가 계산기 | 투자 물타기 불타기 평균단가 계산 - JIKO" description="주식 평균 매입 단가를 간편하게 계산해보세요" position="top" />
+            <NavBar title="주식 평균 단가 계산기" description="주식 평균 매입 단가를 간편하게 계산해보세요" position="top" />
             <AvgPriceCalculator />
 
             {/* SEO 및 정보 영역 (계산기 하단에 자연스럽게 배치) */}

@@ -18,6 +18,50 @@ export const metadata: Metadata = {
     },
 };
 
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "주식 수수료 계산기",
+    description: "국내 코스피, 코스닥 증권사 수수료부터 해외 주식 양도소득세까지 정확하게 계산해 보세요. 수수료를 포함한 세후 순수익과 손해 보지 않는 최소 익절가를 즉시 확인하실 수 있습니다.",
+    url: `${BASE_URL}/calculator/stock/fee`,
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" },
+    inLanguage: "ko",
+};
+
+const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+        {
+            "@type": "Question",
+            name: "국내 주식 거래세는 얼마인가요?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "2026년 기준 코스피와 코스닥의 증권거래세는 동일하게 0.18%입니다. (단, 시장 상황에 따라 변동될 수 있습니다.)",
+            },
+        },
+        {
+            "@type": "Question",
+            name: "해외 주식 양도세 공제 금액은 얼마인가요?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "해외 주식의 경우 연간 합산 수익 중 250만 원까지는 기본 공제 대상입니다.",
+            },
+        },
+    ],
+};
+
+const schema = {
+    "@context": "https://schema.org",
+    "name": "주식 수수료 계산기",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "url": `${BASE_URL}/calculator/stock/fee`,
+    "description": "국내/해외 주식 세금 및 수수료 계산"
+};
+
 export default function Page() {
     const breadcrumbLd = generateBreadcrumbJsonLd([
         COMMON_BREADCRUMBS.HOME,
@@ -32,8 +76,20 @@ export default function Page() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
             />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
 
-            <NavBar title="주식 수수료 계산기 | 국내/해외 주식 수수료 및 세금 계산 - JIKO" description="주식 매도 시 발생하는 수수료와 세금을 계산해보세요" position="top" />
+            <NavBar title="주식 수수료 계산기" description="주식 매도 시 발생하는 수수료와 세금을 계산해보세요" position="top" />
             <StockFee />
 
             <div className="max-w-2xl mx-auto px-4 pb-16 space-y-8">

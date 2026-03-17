@@ -11,7 +11,7 @@
    ㄴ 동적 서버 : `app/calculator/stock/fee/[slug]/page.tsx`
    ㄴ 클라이언트 : `app/calculator/stock/fee/StockFee.tsx`
 
-## 3. 화면 기능
+## 4. 화면 기능
 ### 3.1 입력 데이터
 1. **거래 시장**: 코스피, 코스닥, 해외(미국 등) 토글 선택
 2. **매수가/매도가/수량**: 기본 거래 정보

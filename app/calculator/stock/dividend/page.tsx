@@ -19,6 +19,50 @@ export const metadata: Metadata = {
     },
 };
 
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "주식 배당금 계산기",
+    description: "주식 배당금과 배당 수익률을 정확하게 계산해 보세요. 내가 받은 배당금이 생활비로 얼마나 충당되는지, 목표 배당금을 위해 얼마가 더 필요한지 한눈에 보여드립니다.",
+    url: `${BASE_URL}/calculator/stock/dividend`,
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" },
+    inLanguage: "ko",
+};
+
+const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+        {
+            "@type": "Question",
+            name: "주식 배당 수익률은 어떻게 계산하나요?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "배당 수익률은 (주당 배당금 ÷ 현재 주가) × 100 공식으로 계산됩니다.",
+            },
+        },
+        {
+            "@type": "Question",
+            name: "배당소득세는 얼마인가요?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "국내 주식의 경우 일반적인 배당소득세율은 15.4%(소득세 14% + 지방소득세 1.4%)입니다.",
+            },
+        },
+    ],
+};
+
+const schema = {
+    "@context": "https://schema.org",
+    "name": "주식 배당금 계산기",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "url": `${BASE_URL}/calculator/stock/dividend`,
+    "description": "주식 배당금과 배당 수익률을 정확하게 계산해 보세요."
+};
+
 export default function Page() {
     const breadcrumbLd = generateBreadcrumbJsonLd([
         COMMON_BREADCRUMBS.HOME,
@@ -33,8 +77,20 @@ export default function Page() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
             />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
 
-            <NavBar title="주식 배당금 계산기 | 배당 수익률 목표 달성 계산 - JIKO" description="배당금과 배당 수익률을 한눈에 확인하세요" position="top" />
+            <NavBar title="주식 배당금 계산기" description="배당금과 배당 수익률을 한눈에 확인하세요" position="top" />
 
             <main className="space-y-4">
                 <Dividend />

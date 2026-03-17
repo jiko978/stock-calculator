@@ -116,7 +116,7 @@ export default function Page() {
       />
 
       {/* 계산기 UI */}
-      <NavBar title="주식 수익률 계산기 | 투자 수익률 목표 달성 계산 - JIKO" description="나의 주식 투자 수익금과 수익률을 계산해보세요" position="top" />
+      <NavBar title="주식 수익률 계산기" description="나의 주식 투자 수익금과 수익률을 계산해보세요" position="top" />
       <ProfitRatePage />
 
       {/* SEO 및 정보 영역 (계산기 하단에 자연스럽게 배치) */}

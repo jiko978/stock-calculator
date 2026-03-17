@@ -11,7 +11,7 @@
    ㄴ 동적 서버 : `app/calculator/stock/dividend/[slug]/page.tsx`
    ㄴ 클라이언트 : `app/calculator/stock/dividend/Dividend.tsx`
 
-## 3. 화면 기능
+## 4. 화면 기능
 ### 3.1 입력 데이터
 1. **매수가(원)**: 나의 평균 매입 단가
 2. **현재가(원)**: 현재 주식 가격 (수수료 및 시가 배당률 계산용)
