@@ -9,9 +9,10 @@ interface NavBarProps {
     shareTitle?: string;  // 공유 시트에 전달할 제목 (생략 시 title 사용)
     description: string;
     shareDescription?: string;
+    position?: "top" | "bottom" | "static";
 }
 
-export default function NavBar({ title, shareTitle, description, shareDescription }: NavBarProps) {
+export default function NavBar({ title, shareTitle, description, shareDescription, position = "top" }: NavBarProps) {
     const router = useRouter();
 
     const [scrolled,   setScrolled]   = useState(false);
@@ -23,13 +24,22 @@ export default function NavBar({ title, shareTitle, description, shareDescriptio
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
+    const isBottom = position === "bottom";
+    const isStatic = position === "static";
+
     return (
         <>
             <header
-                className={`sticky top-0 z-30 transition-all duration-300 ${
-                    scrolled
-                        ? "bg-white/70 dark:bg-gray-900/70 backdrop-blur-md shadow-sm border-b border-gray-200/50 dark:border-gray-700/50"
-                        : "bg-transparent"
+                className={`${
+                    isStatic
+                        ? "w-full z-10 bg-transparent border-t border-gray-200/50 dark:border-gray-700/50 mt-8"
+                        : isBottom 
+                            ? "fixed bottom-0 left-0 right-0 z-[100] bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-t border-gray-200/50 dark:border-gray-700/50 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]"
+                            : `sticky top-0 z-[100] transition-all duration-300 ${
+                                scrolled
+                                    ? "bg-white/70 dark:bg-gray-900/70 backdrop-blur-md shadow-sm border-b border-gray-200/50 dark:border-gray-700/50"
+                                    : "bg-transparent"
+                            }`
                 }`}
             >
                 <div className="max-w-3xl mx-auto px-4 h-14 flex items-center justify-between">
@@ -54,7 +64,7 @@ export default function NavBar({ title, shareTitle, description, shareDescriptio
                     {/* 현재 페이지 타이틀 (스크롤 후 페이드인) */}
                     <span
                         className={`text-sm font-semibold text-gray-800 dark:text-gray-100 absolute left-1/2 -translate-x-1/2 transition-opacity duration-300 pointer-events-none ${
-                            scrolled ? "opacity-100" : "opacity-0"
+                            (scrolled || isBottom || isStatic) ? "opacity-100" : "opacity-0"
                         }`}
                     >
             {title}

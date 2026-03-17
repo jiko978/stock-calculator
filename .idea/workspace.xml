@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ba892596-243c-4883-bf52-ac23e2e1bf54" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/calculator/stock/data/stocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/stock/data/stocks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/JIKO-calculator-설계서.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/calculator/stock/avg-price-기능명세서.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/calculator/stock/avg-price-기능명세서.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/calculator/stock/profit-rate-기능명세서.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/calculator/stock/profit-rate-기능명세서.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/calculator/stock/stock-common-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/calculator/stock/stock-common-guide.md" afterDir="false" />
+    <list default="true" id="ba892596-243c-4883-bf52-ac23e2e1bf54" name="변경" comment="jiko 44 commit">
+      <change beforePath="$PROJECT_DIR$/app/calculator/components/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/components/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/calculator/components/ShareSheet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/components/ShareSheet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/calculator/stock/avg-price/AvgPrice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/stock/avg-price/AvgPrice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/calculator/stock/avg-price/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/stock/avg-price/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/calculator/stock/avg-price/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/stock/avg-price/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/calculator/stock/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/stock/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/calculator/stock/profit-rate/ProfitRate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/stock/profit-rate/ProfitRate.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/calculator/stock/profit-rate/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/stock/profit-rate/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/calculator/stock/profit-rate/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/stock/profit-rate/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/calculator/JIKO-calculator-설계서.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/calculator/JIKO-calculator-설계서.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/calculator/JIKO-calculator-프로그램명세서.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/calculator/JIKO-calculator-프로그램명세서.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,8 +105,17 @@
       <workItem from="1773282686595" duration="113000" />
       <workItem from="1773282812674" duration="2958000" />
       <workItem from="1773286049243" duration="19504000" />
-      <workItem from="1773363785830" duration="19414000" />
+      <workItem from="1773363785830" duration="20114000" />
     </task>
+    <task id="LOCAL-00001" summary="jiko 44 commit">
+      <option name="closed" value="true" />
+      <created>1773639541989</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1773639541989</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +131,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="jiko 44 commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="jiko 44 commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

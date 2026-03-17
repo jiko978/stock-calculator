@@ -1,0 +1,36 @@
+[
+  {
+    "category": "금융",
+    "stocks": [
+      { "name": "우리금융지주", "code": "316140", "dividend": "10.0%", "desc": "안정적인 배당 정책" },
+      { "name": "기업은행", "code": "024110", "dividend": "9.5%", "desc": "국책은행의 높은 주주환원" },
+      { "name": "하나금융지주", "code": "086790", "dividend": "8.8%", "desc": "꾸준한 배당 성장" }
+    ]
+  },
+  {
+    "category": "통신",
+    "stocks": [
+      { "name": "SK텔레콤", "code": "017670", "dividend": "7.2%", "desc": "대표적 경기 방어주" },
+      { "name": "KT", "code": "030200", "dividend": "6.5%", "desc": "안정적 현금 흐름" }
+    ]
+  },
+  {
+    "category": "우량주",
+    "stocks": [
+      { "name": "삼성전자우", "code": "005935", "dividend": "2.8%", "desc": "국내 최고 핵심 자산" },
+      { "name": "현대차우", "code": "005385", "dividend": "7.5%", "desc": "실적 기반 고배당 매력" }
+    ]
+  },
+  {
+    "category": "소비재",
+    "stocks": [
+      { "name": "KT&G", "code": "033780", "dividend": "6.2%", "desc": "전통의 배당 강자" }
+    ]
+  },
+  {
+    "category": "에너지",
+    "stocks": [
+      { "name": "S-Oil", "code": "010950", "dividend": "5.4%", "desc": "유가 연동 실적 배당" }
+    ]
+  }
+]

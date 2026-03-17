@@ -4,6 +4,7 @@
 
 import type { Metadata } from "next";
 import AvgPriceCalculator from "./AvgPrice";
+import NavBar from "@/app/calculator/components/NavBar";
 
 const BASE_URL = "https://jiko.kr";
 
@@ -99,6 +100,7 @@ export default function Page() {
             />
 
             {/* 계산기 UI */}
+            <NavBar title="주식 평단가 계산기" description="주식 평균 매입 단가를 간편하게 계산해보세요" position="top" />
             <AvgPriceCalculator />
 
             {/* SEO 및 정보 영역 (계산기 하단에 자연스럽게 배치) */}

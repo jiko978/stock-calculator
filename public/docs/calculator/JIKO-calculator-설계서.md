@@ -49,31 +49,32 @@ Tool Site.
 ㄴㄴ 계좌 개설 연동
 ㄴ [1차]수익률 : 매입가, 현재가, 수량별 수익금/수익률 계산
 ㄴㄴ 계좌 개설 연동
-ㄴ [미정]배당금 : https://www.nerdwallet.com/ 참고
+ㄴ [1차]배당금
+ㄴ [1차]세금
+
 
 금융(finance)
 ㄴ [1차]예금 : 예금이자율, 예금액, 예금기간별 예금이자 계산(네이버 참고)
 ㄴ [1차]적금 : 적금이자율, 적금액, 적금기간별 적금이자 계산(네이버 참고)
 ㄴ [1차]대출 : 대출이자율, 대출액, 대출기간별 대출이자 계산(네이버 참고)
 ㄴ [미정]환율 : 환율, 환율, 환율별 환율 계산(네이버 참고)
-ㄴ [미정]복리 : https://www.calculator.net/ 참고(교과서)
-ㄴ [미정]퍼센트 : https://www.calculator.net/ 참고(교과서)
-ㄴ [미정]주식 종목 주요 지표 : 종가, PER 등 투자지표, PER/PBR 자동 계산, 배당수익률 랭킹       
-ㄴ [미정]코인세금 : 토스 참고
-ㄴ [미정]부가세
+ㄴ [미정]복리 
+ㄴ [미정]퍼센트
+ㄴ [미정]은퇴자금 : MoneyNest 참고 
+ㄴ [미정]자산순위 : MoneyNest 참고
+
 
 부동산(real estate)
 ㄴ [미정]LTV : 네이버 참고                      
 ㄴ [미정]DTI : 네이버 참고                      
 ㄴ [미정]DSR : 네이버 참고                      
 ㄴ [미정]중도상환수수료 : 네이버 참고             
-ㄴ [미정]취득세 : 국세청 위텍스, 국토교통부 참고
-ㄴ [미정]양도세 : 국세청 위텍스, 국토교통부 참고
+ㄴ [미정]중개수수료
 ㄴ [미정]전세대출 : 주택도시보증공사, 한국주택금융공사 참고
-ㄴ [미정]종부세
-ㄴ [미정]보유세
 ㄴ [미정]임대수익
 ㄴ [미정]월세수익 : 직방, 부동산114 참고
+ㄴ [미정]청약가점
+
 
 생활(life)
 ㄴ [1차]나이와 띠 : 출생일 기준 년도별 나이/띠
@@ -88,11 +89,16 @@ Tool Site.
 ㄴㄴ 입대일 기준 전역일 : 네이버 참고
 ㄴㄴ 임신가능일 : 네이버 참고
 ㄴㄴ 임신주수/분만예정일 : 네이버 참고
-ㄴ [1차]임금
-ㄴㄴ 시급
-ㄴㄴ 연봉
-ㄴㄴ 퇴직금
-ㄴㄴ 실업급여
+ㄴ [1차]급여
+ㄴㄴ 실수령액 : MoneyNest 참고 
+ㄴㄴ 연봉 인상률 : MoneyNest 참고 
+ㄴㄴ 연봉 순위 : MoneyNest 참고 
+ㄴㄴ 주휴수당 : MoneyNest 참고 
+ㄴㄴ 4대보험 : MoneyNest 참고 
+ㄴㄴ 지역가입자 건보료 : MoneyNest 참고 
+ㄴㄴ 실업급여 : MoneyNest 참고 
+ㄴㄴ 연차 : MoneyNest 참고 
+ㄴㄴ 퇴직금: MoneyNest 참고 
 ㄴ [미정]단가 : 온라인/오프라인 상품 비교(수량기준 동일 상품 최저가 판단)
 ㄴ [미정]단위 변환
 ㄴㄴ 길이 : 네이버 참고
@@ -109,6 +115,7 @@ Tool Site.
 ㄴ [미정]마진
 ㄴ [미정]확률
 
+
 건강(health)
 ㄴ [1차]칼로리 : 걷기, 계단, 등산, 수영, 복싱, 줄넘기, 자전거, 달리기, 런닝머신, 배드민턴, 탁구, 크로스핏 등
 ㄴ [1차]체지방률
@@ -116,58 +123,81 @@ Tool Site.
 ㄴ [미정]BMI
 ㄴ [미정]BMR
 
+
 기타(other)
-ㄴ [1차]MBTI
-ㄴ [미정]자동차 할부
+ㄴ [미정]취득세 : 국세청 위텍스, 국토교통부 참고
+ㄴ [미정]양도세 : MoneyNest 참고 
+ㄴ [미정]종부세
+ㄴ [미정]보유세
+ㄴ [미정]부가세 : MoneyNest 참고 
+ㄴ [미정]자동차세 : MoneyNest 참고 
+ㄴ [미정]종소세 : MoneyNest 참고 
+ㄴ [미정]코인 세금 : 토스 참고
+
 
 ## SEO제목
 주식(stock)
 1. 주식 평균 단가 계산기 | 물타기/불타기 평단 계산 - JIKO calculator
 2. 주식 수익률 계산기 | 매수가 현재가 수익 계산 - JIKO calculator
-3. 주식 배당금 계산기 | 배당금 계산 - JIKO calculator
+3. 주식 배당금 계산기 | 배당금 배당수익률 계산 - JIKO calculator
+4. 주식 세금 계산기 | 국내/해외 주식 세금 계산 - JIKO calculator
 
 금융(finance)
 1. 예금 이자 계산기 | 예금 이자율 예금액 예금기간별 예금이자 계산 - JIKO calculator
 2. 적금 이자 계산기 | 적금 이자율 적금액 적금기간별 적금이자 계산 - JIKO calculator
 3. 대출 이자 계산기 | 대출 이자율 대출액 대출기간별 대출이자 계산 - JIKO calculator
-4. ETF 수익률 계산기 | ETF 수익률 계산 - JIKO calculator
-5. 환율 계산기 | 환율 계산 - JIKO calculator
-6. 복리 계산기 | 복리 계산 - JIKO calculator
-7. 퍼센트 계산기 | 퍼센트 계산 - JIKO calculator
-8. 주식 종목 주요 지표 계산기 | 주식 종목 주요 지표 계산 - JIKO calculator
-9. 코인세금 계산기 | 코인세금 계산 - JIKO calculator
-10. 부가세 계산기 | 부가세 계산 - JIKO calculator
+4. 환율 계산기 | 환율 계산 - JIKO calculator
+5. 복리 계산기 | 복리 계산 적립식 복리 - JIKO calculator
+6. 퍼센트 계산기 | 퍼센트 계산 비율 증감 계산 - JIKO calculator
+7. 은퇴 자금 계산기 | 노후 자금 은퇴 준비 계산 - JIKO calculator
+8. 자산 순위 계산기 | 내 자산 상위 퍼센트 계산 - JIKO calculator
 
 부동산(real estate)
-1. LTV 계산기 | LTV 비율 LTV 계산 - JIKO calculator
-2. DTI 계산기 | DTI 비율 DTI 계산 - JIKO calculator
-3. DSR 계산기 | DSR 비율 DSR 계산 - JIKO calculator
+1. LTV 계산기 | LTV 비율 담보대출 한도 계산 - JIKO calculator
+2. DTI 계산기 | DTI 비율 부채상환능력 계산 - JIKO calculator
+3. DSR 계산기 | DSR 비율 총부채원리금상환비율 계산 - JIKO calculator
 4. 중도상환수수료 계산기 | 중도상환수수료 계산 - JIKO calculator
-5. 취득세 계산기 | 취득세 계산 - JIKO calculator
-6. 양도세 계산기 | 양도세 계산 - JIKO calculator
-7. 전세대출 계산기 | 전세대출 계산 - JIKO calculator
-8. 종부세 계산기 | 종부세 계산 - JIKO calculator
-9. 월세 수익 계산기 | 월세 수익 계산 - JIKO calculator
+5. 부동산 중개수수료 계산기 | 복비 계산 중개수수료 계산 - JIKO calculator
+6. 전세대출 계산기 | 전세대출 이자 한도 계산 - JIKO calculator
+7. 임대 수익 계산기 | 임대 수익률 월세 수익 계산 - JIKO calculator
+8. 월세 수익 계산기 | 월세 수익률 수익 계산 - JIKO calculator
+9. 청약 가점 계산기 | 아파트 청약 가점 계산 - JIKO calculator
 
 생활(life)
-1. 나이와 띠 계산기 | 나이와 띠 계산 - JIKO calculator
-2. 디데이/날짜수 계산기 | 디데이/날짜수 계산 - JIKO calculator
-3. 임금 계산기 | 임금 계산 - JIKO calculator
-4. 단가 계산기 | 단가 계산 - JIKO calculator
-5. 단위 변환 계산기 | 단위 변환 계산 - JIKO calculator
-6. 물가 계산기 | 물가 계산 - JIKO calculator
-7. 마진 계산기 | 마진 계산 - JIKO calculator
-8. 확률 계산기 | 확률 계산 - JIKO calculator
+1. 나이와 띠 계산기 | 나이와 띠 계산 만 나이 계산 - JIKO calculator
+2. 디데이/날짜수 계산기 | 디데이/날짜수 계산 전역일 만기일 계산 - JIKO calculator
+3. 급여 실수령액 계산기 | 연봉 실수령액 월급 계산 - JIKO calculator
+4. 연봉 인상률 계산기 | 연봉 인상 인상률 계산 - JIKO calculator
+5. 연봉 순위 계산기 | 내 연봉 상위 퍼센트 순위 계산 - JIKO calculator
+6. 주휴수당 계산기 | 알바 주휴수당 계산 - JIKO calculator
+7. 4대보험 계산기 | 국민연금 건강보험 고용보험 산재보험 계산 - JIKO calculator
+8. 건강보험료 계산기 | 지역가입자 건보료 계산 - JIKO calculator
+9. 실업급여 계산기 | 실업급여 수급액 기간 계산 - JIKO calculator
+10. 연차 계산기 | 입사일 기준 연차 개수 계산 - JIKO calculator
+11. 퇴직금 계산기 | 퇴직금 예상 금액 계산 - JIKO calculator
+12. 단가 계산기 | 온라인/오프라인 상품 최저가 비교 - JIKO calculator
+13. 단위 변환기 | 길이 넓이 무게 부피 온도 변환 - JIKO calculator
+14. 물가 계산기 | 물가 상승률 화폐 가치 계산 - JIKO calculator
+15. 마진율 계산기 | 판매가 마진율 이익 계산 - JIKO calculator
+16. 확률 계산기 | 확률 계산 경우의 수 - JIKO calculator
 
 건강(health)
-1. 칼로리 계산기 | 칼로리 계산 - JIKO calculator
-2. 체지방률 계산기 | 체지방률 계산 - JIKO calculator
-3. BMI 계산기 | BMI 계산 - JIKO calculator
-4. BMR 계산기 | BMR 계산 - JIKO calculator
+1. 칼로리 계산기 | 운동 소모 칼로리 계산 - JIKO calculator
+2. 체지방률 계산기 | 체지방률 계산 비만도 측정 - JIKO calculator
+3. 기초대사량 계산기 | 기초대사량 계산 BMR 측정 - JIKO calculator
+4. BMI 계산기 | 체질량지수 BMI 계산 - JIKO calculator
 
 기타(other)
-1. MBTI 계산기 | MBTI 계산 - JIKO calculator
-2. 자동차 할부 계산기 | 자동차 할부 계산 - JIKO calculator
+1. 취득세 계산기 | 취득세 세율 계산 - JIKO calculator
+2. 양도세 계산기 | 양도소득세 계산 - JIKO calculator
+3. 종부세 계산기 | 종합부동산세 계산 - JIKO calculator
+4. 보유세 계산기 | 재산세 종부세 합계 계산 - JIKO calculator
+5. 부가세 계산기 | 부가가치세 별도 포함 계산 - JIKO calculator
+6. 자동차세 계산기 | 배기량별 자동차세 계산 - JIKO calculator
+7. 종소세 계산기 | 종합소득세 세율 계산 - JIKO calculator
+8. 코인 세금 계산기 | 가상자산 소득세 계산 - JIKO calculator
+9. MBTI 검사/계산기 | MBTI 성격 유형 결과 확인 - JIKO calculator
+10. 자동차 할부 계산기 | 자동차 할부 원리금 상환 계산 - JIKO calculator
 
 ## 공통파일 관리
 1. 뒤로가기, 공유 버튼

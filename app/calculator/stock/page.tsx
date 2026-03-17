@@ -21,15 +21,16 @@ export default function Home() {
 
                 <div className="grid gap-6 w-full max-w-3xl mx-auto md:grid-cols-2">
                     <Link href="/calculator/stock/avg-price"
-                          className="bg-white dark:bg-gray-800 dark:text-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition text-center text-lg font-semibold">
+                        className="bg-white dark:bg-gray-800 dark:text-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition text-center text-lg font-semibold">
                         💧🔥 평균 단가
                     </Link>
                     <Link href="/calculator/stock/profit-rate"
-                          className="bg-white dark:bg-gray-800 dark:text-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition text-center text-lg font-semibold">
+                        className="bg-white dark:bg-gray-800 dark:text-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition text-center text-lg font-semibold">
                         💰 수익률
                     </Link>
                 </div>
-                <NavBar title="주식 계산기" description={"주식 많이 올랐어요? 축하드려요!"} />
+                
+                <NavBar title="주식 계산기" description="주식 평균단가, 수익률, 배당금 등 필수 주식 계산기 모음" position="static" />
             </div>
         </main>
     );

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import NavBar from "@/app/calculator/components/NavBar";
 import { ANIMATION } from "@/app/config/animationConfig";
 
 const MAX_ROWS = 10;
@@ -190,7 +189,6 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
 
     return (
         <div className="bg-gray-50 dark:bg-gray-900">
-            <NavBar title="주식 평균 단가 계산기 | 물타기/불타기 평단 계산 - JIKO calculator" description={"주식 평균 단가를 정확히 계산해보세요"} />
 
             <div className={`max-w-3xl mx-auto px-4 py-6 pb-safe ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
 

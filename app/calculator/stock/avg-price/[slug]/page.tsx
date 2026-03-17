@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import AvgPrice from "../AvgPrice";
+import NavBar from "@/app/calculator/components/NavBar";
 import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "../../../../utils/seo";
 
 const BASE_URL = "https://jiko.kr";
@@ -84,6 +85,7 @@ export default async function Page({ params }: Props) {
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(stockSchema) }}
                 />
             )}
+             <NavBar title="주식 평균 단가 계산기 | JIKO" description="주식 보유 평단가와 수익률을 계산해보세요" />
              <AvgPrice stockName={name} initialCode={code} />
 
              <main className="max-w-3xl mx-auto px-4 pb-16 space-y-6">

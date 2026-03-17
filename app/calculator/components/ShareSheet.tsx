@@ -21,7 +21,8 @@ export default function ShareSheet({ url, title, description, onClose }: ShareSh
     const shareKakao = () => {
         if (typeof window === "undefined") return;
 
-        if (!window.Kakao?.isInitialized()) {
+        // window.Kakao 자체가 없거나 초기화되지 않은 경우 처리
+        if (!window.Kakao || typeof window.Kakao.isInitialized !== 'function' || !window.Kakao.isInitialized()) {
             // SDK 미초기화 시 링크 복사로 fallback
             setKakaoError(true);
             copyLink();
@@ -31,29 +32,34 @@ export default function ShareSheet({ url, title, description, onClose }: ShareSh
         // 썸네일 이미지 경로 — 로컬 테스트 시에도 이미지를 보여주기 위해 실제 서버 주소 사용
         const thumbnailUrl = `https://jiko.kr/calculator/jiko-calculator-icon2.png`;
 
-        window.Kakao.Share.sendDefault({
-            objectType: "feed",
-            content: {
-                title,
-                description: description ?? "JIKO 계산기 - 계산은 정확히 해야해요",
-                imageUrl: thumbnailUrl,
-                link: {
-                    mobileWebUrl: url,
-                    webUrl: url,
-                },
-            },
-            buttons: [
-                {
-                    title: "정확히 계산하러 가기",
+        try {
+            window.Kakao.Share.sendDefault({
+                objectType: "feed",
+                content: {
+                    title,
+                    description: description ?? "JIKO 계산기 - 계산은 정확히 해야해요",
+                    imageUrl: thumbnailUrl,
                     link: {
                         mobileWebUrl: url,
                         webUrl: url,
                     },
                 },
-            ],
-        });
-
-        onClose();
+                buttons: [
+                    {
+                        title: "정확히 계산하러 가기",
+                        link: {
+                            mobileWebUrl: url,
+                            webUrl: url,
+                        },
+                    },
+                ],
+            });
+            onClose();
+        } catch (e) {
+            console.error("Kakao share execution failed:", e);
+            setKakaoError(true);
+            copyLink();
+        }
     };
 
     // ── 링크 복사 ─────────────────────────────────────────────
@@ -85,10 +91,10 @@ export default function ShareSheet({ url, title, description, onClose }: ShareSh
     return (
         <>
             {/* 딤 배경 */}
-            <div className="fixed inset-0 bg-black/40 z-40" onClick={onClose} />
+            <div className="fixed inset-0 bg-black/40 z-[9998]" onClick={onClose} />
 
             {/* 시트 */}
-            <div className="fixed bottom-0 left-0 right-0 z-50 animate-slide-up">
+            <div className="fixed bottom-0 left-0 right-0 z-[9999] animate-slide-up">
                 <div className="bg-white dark:bg-gray-800 rounded-t-3xl shadow-2xl px-5 pt-5 pb-10 max-w-lg mx-auto">
 
                     {/* 핸들 바 */}
