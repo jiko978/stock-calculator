@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ba892596-243c-4883-bf52-ac23e2e1bf54" name="변경" comment="jiko 49 commit" />
+    <list default="true" id="ba892596-243c-4883-bf52-ac23e2e1bf54" name="변경" comment="jiko 56 commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/calculator/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/components/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/calculator/components/StockMoreCalculators.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/components/StockMoreCalculators.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/calculator/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/calculator/stock/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/calculator/stock/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/calculator/JIKO-calculator-설계서.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/calculator/JIKO-calculator-설계서.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/calculator/JIKO-calculator-프로그램명세서.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/calculator/JIKO-calculator-프로그램명세서.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/calculator/stock/avg-price-기능명세서.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/calculator/stock/avg-price-기능명세서.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/calculator/stock/dividend-기능명세서.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/calculator/stock/dividend-기능명세서.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/calculator/stock/fee-기능명세서.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/calculator/stock/fee-기능명세서.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/calculator/stock/profit-rate-기능명세서.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/calculator/stock/profit-rate-기능명세서.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/calculator/stock/stock-common-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/calculator/stock/stock-common-guide.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +31,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/jiko978/stock-calculator.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/jiko978/jiko-calculator.git&quot;,
     &quot;accountId&quot;: &quot;32d3d709-0f1d-4bea-b876-f1283333a199&quot;
   }
 }</component>
@@ -94,6 +107,7 @@
       <workItem from="1773282812674" duration="2958000" />
       <workItem from="1773286049243" duration="19504000" />
       <workItem from="1773363785830" duration="25879000" />
+      <workItem from="1773796086890" duration="13820000" />
     </task>
     <task id="LOCAL-00001" summary="jiko 44 commit">
       <option name="closed" value="true" />
@@ -135,7 +149,39 @@
       <option name="project" value="LOCAL" />
       <updated>1773730226700</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="jiko 52 commit">
+      <option name="closed" value="true" />
+      <created>1773736653097</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1773736653097</updated>
+    </task>
+    <task id="LOCAL-00007" summary="jiko 53 commit">
+      <option name="closed" value="true" />
+      <created>1773738399043</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1773738399043</updated>
+    </task>
+    <task id="LOCAL-00008" summary="jiko 55 commit">
+      <option name="closed" value="true" />
+      <created>1773799847193</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1773799847193</updated>
+    </task>
+    <task id="LOCAL-00009" summary="jiko 56 commit">
+      <option name="closed" value="true" />
+      <created>1773803441033</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1773803441033</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,7 +203,13 @@
     <MESSAGE value="jiko 45 commit" />
     <MESSAGE value="jiko 46 commit" />
     <MESSAGE value="jiko 49 commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="jiko 49 commit" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="jiko 51 commit" />
+    <MESSAGE value="jiko 52 commit" />
+    <MESSAGE value="jiko 53 commit" />
+    <MESSAGE value="jiko 55 commit" />
+    <MESSAGE value="jiko 56 commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="jiko 56 commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -53,9 +53,10 @@ export default function MyCalculator() {
 - `<NavBar title="제목" description="소개문구" />`
 
 ### 4.2 디자인 가이드
-- **카드형 레이아웃**: 모든 입력 영역은 `bg-white dark:bg-gray-800`와 `rounded-2xl`을 사용하여 카드 형태로 디자인.
+- **카드형 레이아웃**: 모든 입력 영역 및 하단 콘텐츠는 `bg-white dark:bg-gray-800`와 `rounded-2xl`을 사용하여 카드 형태로 디자인.
 - **다크모드**: `dark:` 클래스를 사용하여 완벽한 다크모드 대응.
 - **반응형**: 모바일 기기(320px 이상)에서도 레이아웃이 깨지지 않도록 `px-4` 등 패딩 값 준수.
+- **공통 하단 컴포넌트**: 모든 주식 계산기는 최하단에 `FAQ`와 `StockMoreCalculators` 컴포넌트를 반드시 포함하여 UI 일관성을 유지해야 함.
 
 ## 5. 입력 및 계산 가이드
 - **최대 입력 제한**: 모든 숫자 필드는 `10억(9자리)` 미만으로 입력 차단(`maxLength={9}`).

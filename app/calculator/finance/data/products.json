@@ -1,0 +1,17 @@
+{
+  "deposits": [
+    { "id": "standard", "name": "일반정기예금", "slug": "standard-deposit" },
+    { "id": "high-rate", "name": "고금리예금", "slug": "high-rate-deposit" },
+    { "id": "emergency", "name": "비상금예금", "slug": "emergency-deposit" }
+  ],
+  "savings": [
+    { "id": "standard", "name": "일반정기적금", "slug": "standard-savings" },
+    { "id": "free", "name": "자유적립식적금", "slug": "free-savings" },
+    { "id": "youth", "name": "청년희망적금", "slug": "youth-savings" }
+  ],
+  "loans": [
+    { "id": "mortgage", "name": "주택담보대출", "slug": "mortgage-loan" },
+    { "id": "credit", "name": "개인신용대출", "slug": "credit-loan" },
+    { "id": "car", "name": "자동차할부대출", "slug": "car-loan" }
+  ]
+}
