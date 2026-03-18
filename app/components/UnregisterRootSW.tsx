@@ -6,7 +6,7 @@ export default function UnregisterRootSW() {
     useEffect(() => {
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.getRegistrations().then((registrations) => {
-                for (let registration of registrations) {
+                for (const registration of registrations) {
                     // Check if the service worker is registered at the root scope
                     if (registration.scope.endsWith("/") && !registration.scope.includes("/calculator")) {
                         registration.unregister().then(async () => {
