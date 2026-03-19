@@ -107,16 +107,16 @@ const Savings = ({ productName }: SavingsProps) => {
 
     return (
         <div className="bg-gray-50 dark:bg-gray-900">
-            <div className={`max-w-3xl mx-auto px-4 pt-1 pb-1 ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
-                
-                <div className="flex flex-col items-center gap-4 mb-4">
+            <div className={`max-w-3xl mx-auto px-4 py-6 pb-safe ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
+
+                <div className="flex flex-col items-center gap-4 mb-8">
                     <div className="flex justify-center items-center gap-2 flex-wrap text-sm">
                         {productName && (
                             <span className="px-3 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 rounded-full font-bold border border-green-200 dark:border-green-800">
                                 🏦 {productName}
                             </span>
                         )}
-                        <span className="px-3 py-1 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-full font-semibold shadow-sm border border-gray-100 dark:border-gray-700">💰적금 계산기</span>
+                        <span className="px-3 py-1 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-full font-semibold shadow-sm border border-gray-100 dark:border-gray-700">💰적금 이자 계산기</span>
                     </div>
                 </div>
 
@@ -258,10 +258,10 @@ const Savings = ({ productName }: SavingsProps) => {
                 </div>
 
                 {calculated && (
-                    <div className={`mt-2 space-y-4 ${ANIMATION.resultBox ? "animate-fade-slide-up" : ""}`}>
+                    <div className={`mt-8 space-y-6 ${ANIMATION.resultBox ? "animate-fade-slide-up" : ""}`}>
                         <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50 text-center relative overflow-hidden">
                             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-teal-500"></div>
-                            
+
                             <p className="text-sm font-bold text-gray-400 dark:text-gray-500 mb-2">적금 만기 시 실제로 받는 금액</p>
                             <h2 className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-6 break-all">
                                 {totalMaturity.toLocaleString()}
@@ -285,7 +285,7 @@ const Savings = ({ productName }: SavingsProps) => {
                                     <span className="text-gray-800 dark:text-gray-200 font-bold">{Math.floor(preTaxInterest).toLocaleString()}원</span>
                                 </div>
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-gray-500 dark:text-gray-400 font-medium">이자 과세 ({taxRate*100}%)</span>
+                                    <span className="text-gray-500 dark:text-gray-400 font-medium">이자 과세 ({taxRate * 100}%)</span>
                                     <span className="text-red-500 dark:text-red-400 font-bold">-{taxAmount.toLocaleString()}원</span>
                                 </div>
                             </div>
@@ -309,16 +309,16 @@ const Savings = ({ productName }: SavingsProps) => {
                                 <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
                                 원금 대비 이자 비중
                             </h3>
-                            
+
                             <div className="space-y-6">
                                 <div className="relative h-10 w-full bg-gray-100 dark:bg-gray-700 rounded-2xl overflow-hidden flex">
-                                    <div 
+                                    <div
                                         className="h-full bg-green-500 transition-all duration-1000 ease-out flex items-center px-4"
                                         style={{ width: `${(totalPrincipal / totalMaturity) * 100}%` }}
                                     >
                                         <span className="text-[10px] font-black text-white whitespace-nowrap">원금 {((totalPrincipal / totalMaturity) * 100).toFixed(1)}%</span>
                                     </div>
-                                    <div 
+                                    <div
                                         className="h-full bg-teal-400 dark:bg-teal-500 transition-all duration-1000 ease-out flex items-center px-4"
                                         style={{ width: `${(postTaxInterest / totalMaturity) * 100}%` }}
                                     >
@@ -329,7 +329,7 @@ const Savings = ({ productName }: SavingsProps) => {
                                 <div className="bg-gray-50 dark:bg-gray-900/40 p-5 rounded-2xl flex items-center gap-4">
                                     <div className="text-3xl">💡</div>
                                     <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
-                                        적금의 실제 비중을 확인해보세요. 매달 쌓이는 목돈이 <span className="text-green-600 dark:text-green-400 font-bold">{totalMaturity.toLocaleString()}원</span>이 됩니다. 
+                                        적금의 실제 비중을 확인해보세요. 매달 쌓이는 목돈이 <span className="text-green-600 dark:text-green-400 font-bold">{totalMaturity.toLocaleString()}원</span>이 됩니다.
                                         실효 수익률은 총 투자 원금 대비 <span className="text-teal-600 dark:text-teal-400 font-bold">{((postTaxInterest / totalPrincipal) * 100).toFixed(2)}%</span>입니다.
                                     </p>
                                 </div>

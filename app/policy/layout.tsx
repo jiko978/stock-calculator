@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import BackButton from "./BackButton";
 
 export default function PolicyLayout({
     children,
@@ -29,12 +30,11 @@ export default function PolicyLayout({
 
                     {/* Bottom Action */}
                     <div className="flex justify-center pt-8">
-                        <Link 
-                            href="/"
+                        <BackButton 
                             className="text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2 transition-colors py-2 px-4 rounded-full hover:bg-white dark:hover:bg-gray-800"
                         >
                             <span>←</span> 메인 페이지로 돌아가기
-                        </Link>
+                        </BackButton>
                     </div>
                 </div>
             </main>
@@ -43,3 +43,4 @@ export default function PolicyLayout({
         </div>
     );
 }
+

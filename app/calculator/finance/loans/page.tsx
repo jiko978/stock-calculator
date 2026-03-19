@@ -6,11 +6,11 @@ import FinanceMoreCalculators from "@/app/calculator/components/FinanceMoreCalcu
 import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "@/app/utils/seo";
 
 export const metadata: Metadata = {
-    title: "대출 이자 계산기 | 원리금균등 및 원금균등 상환 계산 - JIKO calculator",
+    title: "대출 이자 계산기 | 원리금균등 및 원금균등 상환 계산기 - JIKO 계산기",
     description: "대출 금액, 이자율, 상환 방식을 선택하여 월 상환액과 총 대출 이자를 정확하게 계산하세요. 거치 기간 설정을 지원합니다.",
     keywords: ["대출이자 계산기", "원리금균등상환", "원금균등상환", "만기일시상환", "대출금리", "금융 계산기"],
     openGraph: {
-        title: "대출 이자 계산기 | 효율적인 상환 계획 도우미",
+        title: "대출 이자 계산기 | 원리금균등 및 원금균등 상환 계산기 - JIKO 계산기",
         description: "다양한 상환 방식별 이자 차이를 한눈에 비교해보세요.",
         type: "website",
     }
@@ -42,7 +42,7 @@ export default function LoansPage() {
     const softwareLd = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "JIKO 대출 이자 계산기",
+        "name": "대출 이자 계산기",
         "operatingSystem": "Any",
         "applicationCategory": "FinanceApplication",
         "offers": { "@type": "Offer", "price": "0" }
@@ -53,7 +53,7 @@ export default function LoansPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareLd) }} />
 
-            <NavBar title="대출 계산기" description="상환 방식에 따른 비용 차이를 스마트하게 분석하세요." />
+            <NavBar title="대출 이자 계산기" description="대출 금액, 이자율, 상환 방식을 선택하여 월 상환액과 총 대출 이자를 정확하게 계산하세요. 거치 기간 설정을 지원합니다." />
 
             <Loans />
 
@@ -88,9 +88,9 @@ export default function LoansPage() {
                         </h2>
                         <div className="text-sm text-gray-600 dark:text-gray-300 bg-amber-50 dark:bg-amber-900/20 p-4 rounded-xl">
                             <p className="font-semibold text-amber-700 dark:text-amber-300 mb-2">1억원 · 30년 · 연 4.0% (원리금균등)</p>
-                            <p>• 매월 납입액: <strong>477,415원</strong></p>
-                            <p>• 총 대출 이자: 71,869,400원</p>
-                            <p className="mt-2 font-bold text-amber-600 dark:text-amber-400">총 상환 금액: 171,869,400원</p>
+                            <p>• 매월 납입액 : <strong>477,415원</strong></p>
+                            <p>• 총 대출 이자 : 71,869,400원</p>
+                            <p className="mt-2 font-bold text-amber-600 dark:text-amber-400">총 상환 금액 : 171,869,400원</p>
                         </div>
                     </section>
                 </div>

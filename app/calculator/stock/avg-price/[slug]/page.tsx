@@ -42,12 +42,12 @@ export async function generateMetadata(
     const displayCode = code ? `(${code})` : "";
 
     return {
-        title: `${name} 평균단가 계산기 | ${code || ""} 투자 수익 계산 - JIKO`,
-        description: `${name} 평균단가 시ミュ레이션. ${code || ""} 종목의 여러 매수 시점에 따른 최종 평단가와 수익률을 계산해보세요. 물타기/불타기 필수 도구.`,
+        title: `${name} 주식 평균단가 계산기 | ${code || ""} 주식 투자 수익 계산기 - JIKO 계산기`,
+        description: `${name} 평균단가 시뮬레이션. ${code || ""} 종목의 여러 매수 시점에 따른 최종 평단가와 수익률을 계산해보세요. 물타기/불타기 필수 도구.`,
         keywords: [name, code, "평균단가", "물타기", "주식 계산기", `${name} 평단가`, `${code} 계산기`].filter(Boolean) as string[],
         alternates: { canonical: `${BASE_URL}/calculator/stock/avg-price/${slug}` },
         openGraph: {
-            title: `${name}${displayCode} 평균단가 계산기`,
+            title: `${name}${displayCode} 주식 평균단가 계산기`,
             description: `${name} 보유 주식 평균 단가 및 수익률 시뮬레이션`,
             url: `${BASE_URL}/calculator/stock/avg-price/${slug}`,
             images: [`${BASE_URL}/calculator/jiko-calculator-icon2.png`],
@@ -98,7 +98,7 @@ export default async function Page({ params }: Props) {
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(stockSchema) }}
                 />
             )}
-             <NavBar title="주식 평균 단가 계산기" description="주식 보유 평단가와 수익률을 계산해보세요" />
+             <NavBar title="주식 평균단가 계산기" description="주식 보유 평균단가와 수익률을 계산해보세요" />
              <AvgPrice stockName={name} initialCode={code} />
 
              <main className="max-w-3xl mx-auto px-4 pb-16 space-y-6">
@@ -109,7 +109,7 @@ export default async function Page({ params }: Props) {
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
                          {name} {code ? `종목(기호: ${code})` : ""}의 물타기 또는 불타기 시점의 
-                        정확한 평균 단가를 계산하고 계신가요? 보유 주식 수와 가격을 입력하여 
+                        정확한 평균단가를 계산하고 계신가요? 보유 주식 수와 가격을 입력하여
                         최적의 투자 시점을 분석해 보세요.
                     </p>
                 </section>
@@ -134,12 +134,12 @@ export default async function Page({ params }: Props) {
                             <span className="text-green-500">📊</span> 계산 예시
                         </h2>
                         <div className="text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl space-y-1">
-                            <p>1차 매수: <strong>10,000원</strong> (100주)</p>
-                            <p>2차 매수: <strong>8,000원</strong> (100주) - <strong>물타기</strong></p>
+                            <p>1차 매수 : <strong>10,000원</strong> (100주)</p>
+                            <p>2차 매수 : <strong>8,000원</strong> (100주) - <strong>물타기</strong></p>
                             <p className="border-t border-gray-200 dark:border-gray-600 pt-1 mt-1 text-red-500 font-bold">
-                                최종 평단가: 9,000원
+                                최종 평단가 : 9,000원
                             </p>
-                            <p className="text-blue-600 font-semibold text-xs animate-pulse">평단가 하락 효과: -10%</p>
+                            <p className="text-blue-600 font-semibold text-xs animate-pulse">평단가 하락 효과 : -10%</p>
                         </div>
                     </section>
                 </div>

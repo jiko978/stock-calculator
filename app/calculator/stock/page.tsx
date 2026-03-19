@@ -4,29 +4,29 @@ import NavBar from "@/app/calculator/components/NavBar";
 import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "../../utils/seo";
 
 export const metadata: Metadata = {
-    title: "주식 계산기 | 평균단가, 수익률, 배당금, 수수료 계산 - JIKO calculator",
+    title: "주식 계산기 | 주식 평균단가, 수익률, 배당금, 수수료 계산기 - JIKO 계산기",
     description: "주식 평균 단가, 수익률, 배당금, 수수료 계산까지 투자에 필요한 모든 계산기를 한곳에서 이용하세요.",
-    keywords: ["주식 계산기", "평균단가 계산", "수익률 계산", "배당금 계산기", "주식 수수료"],
+    keywords: ["주식 계산기", "주식 평균단가 계산기", "주식 수익률 계산기", "주식 배당금 계산기", "주식 수수료 계산기"],
 };
 
 const stockCalculators = [
     {
-        title: "💧🔥 평균 단가 계산기",
+        title: "💧🔥 주식 평균단가 계산기",
         description: "물타기, 불타기 시 주식 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산합니다.",
         href: "/calculator/stock/avg-price",
     },
     {
-        title: "💰 수익률 계산기",
+        title: "💰 주식 수익률 계산기",
         description: "매수가와 매도가를 입력해 수익률과 순이익을 한눈에 확인하세요.",
         href: "/calculator/stock/profit-rate",
     },
     {
-        title: "💸 배당금 계산기",
+        title: "💸 주식 배당금 계산기",
         description: "보유 주식수와 배당금을 입력하면 배당수익률 및 실수령액을 계산합니다.",
         href: "/calculator/stock/dividend",
     },
     {
-        title: "💳️ 수수료 계산기",
+        title: "💳️ 주식 수수료 계산기",
         description: "매매 수수료와 세금을 반영한 실제 거래 비용과 순이익을 계산합니다.",
         href: "/calculator/stock/fee",
     },
@@ -43,7 +43,7 @@ export default function StockHubPage() {
         <main className="bg-gray-50 dark:bg-gray-900 min-h-screen">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
-            <NavBar title="주식 계산기" description="주식 평균단가, 수익률, 배당금, 수수료, 세금 등 필수 계산기 모음" />
+            <NavBar title="주식 계산기" description="주식 평균단가, 수익률, 배당금, 수수료 계산기 - JIKO 계산기" />
 
             <div className="flex-grow px-4 py-6">
                 <h1 className="text-4xl font-bold mb-2 text-center text-gray-800 dark:text-gray-100">📈 주식 계산기</h1>

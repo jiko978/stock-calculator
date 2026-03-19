@@ -8,12 +8,12 @@ import FAQ from "@/app/calculator/components/FAQ";
 const BASE_URL = "https://jiko.kr";
 
 export const metadata: Metadata = {
-    title: "주식 수수료 계산기 | 국내/해외 주식 수수료 및 세금 계산 - JIKO",
+    title: "주식 수수료 계산기 | 국내/해외 주식 수수료 및 세금 계산기 - JIKO 계산기",
     description: "국내 코스피, 코스닥 증권사 수수료부터 해외 주식 양도소득세까지 정확하게 계산해 보세요. 수수료를 포함한 세후 순수익과 손해 보지 않는 최소 익절가를 즉시 확인하실 수 있습니다.",
     keywords: ["주식 수수료 계산기", "주식 수수료", "증권거래세 계산", "해외주식 양도소득세 계산", "최소 익절가", "주식 계산기"],
     alternates: { canonical: `${BASE_URL}/calculator/stock/fee` },
     openGraph: {
-        title: "주식 수수료 계산기 | 국내/해외 주식 수수료 및 세금 계산 - JIKO",
+        title: "주식 수수료 계산기 | 국내/해외 주식 수수료 및 세금 계산기 - JIKO 계산기",
         description: "수수료와 세금을 떼고 남는 진짜 내 수익은 얼마일까? 수수료 포함 손익을 완벽 반영!",
         url: `${BASE_URL}/calculator/stock/fee`,
         images: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         ],
     },
     twitter: {
-        title: "주식 수수료 계산기 | 국내/해외 주식 수수료 및 세금 계산 - JIKO",
+        title: "주식 수수료 계산기 | 국내/해외 주식 수수료 및 세금 계산기 - JIKO 계산기",
         description:
             "국내 코스피, 코스닥 증권사 수수료부터 해외 주식 양도소득세까지 정확하게 계산해 보세요. 수수료를 포함한 세후 순수익과 손해 보지 않는 최소 익절가를 즉시 확인하실 수 있습니다.",
     },
@@ -81,7 +81,7 @@ export default function Page() {
         COMMON_BREADCRUMBS.HOME,
         COMMON_BREADCRUMBS.CALC_HOME,
         COMMON_BREADCRUMBS.STOCK_HOME,
-        { name: "수수료 계산기", item: "/calculator/stock/fee" }
+        COMMON_BREADCRUMBS.FEE
     ]);
 
     const faqList = [
@@ -114,14 +114,14 @@ export default function Page() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
             />
 
-            <NavBar title="수수료 계산기" description="주식 매도 시 발생하는 수수료와 세금을 계산해보세요" position="top" />
+            <NavBar title="주식 수수료 계산기" description="국내 코스피, 코스닥 증권사 수수료부터 해외 주식 양도소득세까지 정확하게 계산해 보세요." position="top" />
             <StockFee />
 
-            <main className="max-w-2xl mx-auto px-4 pb-16 space-y-8">
+            <main className="max-w-3xl mx-auto px-4 pb-16 space-y-8">
                 {/* [공통 카드세션] 1. 메뉴 설명 */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">📊</span> 수수료 계산기
+                        <span className="text-2xl">📊</span> 주식 수수료 계산기
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
                         국내 코스피/코스닥부터 해외 주식 거래 시 발생하는 모든 수수료와 세금을 계산해 드립니다. 
@@ -149,10 +149,10 @@ export default function Page() {
                             <span className="text-green-500">📊</span> 계산 예시
                         </h2>
                         <div className="text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl space-y-1">
-                            <p>코스피 매도 금액: <strong>1,000,000원</strong></p>
-                            <p>거래세(0.18%): <strong>1,800원</strong> / 수수료(0.01%): <strong>100원</strong></p>
+                            <p>코스피 매도 금액 : <strong>1,000,000원</strong></p>
+                            <p>거래세(0.18%) : <strong>1,800원</strong> / 수수료(0.01%) : <strong>100원</strong></p>
                             <p className="border-t border-gray-200 dark:border-gray-600 pt-1 mt-1 text-red-500 font-bold">
-                                최종 차감 비용: 1,900원
+                                최종 차감 비용 : 1,900원
                             </p>
                             <p className="text-blue-600 font-semibold text-xs leading-relaxed">
                                 * 매수 시 수수료도 합산되어 체결 단가에 반영됩니다.

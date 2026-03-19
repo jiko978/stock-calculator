@@ -12,12 +12,12 @@ import FAQ from "@/app/calculator/components/FAQ";
 const BASE_URL = "https://jiko.kr";
 
 export const metadata: Metadata = {
-  title: "주식 수익률 계산기 | 투자 수익률 목표 달성 계산 - JIKO",
+  title: "주식 수익률 계산기 | 주식 투자 수익률 목표 달성 계산기 - JIKO 계산기",
   description: "매수가, 현재가, 수량을 입력하면 수익금과 수익률을 자동으로 계산해드립니다.",
   keywords: ["주식 수익률 계산기", "주식 수익률", "수익금 계산", "투자 수익률"],
   alternates: { canonical: `${BASE_URL}/calculator/stock/profit-rate` },
   openGraph: {
-    title: "주식 수익률 계산기 | 투자 수익률 목표 달성 계산 - JIKO",
+    title: "주식 수익률 계산기 | 주식 투자 수익률 목표 달성 계산기 - JIKO 계산기",
     description: "매수가, 현재가, 수량을 입력하면 수익금과 수익률을 자동으로 계산해드립니다.",
     url: `${BASE_URL}/calculator/stock/profit-rate`,
     images: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    title: "주식 수익률 계산기 | 투자 수익률 목표 달성 계산 - JIKO",
+    title: "주식 수익률 계산기 | 주식 투자 수익률 목표 달성 계산기 - JIKO 계산기",
     description: "매수가, 현재가, 수량을 입력하면 수익금과 수익률을 자동으로 계산해드립니다.",
   },
 };
@@ -129,16 +129,16 @@ export default function Page() {
       />
 
       {/* 계산기 UI */}
-      <NavBar title="수익률 계산기" description="나의 주식 투자 수익금과 수익률을 계산해보세요" position="top" />
+      <NavBar title="주식 수익률 계산기" description="매수가, 현재가, 수량을 입력하면 수익금과 수익률을 자동으로 계산해드립니다." position="top" />
       <ProfitRatePage />
 
       {/* SEO 및 정보 영역 (계산기 하단에 자연스럽게 배치) */}
-      <main className="max-w-2xl mx-auto px-4 pb-16 space-y-6">
+      <main className="max-w-3xl mx-auto px-4 pb-16 space-y-6">
 
         {/* H1 및 소개문 (검색엔진 최적화 및 사용자 안내) */}
         <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 mt-2">
           <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-            <span className="text-2xl">💰</span> 수익률 계산기
+            <span className="text-2xl">💰</span> 주식 수익률 계산기
           </h1>
           <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
             매수가, 현재가, 보유 수량을 입력하면 주식 투자 수익금과 수익률을
@@ -165,11 +165,11 @@ export default function Page() {
               <span className="text-green-500">📊</span> 계산 예시
             </h2>
             <div className="text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl space-y-2">
-              <p>매수가: <strong>10,000원</strong></p>
-              <p>현재가: <strong>12,000원</strong></p>
-              <p className="border-b border-gray-200 dark:border-gray-600 pb-2 mb-2">보유 수량: <strong>100주</strong></p>
-              <p className="text-red-500 dark:text-red-400 font-bold">수익률 결과: 20%</p>
-              <p className="text-red-500 dark:text-red-400 font-semibold">총 수익금: 200,000원</p>
+              <p>매수가 : <strong>10,000원</strong></p>
+              <p>현재가 : <strong>12,000원</strong></p>
+              <p className="border-b border-gray-200 dark:border-gray-600 pb-2 mb-2">보유 수량 : <strong>100주</strong></p>
+              <p className="text-red-500 dark:text-red-400 font-bold">수익률 결과 : 20%</p>
+              <p className="text-red-500 dark:text-red-400 font-semibold">총 수익금 : 200,000원</p>
             </div>
           </section>
         </div>

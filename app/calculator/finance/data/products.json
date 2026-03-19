@@ -1,17 +1,34 @@
 {
   "deposits": [
-    { "id": "standard", "name": "일반정기예금", "slug": "standard-deposit" },
-    { "id": "high-rate", "name": "고금리예금", "slug": "high-rate-deposit" },
-    { "id": "emergency", "name": "비상금예금", "slug": "emergency-deposit" }
+    { "id": "Ordinary", "name": "보통", "slug": "보통예금" },
+    { "id": "Fixed", "name": "정기", "slug": "정기예금" },
+    { "id": "Checking", "name": "수시입출금", "slug": "수시입출금예금" },
+    { "id": "Demand", "name": "자유입출금", "slug": "자유입출금예금" },
+    { "id": "Cash-Management-Account", "name": "CMA", "slug": "CMA예금" },
+    { "id": "Step-Up", "name": "회전식", "slug": "회전식예금" }
   ],
   "savings": [
-    { "id": "standard", "name": "일반정기적금", "slug": "standard-savings" },
-    { "id": "free", "name": "자유적립식적금", "slug": "free-savings" },
-    { "id": "youth", "name": "청년희망적금", "slug": "youth-savings" }
+    { "id": "Installment", "name": "정기", "slug": "정기적금" },
+    { "id": "Flexible", "name": "자유", "slug": "자유적금" },
+    { "id": "Flexible-Installment", "name": "자유적립식", "slug": "자유적립식적금" },
+    { "id": "Fixed-Installment", "name": "정액적립식", "slug": "정액적립식적금" },
+    { "id": "Tax-Free", "name": "비과세", "slug": "비과세적금" },
+    { "id": "Housing", "name": "주택청약종합저축", "slug": "주택청약종합저축적금" }
   ],
   "loans": [
-    { "id": "mortgage", "name": "주택담보대출", "slug": "mortgage-loan" },
-    { "id": "credit", "name": "개인신용대출", "slug": "credit-loan" },
-    { "id": "car", "name": "자동차할부대출", "slug": "car-loan" }
+    { "id": "Credit", "name": "신용", "slug": "신용대출" },
+    { "id": "Personal", "name": "개인신용", "slug": "개인신용대출" },
+    { "id": "Employee", "name": "직장인", "slug": "직장인대출" },
+    { "id": "Mid-Rate", "name": "사잇돌", "slug": "사잇돌대출" },
+    { "id": "Sunshine", "name": "햇살론", "slug": "햇살론대출" },
+    { "id": "Mortgage", "name": "주택담보", "slug": "주택담보대출" },
+    { "id": "Jeonse", "name": "전세자금", "slug": "전세자금대출" },
+    { "id": "Aar", "name": "자동차담보", "slug": "자동차담보대출" },
+    { "id": "Deposit-Secured", "name": "예금담보", "slug": "예금대출" },
+    { "id": "Policy", "name": "보험계약", "slug": "보험계약대출" },
+    { "id": "Didimdol", "name": "디딤돌", "slug": "디딤돌대출" },
+    { "id": "Jeonse-Support", "name": "버팀목전세", "slug": "버팀목전세대출" },
+    { "id": "Student", "name": "학자금", "slug": "학자금대출" },
+    { "id": "Business", "name": "사업자", "slug": "사업자대출" }
   ]
 }

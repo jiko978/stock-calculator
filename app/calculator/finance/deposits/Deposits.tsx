@@ -78,7 +78,7 @@ const Deposits = ({ productName }: DepositsProps) => {
     const principal = n(amount);
     const annualRate = n(rate) / 100;
     const months = termUnit === "year" ? n(term) * 12 : n(term);
-    
+
     let preTaxInterest = 0;
     if (interestType === "simple") {
         // 단리: 원금 * 이율 * (기간/12)
@@ -114,23 +114,23 @@ const Deposits = ({ productName }: DepositsProps) => {
 
     return (
         <div className="bg-gray-50 dark:bg-gray-900">
-            <div className={`max-w-3xl mx-auto px-4 pt-1 pb-1 ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
-                
+            <div className={`max-w-3xl mx-auto px-4 py-6 pb-safe ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
+
                 {/* 헤더 배지 */}
-                <div className="flex flex-col items-center gap-4 mb-4">
+                <div className="flex flex-col items-center gap-4 mb-8">
                     <div className="flex justify-center items-center gap-2 flex-wrap text-sm">
                         {productName && (
                             <span className="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 rounded-full font-bold border border-blue-200 dark:border-blue-800">
                                 🏦 {productName}
                             </span>
                         )}
-                        <span className="px-3 py-1 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-full font-semibold shadow-sm border border-gray-100 dark:border-gray-700">📊 예금 계산기</span>
+                        <span className="px-3 py-1 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-full font-semibold shadow-sm border border-gray-100 dark:border-gray-700">📊 예금 이자 계산기</span>
                     </div>
                 </div>
 
                 {/* 입력 카드 */}
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50 space-y-6">
-                    
+
                     {/* 예치금액 */}
                     <div className="space-y-3">
                         <label className="block text-sm font-bold text-gray-700 dark:text-gray-200">예치금액</label>
@@ -280,12 +280,12 @@ const Deposits = ({ productName }: DepositsProps) => {
 
                 {/* 결과 영역 */}
                 {calculated && (
-                    <div className={`mt-2 space-y-4 ${ANIMATION.resultBox ? "animate-fade-slide-up" : ""}`}>
-                        
+                    <div className={`mt-8 space-y-4 ${ANIMATION.resultBox ? "animate-fade-slide-up" : ""}`}>
+
                         {/* 메인 결과 카드 */}
                         <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50 text-center relative overflow-hidden">
                             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 to-indigo-500"></div>
-                            
+
                             <p className="text-sm font-bold text-gray-400 dark:text-gray-500 mb-2">만기 시 실제로 받는 금액</p>
                             <h2 className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-6 break-all">
                                 {totalMaturity.toLocaleString()}
@@ -309,7 +309,7 @@ const Deposits = ({ productName }: DepositsProps) => {
                                     <span className="text-gray-800 dark:text-gray-200 font-bold">{Math.floor(preTaxInterest).toLocaleString()}원</span>
                                 </div>
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-gray-500 dark:text-gray-400 font-medium">이자 과세 ({taxRate*100}%)</span>
+                                    <span className="text-gray-500 dark:text-gray-400 font-medium">이자 과세 ({taxRate * 100}%)</span>
                                     <span className="text-red-500 dark:text-red-400 font-bold">-{taxAmount.toLocaleString()}원</span>
                                 </div>
                             </div>
@@ -334,16 +334,16 @@ const Deposits = ({ productName }: DepositsProps) => {
                                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                                 원금 대비 이자 비중
                             </h3>
-                            
+
                             <div className="space-y-6">
                                 <div className="relative h-10 w-full bg-gray-100 dark:bg-gray-700 rounded-2xl overflow-hidden flex">
-                                    <div 
+                                    <div
                                         className="h-full bg-blue-500 transition-all duration-1000 ease-out flex items-center px-4"
                                         style={{ width: `${(principal / totalMaturity) * 100}%` }}
                                     >
                                         <span className="text-[10px] font-black text-white whitespace-nowrap">원금 {((principal / totalMaturity) * 100).toFixed(1)}%</span>
                                     </div>
-                                    <div 
+                                    <div
                                         className="h-full bg-indigo-400 dark:bg-indigo-500 transition-all duration-1000 ease-out flex items-center px-4"
                                         style={{ width: `${(postTaxInterest / totalMaturity) * 100}%` }}
                                     >
@@ -354,7 +354,7 @@ const Deposits = ({ productName }: DepositsProps) => {
                                 <div className="bg-gray-50 dark:bg-gray-900/40 p-5 rounded-2xl flex items-center gap-4">
                                     <div className="text-3xl">💡</div>
                                     <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
-                                        이 예금으로 만기에 <span className="text-blue-600 dark:text-blue-400 font-bold">{postTaxInterest.toLocaleString()}원</span>의 추가 수익이 발생합니다. 
+                                        이 예금으로 만기에 <span className="text-blue-600 dark:text-blue-400 font-bold">{postTaxInterest.toLocaleString()}원</span>의 추가 수익이 발생합니다.
                                         이는 실효 수익률 기준 <span className="text-indigo-600 dark:text-indigo-400 font-bold">{((postTaxInterest / principal) * 100).toFixed(2)}%</span>에 해당합니다.
                                     </p>
                                 </div>

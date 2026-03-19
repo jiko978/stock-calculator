@@ -133,8 +133,8 @@ export default function Dividend({ stockName, initialCode }: DividendProps) {
     };
 
     return (
-        <div className={`max-w-2xl mx-auto px-4 py-6 pb-safe ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
-                
+        <div className={`max-w-3xl mx-auto px-4 py-6 pb-safe ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
+
                 {/* 헤더 섹션 */}
                 <div className="flex flex-col items-center gap-4 mb-8">
                     <div className="flex justify-center flex-wrap gap-2">
@@ -144,13 +144,13 @@ export default function Dividend({ stockName, initialCode }: DividendProps) {
                             </span>
                         )}
                         <span className="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm font-semibold">
-                            💸 배당금 계산기
+                            💸 주식 배당금 계산기
                         </span>
                     </div>
                 </div>
 
                 {/* 입력 카드 */}
-                <div className="bg-white dark:bg-gray-800 shadow-md rounded-2xl p-6 sm:p-8 space-y-6">
+                <div className="bg-white dark:bg-gray-800 shadow-md rounded-2xl p-6 sm:p-8 space-y-6 border border-gray-100 dark:border-gray-700">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-4">
                             {[

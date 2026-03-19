@@ -9,12 +9,12 @@ import highDividendData from "../data/high-dividend.json";
 const BASE_URL = "https://jiko.kr";
 
 export const metadata: Metadata = {
-    title: "주식 배당금 계산기 | 배당 수익률 목표 달성 계산 - JIKO",
+    title: "주식 배당금 계산기 | 배당 수익률, 수익금 목표 달성 계산기 - JIKO 계산기",
     description: "주식 배당금과 배당 수익률을 정확하게 계산해 보세요. 내가 받은 배당금이 생활비로 얼마나 충당되는지, 목표 배당금을 위해 얼마가 더 필요한지 한눈에 보여드립니다.",
     keywords: ["주식 배당금 계산기", "배당 수익률 계산", "배당금 세금 계산", "목표 배당금", "배당금 시뮬레이션", "주식 계산기"],
     alternates: { canonical: `${BASE_URL}/calculator/stock/dividend` },
     openGraph: {
-        title: "주식 배당금 계산기 | 배당 수익률 목표 달성 계산 - JIKO",
+        title: "주식 배당금 계산기 | 배당 수익률, 수익금 목표 달성 계산기 - JIKO 계산기",
         description: "나의 주식 배당금, 생활비로 환산하면 얼마일까?",
         url: `${BASE_URL}/calculator/stock/dividend`,
         images: [
@@ -22,12 +22,12 @@ export const metadata: Metadata = {
                 url: `${BASE_URL}/calculator/jiko-calculator-icon2.png`,
                 width: 1200,
                 height: 630,
-                alt: "주식 평균 단가 계산기",
+                alt: "주식 배당금 계산기",
             },
         ],
     },
     twitter: {
-        title: "주식 배당금 계산기 | 배당 수익률 목표 달성 계산 - JIKO",
+        title: "주식 배당금 계산기 | 배당 수익률, 수익금 목표 달성 계산기 - JIKO 계산기",
         description:
             "주식 배당금과 배당 수익률을 정확하게 계산해 보세요. 내가 받은 배당금이 생활비로 얼마나 충당되는지, 목표 배당금을 위해 얼마가 더 필요한지 한눈에 보여드립니다.",
     },
@@ -82,7 +82,7 @@ export default function Page() {
         COMMON_BREADCRUMBS.HOME,
         COMMON_BREADCRUMBS.CALC_HOME,
         COMMON_BREADCRUMBS.STOCK_HOME,
-        { name: "배당금 계산기", item: "/calculator/stock/dividend" }
+        COMMON_BREADCRUMBS.DIVIDEND
     ]);
 
     const faqList = [
@@ -115,15 +115,16 @@ export default function Page() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
             />
 
-            <NavBar title="배당금 계산기" description="배당금과 배당 수익률을 한눈에 확인하세요" position="top" />
+            <NavBar title="주식 배당금 계산기" description="주식 배당금과 배당 수익률을 정확하게 계산해 보세요." position="top" />
 
-            <main className="max-w-2xl mx-auto px-4 pb-16 space-y-8">
-                <Dividend />
+            <Dividend />
+
+            <main className="max-w-3xl mx-auto px-4 pb-16 space-y-8">
 
                 {/* [공통 카드세션] 1. 메뉴 설명 */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">💰</span> 배당금 계산기
+                        <span className="text-2xl">💰</span> 주식 배당금 계산기
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
                         내가 보유한 주식의 배당금과 배당 수익률을 정확하게 시뮬레이션 해볼 수 있는 계산기입니다. 
@@ -151,12 +152,12 @@ export default function Page() {
                             <span className="text-green-500">📊</span> 계산 예시
                         </h2>
                         <div className="text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl space-y-1">
-                            <p>매수가: <strong>50,000원</strong> / 주당 배당금: <strong>2,500원</strong></p>
-                            <p>보유 수량: <strong>100주</strong> (연 배당금 25만원)</p>
+                            <p>매수가 : <strong>50,000원</strong> / 주당 배당금 : <strong>2,500원</strong></p>
+                            <p>보유 수량 : <strong>100주</strong> (연 배당금 25만원)</p>
                             <p className="border-t border-gray-200 dark:border-gray-600 pt-1 mt-1 text-red-500 font-bold">
-                                세후 실수령액: 약 211,500원
+                                세후 실수령액 : 약 211,500원
                             </p>
-                            <p className="text-blue-600 font-semibold">나의 배당 수익률: 5.0%</p>
+                            <p className="text-blue-600 font-semibold">나의 배당 수익률 : 5.0%</p>
                         </div>
                     </section>
                 </div>

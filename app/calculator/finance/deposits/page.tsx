@@ -6,11 +6,11 @@ import FinanceMoreCalculators from "@/app/calculator/components/FinanceMoreCalcu
 import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "@/app/utils/seo";
 
 export const metadata: Metadata = {
-    title: "예금 계산기 | 정기예금 이자 및 만기 수령액 계산 - JIKO calculator",
+    title: "예금 이자 계산기 | 정기예금 이자 및 만기 수령액 계산기 - JIKO 계산기",
     description: "정기예금의 원금, 기간, 이율을 입력하여 세전/세후 이자와 만기 수령액을 정확하게 계산하세요. 단리 및 월복리, 과세 유형별 계산을 지원합니다.",
     keywords: ["예금 계산기", "정기예금 이자 계산", "만기 수령액", "예금이율", "복리 예금", "금융 계산기"],
     openGraph: {
-        title: "예금 계산기 | 만기 수령액 및 이자 계산",
+        title: "예금 이자 계산기 | 정기예금 이자 및 만기 수령액 계산기 - JIKO 계산기",
         description: "정확한 예금 이자 계산으로 목돈 굴리기 계획을 세워보세요.",
         type: "website",
     }
@@ -42,7 +42,7 @@ export default function DepositsPage() {
     const softwareLd = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "JIKO 예금 계산기",
+        "name": "예금 이자 계산기",
         "operatingSystem": "Any",
         "applicationCategory": "FinanceApplication",
         "offers": { "@type": "Offer", "price": "0" }
@@ -61,7 +61,7 @@ export default function DepositsPage() {
                 {/* 메뉴 설명 */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">🏦</span> 예금 계산기
+                        <span className="text-2xl">🏦</span> 예금 이자 계산기
                     </h1>
                     <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                         목돈을 한 번에 맡기는 정기예금의 만기 수령액을 계산합니다. 단리·월복리 선택은 물론, 일반과세·세금우대·비과세 등 과세 유형별 세후 실수령액을 확인할 수 있습니다.
@@ -88,9 +88,9 @@ export default function DepositsPage() {
                         </h2>
                         <div className="text-sm text-gray-600 dark:text-gray-300 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl">
                             <p className="font-semibold text-blue-700 dark:text-blue-300 mb-2">1,000만원 · 12개월 · 연 5.0% (단리)</p>
-                            <p>• 세전 이자: <strong>500,000원</strong></p>
-                            <p>• 이자 과세(15.4%): 77,000원</p>
-                            <p className="mt-2 font-bold text-blue-600 dark:text-blue-400">만기 수령액: 10,423,000원</p>
+                            <p>• 세전 이자 : <strong>500,000원</strong></p>
+                            <p>• 이자 과세(15.4%) : 77,000원</p>
+                            <p className="mt-2 font-bold text-blue-600 dark:text-blue-400">만기 수령액 : 10,423,000원</p>
                         </div>
                     </section>
                 </div>

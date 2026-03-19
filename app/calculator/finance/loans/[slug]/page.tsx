@@ -12,16 +12,17 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-    return productsData.loans.map(p => ({ slug: p.slug }));
+    return productsData.loans.map(p => ({ slug: encodeURIComponent(p.slug) }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
-    const product = productsData.loans.find(p => p.slug === slug);
+    const decodedSlug = decodeURIComponent(slug).normalize('NFC');
+    const product = productsData.loans.find(p => p.slug.normalize('NFC') === decodedSlug);
     if (!product) return {};
 
     return {
-        title: `${product.name} 이자 계산기 | 상환 플랜 및 총 이자 확인 - JIKO calculator`,
+        title: `${product.name} 대출 이자 계산기 | 원리금균등 및 원금균등 상환 계산기 - JIKO 계산기`,
         description: `${product.name} 상품의 정확한 이자와 월 상환액을 계산해드립니다. 원리금균등, 원금균등 등 다양한 방식별 차이를 지금 확인하세요.`,
         keywords: [product.name, "대출 이자 계산", "상환 플랜", "월 납입액", "금융 계산기"],
     };
@@ -40,7 +41,8 @@ const faqList = [
 
 export default async function LoanSlugPage({ params }: Props) {
     const { slug } = await params;
-    const product = productsData.loans.find(p => p.slug === slug);
+    const decodedSlug = decodeURIComponent(slug).normalize('NFC');
+    const product = productsData.loans.find(p => p.slug.normalize('NFC') === decodedSlug);
     if (!product) notFound();
 
     const breadcrumbLd = generateBreadcrumbJsonLd([
@@ -63,7 +65,7 @@ export default async function LoanSlugPage({ params }: Props) {
                 {/* 메뉴 설명 */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">📊</span> {product.name} 대출 계산기
+                        <span className="text-2xl">📊</span> {product.name} 대출 이자 계산기
                     </h1>
                     <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                         <strong>{product.name}</strong> 대출 이용 시 발생하는 월 상환액과 총 이자 비용을 미리 확인해보세요.
@@ -91,9 +93,9 @@ export default async function LoanSlugPage({ params }: Props) {
                         </h2>
                         <div className="text-sm text-gray-600 dark:text-gray-300 bg-amber-50 dark:bg-amber-900/20 p-4 rounded-xl">
                             <p className="font-semibold text-amber-700 dark:text-amber-300 mb-2">1억원 · 30년 · 연 4.0% (원리금균등)</p>
-                            <p>• 매월 납입액: <strong>477,415원</strong></p>
-                            <p>• 총 대출 이자: 71,869,400원</p>
-                            <p className="mt-2 font-bold text-amber-600 dark:text-amber-400">총 상환 금액: 171,869,400원</p>
+                            <p>• 매월 납입액 : <strong>477,415원</strong></p>
+                            <p>• 총 대출 이자 : 71,869,400원</p>
+                            <p className="mt-2 font-bold text-amber-600 dark:text-amber-400">총 상환 금액 : 171,869,400원</p>
                         </div>
                     </section>
                 </div>

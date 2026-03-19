@@ -12,18 +12,19 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-    return productsData.deposits.map(p => ({ slug: p.slug }));
+    return productsData.deposits.map(p => ({ slug: encodeURIComponent(p.slug) }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
-    const product = productsData.deposits.find(p => p.slug === slug);
+    const decodedSlug = decodeURIComponent(slug).normalize('NFC');
+    const product = productsData.deposits.find(p => p.slug.normalize('NFC') === decodedSlug);
     if (!product) return {};
 
     return {
-        title: `${product.name} 예금 이자 계산기 | 만기 수령액 확인 - JIKO calculator`,
+        title: `${product.name} 예금 이자 계산기 | 정기예금 이자 및 만기 수령액 계산기 - JIKO 계산기`,
         description: `${product.name} 상품의 예상 이자와 만기 수령액을 지금 바로 계산해보세요. 단리, 복리 및 세금 우대 혜택을 반영한 정확한 결과값을 제공합니다.`,
-        keywords: [product.name, "예금 계산기", "이자 계산", "만기 수령액", "금융 계산기"],
+        keywords: [product.name, "예금 이자 계산기", "이자 계산", "만기 수령액", "금융 계산기"],
     };
 }
 
@@ -40,7 +41,8 @@ const faqList = [
 
 export default async function DepositSlugPage({ params }: Props) {
     const { slug } = await params;
-    const product = productsData.deposits.find(p => p.slug === slug);
+    const decodedSlug = decodeURIComponent(slug).normalize('NFC');
+    const product = productsData.deposits.find(p => p.slug.normalize('NFC') === decodedSlug);
     if (!product) notFound();
 
     const breadcrumbLd = generateBreadcrumbJsonLd([
@@ -63,7 +65,7 @@ export default async function DepositSlugPage({ params }: Props) {
                 {/* 메뉴 설명 */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">🏦</span> {product.name} 예금 계산기
+                        <span className="text-2xl">🏦</span> {product.name} 예금 이자 계산기
                     </h1>
                     <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                         선택하신 <strong>{product.name}</strong> 상품에 최적화된 계산 환경입니다.
@@ -91,9 +93,9 @@ export default async function DepositSlugPage({ params }: Props) {
                         </h2>
                         <div className="text-sm text-gray-600 dark:text-gray-300 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl">
                             <p className="font-semibold text-blue-700 dark:text-blue-300 mb-2">1,000만원 · 12개월 · 연 5.0% (단리)</p>
-                            <p>• 세전 이자: <strong>500,000원</strong></p>
-                            <p>• 이자 과세(15.4%): 77,000원</p>
-                            <p className="mt-2 font-bold text-blue-600 dark:text-blue-400">만기 수령액: 10,423,000원</p>
+                            <p>• 세전 이자 : <strong>500,000원</strong></p>
+                            <p>• 이자 과세(15.4%) : 77,000원</p>
+                            <p className="mt-2 font-bold text-blue-600 dark:text-blue-400">만기 수령액 : 10,423,000원</p>
                         </div>
                     </section>
                 </div>

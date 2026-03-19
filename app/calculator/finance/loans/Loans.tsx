@@ -37,6 +37,13 @@ const Loans = ({ productName }: LoansProps) => {
         setCalculated(false);
     };
 
+    const addTerm = (val: number) => {
+        const current = termUnit === "month" ? n(loanTerm) : n(loanTerm) * 12;
+        const next = current + val;
+        setLoanTerm(next.toString());
+        setCalculated(false);
+    };
+
     const handleReset = () => {
         setLoanAmount("");
         setLoanTerm("");
@@ -101,7 +108,7 @@ const Loans = ({ productName }: LoansProps) => {
             remainingPrincipal -= principalRepayment;
             totalInterest += interest;
             if (i === 1) firstMonthPayment = monthlyPayment;
-            
+
             if (i <= 12 || i === totalMonths) { // 리스트 표시용 샘플링
                 schedule.push({ month: i, payment: monthlyPayment, principal: principalRepayment, interest, remaining: Math.max(0, remainingPrincipal) });
             }
@@ -130,16 +137,16 @@ const Loans = ({ productName }: LoansProps) => {
 
     return (
         <div className="bg-gray-50 dark:bg-gray-900">
-            <div className={`max-w-3xl mx-auto px-4 pt-1 pb-1 ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
-                
-                <div className="flex flex-col items-center gap-4 mb-4">
+            <div className={`max-w-3xl mx-auto px-4 py-6 pb-safe ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
+
+                <div className="flex flex-col items-center gap-4 mb-8">
                     <div className="flex justify-center items-center gap-2 flex-wrap text-sm">
                         {productName && (
                             <span className="px-3 py-1 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 rounded-full font-bold border border-amber-200 dark:border-amber-800">
                                 💰 {productName}
                             </span>
                         )}
-                        <span className="px-3 py-1 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-full font-semibold shadow-sm border border-gray-100 dark:border-gray-700">📊 대출 계산기</span>
+                        <span className="px-3 py-1 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-full font-semibold shadow-sm border border-gray-100 dark:border-gray-700">📊 대출 이자 계산기</span>
                     </div>
                 </div>
 
@@ -197,6 +204,17 @@ const Loans = ({ productName }: LoansProps) => {
                                     ))}
                                 </div>
                             </div>
+                            <div className="grid grid-cols-4 gap-2 mt-2">
+                                {[6, 12, 24, 36].map(v => (
+                                    <button
+                                        key={v}
+                                        onClick={() => { setTermUnit("month"); addTerm(v); }}
+                                        className="py-2 text-xs font-semibold bg-gray-100 dark:bg-gray-700 hover:bg-amber-50 dark:hover:bg-amber-900/30 text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 rounded-xl transition-all active:scale-95"
+                                    >
+                                        {v}개월
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
                         <div className="space-y-3">
@@ -236,7 +254,7 @@ const Loans = ({ productName }: LoansProps) => {
 
                     <div className="space-y-3">
                         <label className="block text-sm font-bold text-gray-700 dark:text-gray-200 flex justify-between">
-                            거치 기간 
+                            거치 기간
                             <span className="text-[10px] font-normal text-gray-400 mt-0.5">(이자만 납부하는 기간)</span>
                         </label>
                         <div className="relative">
@@ -274,10 +292,10 @@ const Loans = ({ productName }: LoansProps) => {
                 </div>
 
                 {calculated && (
-                    <div className={`mt-2 space-y-4 ${ANIMATION.resultBox ? "animate-fade-slide-up" : ""}`}>
+                    <div className={`mt-8 space-y-6 ${ANIMATION.resultBox ? "animate-fade-slide-up" : ""}`}>
                         <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50 text-center relative overflow-hidden">
                             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-400 to-orange-500"></div>
-                            
+
                             <p className="text-sm font-bold text-gray-400 dark:text-gray-500 mb-2">총 상환 금액 (원금+이자)</p>
                             <h2 className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-6 break-all">
                                 {totalRepayment.toLocaleString()}
@@ -310,7 +328,7 @@ const Loans = ({ productName }: LoansProps) => {
                                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
                                 대출 상환 상세 (주요 회차)
                             </h3>
-                            
+
                             <div className="overflow-x-auto">
                                 <table className="w-full text-[11px] sm:text-xs text-left border-collapse">
                                     <thead>

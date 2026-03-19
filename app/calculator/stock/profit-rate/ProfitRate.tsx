@@ -78,7 +78,7 @@ export default function ProfitRate({ stockName, initialCode }: ProfitRateProps) 
         <div className="bg-gray-50 dark:bg-gray-900">
 
 
-            <div className={`max-w-2xl mx-auto px-4 py-6 pb-safe ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
+            <div className={`max-w-3xl mx-auto px-4 py-6 pb-safe ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
 
                 <div className="flex flex-col items-center gap-3 mb-8">
                     <div className="flex justify-center flex-wrap gap-2">
@@ -88,7 +88,7 @@ export default function ProfitRate({ stockName, initialCode }: ProfitRateProps) 
                             </span>
                         )}
                         <span className="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm font-semibold">
-                            💰 수익률 계산기
+                            💰 주식 수익률 계산기
                         </span>
                     </div>
                 </div>

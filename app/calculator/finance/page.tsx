@@ -4,24 +4,24 @@ import NavBar from "@/app/calculator/components/NavBar";
 import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "@/app/utils/seo";
 
 export const metadata: Metadata = {
-    title: "금융 계산기 | 예금, 적금, 대출 이자 계산 모음 - JIKO calculator",
-    description: "목돈 마련을 위한 예금/적금 이자 계산부터 대출 상환 계획까지, JIKO의 금융 계산기로 스마트한 자산 관리를 시작해보세요.",
-    keywords: ["금융 계산기", "예금 계산기", "적금 계산기", "대출 계산기", "이자 계산", "자산 관리"],
+    title: "금융 계산기 | 예금 이자, 적금 이자, 대출 이자 계산기 - JIKO 계산기",
+    description: "목돈 마련을 위한 예금/적금/대출 이자 계산부터 대출 상환 계획까지, JIKO의 금융 계산기로 스마트한 자산 관리를 시작해보세요.",
+    keywords: ["금융 계산기", "예금 이자 계산기", "적금 이자 계산기", "대출 이자 계산기"],
 };
 
 const financeCalculators = [
     {
-        title: "🏦 예금 계산기",
+        title: "🏦 예금 이자 계산기",
         description: "목돈을 예치했을 때 만기 시 받을 수 있는 이자와 수령액을 계산합니다.",
         href: "/calculator/finance/deposits",
     },
     {
-        title: "💰 적금 계산기",
-        description: "매월 일정 금액을 저축하여 목돈을 만들 때의 만기 수령액을 확인하세요.",
+        title: "💰 적금 이자 계산기",
+        description: "매월 일정 금액을 저축하여 만기 시 받을 수 있는 이자와 수령액을 계산합니다.",
         href: "/calculator/finance/savings",
     },
     {
-        title: "📊 대출 계산기",
+        title: "📊 대출 이자 계산기",
         description: "원리금균등, 원금균등 등 상환 방식에 따른 월 납입액과 총 이자를 분석합니다.",
         href: "/calculator/finance/loans",
     },
@@ -38,7 +38,7 @@ export default function FinanceHubPage() {
         <main className="bg-gray-50 dark:bg-gray-900 min-h-screen">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
-            <NavBar title="금융 계산기" description="정확한 계산으로 세우는 스마트한 금융 계획" />
+            <NavBar title="금융 계산기" description="예금 이자, 적금 이자, 대출 이자 계산기 - JIKO 계산기" />
 
             <div className="flex-grow px-4 py-6">
                 <h1 className="text-4xl font-bold mb-2 text-center text-gray-800 dark:text-gray-100">💵 금융 계산기</h1>

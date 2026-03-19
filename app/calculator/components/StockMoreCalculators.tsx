@@ -4,10 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const CALCULATORS = [
-    { name: "평균 단가 계산기", href: "/calculator/stock/avg-price", emoji: "📈", description: "물타기·불타기 평단가 계산" },
-    { name: "수익률 계산기", href: "/calculator/stock/profit-rate", emoji: "💰", description: "매수·매도가 기반 수익률 확인" },
-    { name: "배당금 계산기", href: "/calculator/stock/dividend", emoji: "💸", description: "주식 배당수익률 및 실수령액" },
-    { name: "수수료 계산기", href: "/calculator/stock/fee", emoji: "📊", description: "거래 수수료·세금 반영 순이익" },
+    { name: "주식 평균단가 계산기", href: "/calculator/stock/avg-price", emoji: "📈", description: "물타기/불타기 평균단가 계산" },
+    { name: "주식 수익률 계산기", href: "/calculator/stock/profit-rate", emoji: "💰", description: "매수/매도가 기반 수익률 계산" },
+    { name: "주식 배당금 계산기", href: "/calculator/stock/dividend", emoji: "💸", description: "주식 배당수익률 및 실수령액 계산" },
+    { name: "주식 수수료 계산기", href: "/calculator/stock/fee", emoji: "📊", description: "거래 수수료/세금 반영 순이익 계산" },
 ];
 
 export default function StockMoreCalculators() {

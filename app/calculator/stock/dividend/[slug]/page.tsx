@@ -14,7 +14,7 @@ interface Props {
 }
 
 function findStock(slug: string): { name: string; code?: string } {
-    const decoded = decodeURIComponent(slug);
+    const decoded = decodeURIComponent(slug).normalize('NFC');
 
     // 1. 하이브리드 패턴 (삼성전자-005930)
     if (decoded.includes("-")) {
@@ -29,7 +29,7 @@ function findStock(slug: string): { name: string; code?: string } {
     }
 
     // 3. 종목명 패턴 (삼성전자)
-    const stockByName = stocksData.find(s => s.name === decoded);
+    const stockByName = stocksData.find(s => s.name.normalize('NFC') === decoded);
     return stockByName ? { name: stockByName.name, code: stockByName.code } : { name: decoded };
 }
 
@@ -42,7 +42,7 @@ export async function generateMetadata(
     const displayCode = code ? `(${code})` : "";
 
     return {
-        title: `${code || ""} ${name} 배당금 계산기 | ${name} 배당 수익률 계산 - JIKO`,
+        title: `${code || ""} ${name} 배당금 계산기 | ${name} 배당 수익률 계산기 - JIKO 계산기`,
         description: `${name} 배당금 및 배당 수익률 시뮬레이션. ${code || ""} 종목을 보유했을 때 세후 실수령액과 월 평균 배당금을 확인하세요. 목표 배당금을 위한 필요 수량까지 계산해 드립니다.`,
         keywords: [name, code, "배당금", "배당 수익률", "주식 계산기", `${name} 배당`, `${code} 배당`].filter(Boolean) as string[],
         alternates: { canonical: `${BASE_URL}/calculator/stock/dividend/${slug}` },
@@ -63,7 +63,7 @@ export default async function Page({ params }: Props) {
         COMMON_BREADCRUMBS.HOME,
         COMMON_BREADCRUMBS.CALC_HOME,
         COMMON_BREADCRUMBS.STOCK_HOME,
-        { name: "배당금 계산기", item: "/calculator/stock/dividend" },
+        COMMON_BREADCRUMBS.DIVIDEND,
         { name: name, item: `/calculator/stock/dividend/${slug}` }
     ]);
 
@@ -103,7 +103,7 @@ export default async function Page({ params }: Props) {
 
             <Dividend stockName={name} initialCode={code} />
 
-            <main className="max-w-2xl mx-auto px-4 pb-16 space-y-8">
+            <main className="max-w-3xl mx-auto px-4 pb-16 space-y-8">
                 {/* [공통 카드세션] 1. 메뉴 설명 */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
@@ -136,10 +136,10 @@ export default async function Page({ params }: Props) {
                             <span className="text-green-500">📊</span> 계산 예시
                         </h2>
                         <div className="text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl space-y-1">
-                            <p>{name} 매수가: <strong>100,000원</strong></p>
-                            <p>주당 배당금: <strong>5,000원</strong> / 보유: <strong>100주</strong></p>
+                            <p>{name} 매수가 : <strong>100,000원</strong></p>
+                            <p>주당 배당금 : <strong>5,000원</strong> / 보유 : <strong>100주</strong></p>
                             <p className="border-t border-gray-200 dark:border-gray-600 pt-1 mt-1 text-red-500 font-bold">
-                                세후 예상 배당금: 약 423,000원
+                                세후 예상 배당금 : 약 423,000원
                             </p>
                             <p className="text-blue-600 font-semibold text-xs leading-relaxed">
                                 * 소득세(14%) + 지방소득세(1.4%)를 제외한 실수령 기준

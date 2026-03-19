@@ -49,7 +49,7 @@ export async function generateMetadata(
 
     // 사용자 제안 기반 SEO 패턴 적용
     return {
-        title: `${code || ""} ${name} 수익률 계산기 | ${name} 투자 수익 계산 - JIKO`,
+        title: `${code || ""} ${name} 주식 수익률 계산기 | ${name} 투자 수익 계산기 - JIKO 계산기`,
         description: `${name} 수익률 계산기 | ${code || ""} 투자 수익 시뮬레이션. 매수가, 현재가, 수량만 입력하면 세금과 수수료를 제외한 실질 수익을 바로 확인하세요.`,
         keywords: [name, code, "수익률", "수익금", "주식 계산기", `${name} 수익률`, `${code} 수익률`].filter(Boolean) as string[],
         alternates: { canonical: `${BASE_URL}/calculator/stock/profit-rate/${slug}` },
@@ -105,10 +105,10 @@ export default async function Page({ params }: Props) {
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(stockSchema) }}
                 />
             )}
-            <NavBar title={`${name} 수익률 계산기`} description={`${name} 종목의 투자 수익 현황을 확인하세요.`} position="top" />
+            <NavBar title={`${name} 주식 수익률 계산기`} description={`${name} 종목의 투자 수익 현황을 확인하세요.`} position="top" />
             <ProfitRate stockName={name} initialCode={code} />
 
-            <main className="max-w-2xl mx-auto px-4 pb-16 space-y-6">
+            <main className="max-w-3xl mx-auto px-4 pb-16 space-y-6">
                 {/* [공통 카드세션] 1. 메뉴 설명 */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
@@ -140,10 +140,10 @@ export default async function Page({ params }: Props) {
                             <span className="text-green-500">📊</span> 계산 예시
                         </h2>
                         <div className="text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl space-y-2">
-                            <p>{name} 매수가: <strong>10,000원</strong></p>
-                            <p>현재가: <strong>12,000원</strong> (100주 보유시)</p>
-                            <p className="border-t border-gray-200 dark:border-gray-600 pt-1 mt-1 text-red-500 font-bold">수익률 결과: 20%</p>
-                            <p className="text-red-500 font-semibold">총 수익금: 200,000원</p>
+                            <p>{name} 매수가 : <strong>10,000원</strong></p>
+                            <p>현재가 : <strong>12,000원</strong> (100주 보유시)</p>
+                            <p className="border-t border-gray-200 dark:border-gray-600 pt-1 mt-1 text-red-500 font-bold">수익률 결과 : 20%</p>
+                            <p className="text-red-500 font-semibold">총 수익금 : 200,000원</p>
                         </div>
                     </section>
                 </div>

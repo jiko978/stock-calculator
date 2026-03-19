@@ -31,19 +31,21 @@ const services: Service[] = [
         bgColor: "bg-blue-50 dark:bg-blue-900/20",
         borderColor: "border-blue-100 dark:border-blue-800",
         links: [
-            { label: "✔ 평균 단가 계산기", href: "/calculator/stock/avg-price" },
-            { label: "✔ 수익률 계산기", href: "/calculator/stock/profit-rate" },
-            { label: "✔ 배당금 계산기", href: "/calculator/stock/dividend" },
-            { label: "✔ 수수료 계산기", href: "/calculator/stock/fee" }
+            { label: "✔ 주식 평균단가 계산기", href: "/calculator/stock/avg-price" },
+            { label: "✔ 주식 수익률 계산기", href: "/calculator/stock/profit-rate" },
+            { label: "✔ 주식 배당금 계산기", href: "/calculator/stock/dividend" },
+            { label: "✔ 주식 수수료 계산기", href: "/calculator/stock/fee" }
         ]
     },
     {
-        title: "💰 금융",
+        title: "💵 금융",
         href: "/calculator/finance",
         bgColor: "bg-green-50 dark:bg-green-900/20",
         borderColor: "border-green-100 dark:border-green-800",
         links: [
-            { label: "서비스 준비 중", href: "#", disabled: true }
+            { label: "✔ 예금 이자 계산기", href: "/calculator/finance/deposits" },
+            { label: "✔ 적금 이자 계산기", href: "/calculator/finance/savings" },
+            { label: "✔ 대출 이자 계산기", href: "/calculator/finance/loans" }
         ]
     },
     {

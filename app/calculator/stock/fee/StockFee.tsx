@@ -149,7 +149,7 @@ export default function StockFee({ stockName, initialCode }: StockFeeProps) {
     return (
         <div className="bg-gray-50 dark:bg-gray-900">
 
-            <div className={`max-w-2xl mx-auto px-4 py-6 pb-safe ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
+            <div className={`max-w-3xl mx-auto px-4 py-6 pb-safe ${ANIMATION.pageEnter ? "animate-fade-in" : ""}`}>
 
                 <div className="flex flex-col items-center gap-4 mb-8 text-center">
                     <div className="flex justify-center flex-wrap gap-2">
@@ -159,7 +159,7 @@ export default function StockFee({ stockName, initialCode }: StockFeeProps) {
                             </span>
                         )}
                         <span className="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm font-semibold">
-                            💳️️ 수수료 계산기
+                            💳️️ 주식 수수료 계산기
                         </span>
                     </div>
                 </div>

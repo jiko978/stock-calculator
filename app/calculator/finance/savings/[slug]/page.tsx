@@ -12,16 +12,17 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-    return productsData.savings.map(p => ({ slug: p.slug }));
+    return productsData.savings.map(p => ({ slug: encodeURIComponent(p.slug) }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
-    const product = productsData.savings.find(p => p.slug === slug);
+    const decodedSlug = decodeURIComponent(slug).normalize('NFC');
+    const product = productsData.savings.find(p => p.slug.normalize('NFC') === decodedSlug);
     if (!product) return {};
 
     return {
-        title: `${product.name} 적금 계산기 | 이자 및 만기 수령액 - JIKO calculator`,
+        title: `${product.name} 적금 이자 계산기 | 정기적금 만기 수령액 및 이자 계산기 - JIKO 계산기`,
         description: `${product.name} 상품의 월 적립액 기준 만기 수령액을 계산해드립니다. 목돈 마련 계획을 위해 정확한 세후 이자를 지금 확인하세요.`,
         keywords: [product.name, "적금 계산기", "목돈 마련", "적금 금리", "금융 계산기"],
     };
@@ -40,7 +41,8 @@ const faqList = [
 
 export default async function SavingsSlugPage({ params }: Props) {
     const { slug } = await params;
-    const product = productsData.savings.find(p => p.slug === slug);
+    const decodedSlug = decodeURIComponent(slug).normalize('NFC');
+    const product = productsData.savings.find(p => p.slug.normalize('NFC') === decodedSlug);
     if (!product) notFound();
 
     const breadcrumbLd = generateBreadcrumbJsonLd([
@@ -63,7 +65,7 @@ export default async function SavingsSlugPage({ params }: Props) {
                 {/* 메뉴 설명 */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">💰</span> {product.name} 적금 계산기
+                        <span className="text-2xl">💰</span> {product.name} 적금 이자 계산기
                     </h1>
                     <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                         <strong>{product.name}</strong> 상품의 월 납입액과 이율을 입력하여 미래의 목돈을 미리 설계해보세요.
@@ -91,10 +93,10 @@ export default async function SavingsSlugPage({ params }: Props) {
                         </h2>
                         <div className="text-sm text-gray-600 dark:text-gray-300 bg-green-50 dark:bg-green-900/20 p-4 rounded-xl">
                             <p className="font-semibold text-green-700 dark:text-green-300 mb-2">월 100만원 · 12개월 · 연 5.0% (단리)</p>
-                            <p>• 원금 합계: <strong>12,000,000원</strong></p>
-                            <p>• 세전 이자: 325,000원</p>
-                            <p>• 이자 과세(15.4%): 50,050원</p>
-                            <p className="mt-2 font-bold text-green-600 dark:text-green-400">만기 수령액: 12,274,950원</p>
+                            <p>• 원금 합계 : <strong>12,000,000원</strong></p>
+                            <p>• 세전 이자 : 325,000원</p>
+                            <p>• 이자 과세(15.4%) : 50,050원</p>
+                            <p className="mt-2 font-bold text-green-600 dark:text-green-400">만기 수령액 : 12,274,950원</p>
                         </div>
                     </section>
                 </div>

@@ -6,11 +6,11 @@ import FinanceMoreCalculators from "@/app/calculator/components/FinanceMoreCalcu
 import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "@/app/utils/seo";
 
 export const metadata: Metadata = {
-    title: "적금 계산기 | 정기적금 만기 수령액 및 이자 계산 - JIKO calculator",
+    title: "적금 이자 계산기 | 정기적금 만기 수령액 및 이자 계산기 - JIKO 계산기",
     description: "매월 일정액을 저축하는 정기적금의 만기 수령액을 정확하게 계산하세요. 단리/복리와 과세 유형에 따른 세후 이자 확인이 가능합니다.",
     keywords: ["적금 계산기", "정기적금 계산", "만기 수령액", "적금 이자", "목돈 마련", "금융 계산기"],
     openGraph: {
-        title: "적금 계산기 | 목돈 마련을 위한 정확한 가이드",
+        title: "적금 이자 계산기 | 정기적금 만기 수령액 및 이자 계산기 - JIKO 계산기",
         description: "매월 쌓이는 목돈의 가치를 확인해보세요.",
         type: "website",
     }
@@ -42,7 +42,7 @@ export default function SavingsPage() {
     const softwareLd = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "JIKO 적금 계산기",
+        "name": "적금 이자 계산기",
         "operatingSystem": "Any",
         "applicationCategory": "FinanceApplication",
         "offers": { "@type": "Offer", "price": "0" }
@@ -53,7 +53,7 @@ export default function SavingsPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareLd) }} />
 
-            <NavBar title="적금 계산기" description="꾸준한 저축으로 만들어가는 미래의 자산을 계산합니다." />
+            <NavBar title="적금 이자 계산기" description="매월 일정액을 저축하는 정기적금의 만기 수령액을 정확하게 계산하세요. 단리/복리와 과세 유형에 따른 세후 이자 확인이 가능합니다." />
 
             <Savings />
 
@@ -61,7 +61,7 @@ export default function SavingsPage() {
                 {/* 메뉴 설명 */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">💰</span> 적금 계산기
+                        <span className="text-2xl">💰</span> 적금 이자 계산기
                     </h1>
                     <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                         매월 일정액을 납입하는 정기적금의 만기 수령액을 계산합니다. 적금은 납입 시점마다 남은 기간에 따라 이자가 다르게 적용되므로, 본 계산기로 정확한 세후 금액을 미리 파악하세요.
@@ -88,10 +88,10 @@ export default function SavingsPage() {
                         </h2>
                         <div className="text-sm text-gray-600 dark:text-gray-300 bg-green-50 dark:bg-green-900/20 p-4 rounded-xl">
                             <p className="font-semibold text-green-700 dark:text-green-300 mb-2">월 100만원 · 12개월 · 연 5.0% (단리)</p>
-                            <p>• 원금 합계: <strong>12,000,000원</strong></p>
-                            <p>• 세전 이자: 325,000원</p>
-                            <p>• 이자 과세(15.4%): 50,050원</p>
-                            <p className="mt-2 font-bold text-green-600 dark:text-green-400">만기 수령액: 12,274,950원</p>
+                            <p>• 원금 합계 : <strong>12,000,000원</strong></p>
+                            <p>• 세전 이자 : 325,000원</p>
+                            <p>• 이자 과세(15.4%) : 50,050원</p>
+                            <p className="mt-2 font-bold text-green-600 dark:text-green-400">만기 수령액 : 12,274,950원</p>
                         </div>
                     </section>
                 </div>
