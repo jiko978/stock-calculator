@@ -13,10 +13,6 @@ interface Props {
 
 import stocksData from "../../data/stocks.json";
 
-export async function generateStaticParams() {
-    return stocksData.map(s => ({ slug: s.name }));
-}
-
 interface Stock {
     name: string;
     code: string;

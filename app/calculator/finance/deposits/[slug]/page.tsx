@@ -12,7 +12,8 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-    return productsData.deposits.map(p => ({ slug: p.slug }));
+    // 상품 리스트의 모든 슬러그(한글)를 정적 경로로 생성합니다.
+    return productsData.deposits.map(p => ({ slug: p.slug.normalize('NFC') }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

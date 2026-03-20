@@ -12,7 +12,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-    return productsData.savings.map(p => ({ slug: p.slug }));
+    return productsData.savings.map(p => ({ slug: p.slug.normalize('NFC') }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -13,10 +13,6 @@ interface Props {
 
 import stocksData from "../../data/stocks.json";
 
-export async function generateStaticParams() {
-    return stocksData.map(s => ({ slug: s.name }));
-}
-
 function findStock(slug: string): { name: string; code?: string } {
     const normalized = decodeURIComponent(slug).normalize('NFC');
     

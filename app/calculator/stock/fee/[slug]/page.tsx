@@ -12,10 +12,6 @@ interface Props {
     params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams() {
-    return stocksData.map(s => ({ slug: s.name }));
-}
-
 export async function generateMetadata(
     { params }: Props,
     parent: ResolvingMetadata
@@ -93,7 +89,7 @@ export default async function Page({ params }: Props) {
         COMMON_BREADCRUMBS.CALC_HOME,
         COMMON_BREADCRUMBS.STOCK_HOME,
         COMMON_BREADCRUMBS.FEE,
-        { name: `${stockName} 주식 수수료 계산기`, item: `/calculator/stock/fee/${slug}` }
+        { name: `${stockName}`, item: `/calculator/stock/fee/${slug}` }
     ]);
 
     const faqList = [

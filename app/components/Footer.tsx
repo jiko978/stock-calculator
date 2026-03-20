@@ -20,7 +20,7 @@ export default function Footer() {
 
                 {/* Line 3: Copyright */}
                 <p className="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-wider font-semibold">
-                    © 2026 JIKO Project. All rights reserved.
+                    © 2026 JIKO Platform. All rights reserved.
                 </p>
             </div>
         </footer>

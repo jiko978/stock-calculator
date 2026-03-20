@@ -13,11 +13,6 @@ interface Props {
     params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams() {
-    // 주요 종목들에 대해 정적 페이지 생성을 지원합니다.
-    return stocksData.map(s => ({ slug: s.name }));
-}
-
 function findStock(slug: string): { name: string; code?: string } {
     const normalized = decodeURIComponent(slug).normalize('NFC');
 
