@@ -164,9 +164,10 @@ const Savings = ({ productName }: SavingsProps) => {
 
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50 space-y-6">
                     <div className="space-y-3">
-                        <label className={`block text-sm font-bold transition-colors ${errors.has("monthlyAmount") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>매월 납입액</label>
+                        <label htmlFor="savings-amount" className={`block text-sm font-bold transition-colors ${errors.has("monthlyAmount") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>매월 납입액</label>
                         <div className="relative">
                             <input
+                                id="savings-amount"
                                 type="text"
                                 inputMode="numeric"
                                 value={monthlyAmount}
@@ -176,7 +177,7 @@ const Savings = ({ productName }: SavingsProps) => {
                                     errors.has("monthlyAmount") ? "border-red-500 focus:border-red-500 ring-4 ring-red-500/10" : "border-transparent focus:border-green-500"
                                 }`}
                             />
-                            <span className={`absolute right-5 top-1/2 -translate-y-1/2 font-bold ${errors.has("monthlyAmount") ? "text-red-500" : "text-gray-400"}`}>원</span>
+                            <span className={`absolute right-5 top-1/2 -translate-y-1/2 font-bold ${errors.has("monthlyAmount") ? "text-red-500" : "text-gray-600"}`}>원</span>
                         </div>
                         <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                             {[5, 10, 50, 100, 1000, 10000].map(v => (
@@ -193,10 +194,11 @@ const Savings = ({ productName }: SavingsProps) => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-3">
-                            <label className={`block text-sm font-bold transition-colors ${errors.has("term") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>적립기간</label>
+                            <label htmlFor="savings-term" className={`block text-sm font-bold transition-colors ${errors.has("term") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>적립기간</label>
                             <div className="flex gap-2">
                                 <div className="relative flex-1">
                                     <input
+                                        id="savings-term"
                                         type="text"
                                         inputMode="numeric"
                                         value={term}
@@ -214,7 +216,7 @@ const Savings = ({ productName }: SavingsProps) => {
                                             errors.has("term") ? "border-red-500 focus:border-red-500 ring-4 ring-red-500/10" : "border-transparent focus:border-green-500"
                                         }`}
                                     />
-                                    <span className={`absolute right-4 top-1/2 -translate-y-1/2 font-bold ${errors.has("term") ? "text-red-500" : "text-gray-400"}`}>
+                                    <span className={`absolute right-4 top-1/2 -translate-y-1/2 font-bold ${errors.has("term") ? "text-red-500" : "text-gray-600"}`}>
                                         {termUnit === "month" ? "개월" : "년"}
                                     </span>
                                 </div>
@@ -244,9 +246,10 @@ const Savings = ({ productName }: SavingsProps) => {
                         </div>
 
                         <div className="space-y-3">
-                            <label className={`block text-sm font-bold transition-colors ${errors.has("rate") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>연이자율</label>
+                            <label htmlFor="savings-rate" className={`block text-sm font-bold transition-colors ${errors.has("rate") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>연이자율</label>
                             <div className="relative">
                                 <input
+                                    id="savings-rate"
                                     type="text"
                                     inputMode="decimal"
                                     value={rate}
@@ -264,7 +267,7 @@ const Savings = ({ productName }: SavingsProps) => {
                                         errors.has("rate") ? "border-red-500 focus:border-red-500 ring-4 ring-red-500/10" : "border-transparent focus:border-green-500"
                                     }`}
                                 />
-                                <span className={`absolute right-4 top-1/2 -translate-y-1/2 font-bold ${errors.has("rate") ? "text-red-500" : "text-gray-400"}`}>%</span>
+                                <span className={`absolute right-4 top-1/2 -translate-y-1/2 font-bold ${errors.has("rate") ? "text-red-500" : "text-gray-600"}`}>%</span>
                             </div>
                             <div className="flex bg-gray-100 dark:bg-gray-700 p-1 rounded-2xl">
                                 {["simple", "compound"].map((t) => (
@@ -330,30 +333,30 @@ const Savings = ({ productName }: SavingsProps) => {
                         <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50 text-center relative overflow-hidden">
                             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-teal-500"></div>
 
-                            <p className="text-sm font-bold text-gray-400 dark:text-gray-500 mb-2">적금 만기 시 실제로 받는 금액</p>
+                            <p className="text-sm font-bold text-gray-600 dark:text-gray-400 mb-2">적금 만기 시 실제로 받는 금액</p>
                             <h2 className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-6 break-all">
                                 {totalMaturity.toLocaleString()}
-                                <span className="text-2xl ml-1 text-gray-500 dark:text-gray-400">원</span>
+                                <span className="text-2xl ml-1 text-gray-600 dark:text-gray-400">원</span>
                             </h2>
 
-                            <div className="grid grid-cols-2 gap-4 py-6 border-y border-gray-50 dark:border-gray-700/50">
+                            <div className="grid grid-cols-2 gap-4 py-6 border-y border-gray-100 dark:border-gray-700/50">
                                 <div className="space-y-1">
-                                    <p className="text-xs font-bold text-gray-400 dark:text-gray-500">원금 합계</p>
+                                    <p className="text-xs font-bold text-gray-600 dark:text-gray-400">원금 합계</p>
                                     <p className="text-lg font-bold text-gray-700 dark:text-gray-200">{totalPrincipal.toLocaleString()}원</p>
                                 </div>
                                 <div className="space-y-1">
-                                    <p className="text-xs font-bold text-gray-400 dark:text-gray-500">세후 이자</p>
+                                    <p className="text-xs font-bold text-gray-600 dark:text-gray-400">세후 이자</p>
                                     <p className="text-lg font-bold text-green-600 dark:text-green-400">+{postTaxInterest.toLocaleString()}원</p>
                                 </div>
                             </div>
 
                             <div className="mt-6 space-y-3">
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-gray-500 dark:text-gray-400 font-medium">세전 이자</span>
+                                    <span className="text-gray-600 dark:text-gray-400 font-medium">세전 이자</span>
                                     <span className="text-gray-800 dark:text-gray-200 font-bold">{Math.floor(preTaxInterest).toLocaleString()}원</span>
                                 </div>
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-gray-500 dark:text-gray-400 font-medium">이자 과세 ({taxRate * 100}%)</span>
+                                    <span className="text-gray-600 dark:text-gray-400 font-medium">이자 과세 ({taxRate * 100}%)</span>
                                     <span className="text-red-500 dark:text-red-400 font-bold">-{taxAmount.toLocaleString()}원</span>
                                 </div>
                             </div>
@@ -374,7 +377,7 @@ const Savings = ({ productName }: SavingsProps) => {
 
                         {/* 비중 차트 카드 */}
                         <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50">
-                            <h3 className="text-sm font-bold text-gray-400 dark:text-gray-500 mb-8 flex items-center gap-2">
+                            <h3 className="text-sm font-bold text-gray-600 dark:text-gray-400 mb-8 flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
                                 만기 수령액 상세 구성
                             </h3>
@@ -409,7 +412,7 @@ const Savings = ({ productName }: SavingsProps) => {
                                         />
                                     </svg>
                                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                                        <p className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-tighter">이자 비중</p>
+                                        <p className="text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-tighter">이자 비중</p>
                                         <p className="text-2xl font-black text-teal-500 leading-none">{((postTaxInterest / totalMaturity) * 100).toFixed(1)}%</p>
                                     </div>
                                 </div>

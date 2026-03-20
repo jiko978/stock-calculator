@@ -195,9 +195,10 @@ const Loans = ({ productName }: LoansProps) => {
 
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50 space-y-6">
                     <div className="space-y-3">
-                        <label className={`block text-sm font-bold transition-colors ${errors.has("loanAmount") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>대출 금액</label>
+                        <label htmlFor="loan-amount" className={`block text-sm font-bold transition-colors ${errors.has("loanAmount") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>대출 금액</label>
                         <div className="relative">
                             <input
+                                id="loan-amount"
                                 type="text"
                                 inputMode="numeric"
                                 value={loanAmount}
@@ -207,7 +208,7 @@ const Loans = ({ productName }: LoansProps) => {
                                     errors.has("loanAmount") ? "border-red-500 focus:border-red-500 ring-4 ring-red-500/10" : "border-transparent focus:border-amber-500"
                                 }`}
                             />
-                            <span className={`absolute right-5 top-1/2 -translate-y-1/2 font-bold ${errors.has("loanAmount") ? "text-red-500" : "text-gray-400"}`}>원</span>
+                            <span className={`absolute right-5 top-1/2 -translate-y-1/2 font-bold ${errors.has("loanAmount") ? "text-red-500" : "text-gray-600"}`}>원</span>
                         </div>
 
                         <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
@@ -227,9 +228,10 @@ const Loans = ({ productName }: LoansProps) => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-3">
-                            <label className={`block text-sm font-bold transition-colors ${errors.has("loanTerm") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>대출 기간</label>
+                            <label htmlFor="loan-term" className={`block text-sm font-bold transition-colors ${errors.has("loanTerm") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>대출 기간</label>
                             <div className="flex gap-2">
                                 <input
+                                    id="loan-term"
                                     type="text"
                                     inputMode="numeric"
                                     value={loanTerm}
@@ -270,9 +272,10 @@ const Loans = ({ productName }: LoansProps) => {
                         </div>
 
                         <div className="space-y-3">
-                            <label className={`block text-sm font-bold transition-colors ${errors.has("interestRate") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>연 이자율</label>
+                            <label htmlFor="loan-rate" className={`block text-sm font-bold transition-colors ${errors.has("interestRate") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>연 이자율</label>
                             <div className="relative">
                                 <input
+                                    id="loan-rate"
                                     type="text"
                                     inputMode="decimal"
                                     value={interestRate}
@@ -290,7 +293,7 @@ const Loans = ({ productName }: LoansProps) => {
                                         errors.has("interestRate") ? "border-red-500 focus:border-red-500 ring-4 ring-red-500/10" : "border-transparent focus:border-amber-500"
                                     }`}
                                 />
-                                <span className={`absolute right-4 top-1/2 -translate-y-1/2 font-bold ${errors.has("interestRate") ? "text-red-500" : "text-gray-400"}`}>%</span>
+                                <span className={`absolute right-4 top-1/2 -translate-y-1/2 font-bold ${errors.has("interestRate") ? "text-red-500" : "text-gray-600"}`}>%</span>
                             </div>
                         </div>
                     </div>
@@ -315,19 +318,20 @@ const Loans = ({ productName }: LoansProps) => {
                     </div>
 
                     <div className="space-y-3">
-                        <label className="block text-sm font-bold text-gray-700 dark:text-gray-200 flex justify-between">
+                        <label htmlFor="loan-defer" className="block text-sm font-bold text-gray-700 dark:text-gray-200 flex justify-between">
                             거치 기간
-                            <span className="text-[10px] font-normal text-gray-400 mt-0.5">(이자만 납부하는 기간)</span>
+                            <span className="text-[10px] font-normal text-gray-500 dark:text-gray-400 mt-0.5">(이자만 납부하는 기간)</span>
                         </label>
                         <div className="relative">
                             <input
+                                id="loan-defer"
                                 type="text"
                                 inputMode="numeric"
                                 value={defermentPeriod}
                                 onChange={(e) => { setDefermentPeriod(e.target.value.replace(/[^0-9]/g, "")); setCalculated(false); }}
                                 className="w-full h-12 px-4 pr-12 text-lg font-bold bg-gray-50 dark:bg-gray-900/50 border-2 border-transparent focus:border-amber-500 rounded-2xl transition-all outline-none text-right dark:text-white"
                             />
-                            <span className="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-gray-400 text-sm">개월</span>
+                            <span className="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-gray-600 dark:text-gray-400 text-sm">개월</span>
                         </div>
                     </div>
                     {/* 제어 버튼 */}
@@ -362,19 +366,19 @@ const Loans = ({ productName }: LoansProps) => {
                         <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50 text-center relative overflow-hidden">
                             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-400 to-orange-500"></div>
 
-                            <p className="text-sm font-bold text-gray-400 dark:text-gray-500 mb-2">총 상환 금액 (원금+이자)</p>
+                            <p className="text-sm font-bold text-gray-600 dark:text-gray-400 mb-2">총 상환 금액 (원금+이자)</p>
                             <h2 className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-6 break-all">
                                 {totalRepayment.toLocaleString()}
-                                <span className="text-2xl ml-1 text-gray-500 dark:text-gray-400">원</span>
+                                <span className="text-2xl ml-1 text-gray-600 dark:text-gray-400">원</span>
                             </h2>
 
-                            <div className="grid grid-cols-2 gap-4 py-6 border-y border-gray-50 dark:border-gray-700/50">
+                            <div className="grid grid-cols-2 gap-4 py-6 border-y border-gray-100 dark:border-gray-700/50">
                                 <div className="space-y-1">
-                                    <p className="text-xs font-bold text-gray-400 dark:text-gray-500">총 대출 이자</p>
+                                    <p className="text-xs font-bold text-gray-600 dark:text-gray-400">총 대출 이자</p>
                                     <p className="text-lg font-bold text-red-500 dark:text-red-400">{totalInterest.toLocaleString()}원</p>
                                 </div>
-                                <div className="space-y-1 border-l border-gray-50 dark:border-gray-700/50">
-                                    <p className="text-xs font-bold text-gray-400 dark:text-gray-500">1회차 상환액</p>
+                                <div className="space-y-1 border-l border-gray-100 dark:border-gray-700/50">
+                                    <p className="text-xs font-bold text-gray-600 dark:text-gray-400">1회차 상환액</p>
                                     <p className="text-lg font-bold text-gray-800 dark:text-gray-200">{firstMonthPayment.toLocaleString()}원</p>
                                 </div>
                             </div>
@@ -391,7 +395,7 @@ const Loans = ({ productName }: LoansProps) => {
 
                         {/* 비중 차트 카드 추가 */}
                         <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50">
-                            <h3 className="text-sm font-bold text-gray-400 dark:text-gray-500 mb-8 flex items-center gap-2">
+                            <h3 className="text-sm font-bold text-gray-600 dark:text-gray-400 mb-8 flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
                                 총 상환금액 구성 비중
                             </h3>
@@ -426,7 +430,7 @@ const Loans = ({ productName }: LoansProps) => {
                                         />
                                     </svg>
                                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                                        <p className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-tighter">이자 비중</p>
+                                        <p className="text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-tighter">이자 비중</p>
                                         <p className="text-2xl font-black text-red-500 leading-none">{((totalInterest / totalRepayment) * 100).toFixed(1)}%</p>
                                     </div>
                                 </div>
@@ -461,7 +465,7 @@ const Loans = ({ productName }: LoansProps) => {
                         </div>
 
                         <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50">
-                            <h3 className="text-sm font-bold text-gray-400 dark:text-gray-500 mb-6 flex items-center gap-2">
+                            <h3 className="text-sm font-bold text-gray-600 dark:text-gray-400 mb-6 flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
                                 대출 상환 상세 (주요 회차)
                             </h3>
@@ -480,11 +484,11 @@ const Loans = ({ productName }: LoansProps) => {
                                     <tbody>
                                     {schedule.map((row) => (
                                         <tr key={row.month} className="hover:bg-gray-50/50 dark:hover:bg-gray-700/30">
-                                            <td className="p-3 pr-1 sm:pr-3 border-b border-gray-50 dark:border-gray-700/50 text-gray-400 whitespace-nowrap">{row.month}회</td>
+                                            <td className="p-3 pr-1 sm:pr-3 border-b border-gray-50 dark:border-gray-700/50 text-gray-500 dark:text-gray-400 whitespace-nowrap">{row.month}회</td>
                                             <td className="p-3 pl-1 sm:pl-3 border-b border-gray-50 dark:border-gray-700/50 text-right font-bold text-gray-700 dark:text-gray-300">{row.payment.toLocaleString()}</td>
-                                            <td className="p-3 border-b border-gray-50 dark:border-gray-700/50 text-right text-gray-500">{row.principal.toLocaleString()}</td>
+                                            <td className="p-3 border-b border-gray-50 dark:border-gray-700/50 text-right text-gray-700 dark:text-gray-200">{row.principal.toLocaleString()}</td>
                                             <td className="p-3 border-b border-gray-50 dark:border-gray-700/50 text-right text-amber-600/80">{row.interest.toLocaleString()}</td>
-                                            <td className="p-3 border-b border-gray-50 dark:border-gray-700/50 text-right text-gray-400">{row.remaining.toLocaleString()}</td>
+                                            <td className="p-3 border-b border-gray-50 dark:border-gray-700/50 text-right text-gray-500 dark:text-gray-400">{row.remaining.toLocaleString()}</td>
                                         </tr>
                                     ))}
                                     </tbody>

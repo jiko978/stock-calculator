@@ -189,20 +189,21 @@ export default function StockFee({ stockName, initialCode }: StockFeeProps) {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
                         <div className="space-y-4">
                             {[
-                                { label: "매수가", unit: "원", value: buyPrice, setter: setBuyPrice, placeholder: "1주당 매수 가격", key: "buyPrice" },
-                                { label: "매도가", unit: "원", value: sellPrice, setter: setSellPrice, placeholder: "1주당 매도 가격", key: "sellPrice" },
-                                { label: "수량", unit: "주", value: quantity, setter: setQuantity, placeholder: "보유/매매 수량", key: "quantity" },
-                            ].map(({ label, unit, value, setter, placeholder, key }) => (
+                                { label: "매수가", unit: "원", value: buyPrice, setter: setBuyPrice, placeholder: "1주당 매수 가격", key: "buyPrice", id: "stock-fee-buy-price" },
+                                { label: "매도가", unit: "원", value: sellPrice, setter: setSellPrice, placeholder: "1주당 매도 가격", key: "sellPrice", id: "stock-fee-sell-price" },
+                                { label: "수량", unit: "주", value: quantity, setter: setQuantity, placeholder: "보유/매매 수량", key: "quantity", id: "stock-fee-quantity" },
+                            ].map(({ label, unit, value, setter, placeholder, key, id }) => (
                                 <div key={label} className="flex flex-col gap-1">
-                                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300 ml-1">{label}</label>
+                                    <label htmlFor={id} className="text-sm font-semibold text-gray-700 dark:text-gray-300 ml-1">{label}</label>
                                     <div className="flex items-center relative">
                                         <input
+                                            id={id}
                                             type="text" inputMode="numeric" placeholder={placeholder}
                                             value={value} onChange={handleChange(setter, key)}
                                             className={`w-full border rounded-xl px-4 py-3 text-right focus:outline-none focus:ring-2 bg-white dark:bg-gray-700 dark:text-white transition-all ${errors.has(key) ? "border-red-500 ring-2 ring-red-200 dark:ring-red-900/30" : "border-gray-200 dark:border-gray-700 focus:ring-blue-400"
                                                 }`}
                                         />
-                                        <span className={`ml-2 text-sm w-4 shrink-0 font-bold ${errors.has(key) ? "text-red-500" : "text-gray-500"}`}>{unit}</span>
+                                        <span className={`ml-2 text-sm w-4 shrink-0 font-bold ${errors.has(key) ? "text-red-500" : "text-gray-600 dark:text-gray-400"}`}>{unit}</span>
                                     </div>
                                 </div>
                             ))}
@@ -214,27 +215,29 @@ export default function StockFee({ stockName, initialCode }: StockFeeProps) {
                                 <div className="grid grid-cols-2 gap-2">
                                     <div className="relative flex items-center">
                                         <input
+                                            id="stock-buy-comm"
                                             type="text" placeholder="매수 (%)"
                                             value={buyCommission} onChange={handleChange(setBuyCommission, undefined, true)}
                                             className="w-full border border-gray-200 dark:border-gray-700 rounded-xl px-3 py-3 text-right focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white dark:bg-gray-700 dark:text-white text-sm"
                                         />
-                                        <span className="absolute right-3 text-[10px] text-gray-400 pointer-events-none mt-7">매수</span>
+                                        <span className="absolute right-3 text-[10px] text-gray-600 dark:text-gray-400 pointer-events-none mt-7">매수</span>
                                     </div>
                                     <div className="relative flex items-center">
                                         <input
+                                            id="stock-sell-comm"
                                             type="text" placeholder="매도 (%)"
                                             value={sellCommission} onChange={handleChange(setSellCommission, undefined, true)}
                                             className="w-full border border-gray-200 dark:border-gray-700 rounded-xl px-3 py-3 text-right focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white dark:bg-gray-700 dark:text-white text-sm"
                                         />
-                                        <span className="absolute right-3 text-[10px] text-gray-400 pointer-events-none mt-7">매도</span>
+                                        <span className="absolute right-3 text-[10px] text-gray-600 dark:text-gray-400 pointer-events-none mt-7">매도</span>
                                     </div>
                                 </div>
-                                <p className="text-[10px] text-gray-400 mt-1 ml-1 text-right">* 단위: % (기본 {market.value === "OVERSEAS" ? "0.1" : "0.015"}%)</p>
+                                <p className="text-[10px] text-gray-600 dark:text-gray-400 mt-1 ml-1 text-right">* 단위: % (기본 {market.value === "OVERSEAS" ? "0.1" : "0.015"}%)</p>
                             </div>
 
                             <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-2xl border border-gray-100 dark:border-gray-700">
-                                <h3 className="text-xs font-bold text-gray-500 mb-2">시장별 세부 정보</h3>
-                                <ul className="space-y-1.5 text-[11px] text-gray-500 dark:text-gray-400">
+                                <h3 className="text-xs font-bold text-gray-600 dark:text-gray-400 mb-2">시장별 세부 정보</h3>
+                                <ul className="space-y-1.5 text-[11px] text-gray-600 dark:text-gray-400">
                                     <li className="flex justify-between">
                                         <span>거래세율</span>
                                         <span className="text-gray-800 dark:text-gray-200 font-bold">{(market.tax * 100).toFixed(2)}%</span>
@@ -286,7 +289,7 @@ export default function StockFee({ stockName, initialCode }: StockFeeProps) {
                         {/* 메인 결과 카드 */}
                         <div className={`bg-white dark:bg-gray-800 rounded-3xl p-6 sm:p-8 shadow-xl border-t-8 ${Number(result.profitRate) >= 0 ? "border-red-500 shadow-red-100 dark:shadow-none" : "border-blue-500 shadow-blue-100 dark:shadow-none"}`}>
                             <div className="text-center mb-6">
-                                <p className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-1">세후 최종 순이익</p>
+                                <p className="text-sm font-bold text-gray-600 dark:text-gray-400 mb-1">세후 최종 순이익</p>
                                 <h2 className={`text-4xl sm:text-5xl font-black ${Number(result.profitRate) >= 0 ? "text-red-500" : "text-blue-500"}`}>
                                     {result.netProfit >= 0 ? "+" : ""}{result.netProfit.toLocaleString()} <span className="text-2xl">원</span>
                                 </h2>
@@ -298,24 +301,24 @@ export default function StockFee({ stockName, initialCode }: StockFeeProps) {
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-gray-100 dark:border-gray-700">
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-center group">
-                                        <span className="text-gray-500 dark:text-gray-400 text-sm">세전 손익</span>
+                                        <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">세전 손익</span>
                                         <span className="font-bold text-gray-800 dark:text-gray-100">{result.grossProfit.toLocaleString()} 원</span>
                                     </div>
                                     <div className="flex justify-between items-center group">
-                                        <span className="text-gray-500 dark:text-gray-400 text-sm">총 수수료</span>
+                                        <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">총 수수료</span>
                                         <span className="font-bold text-gray-800 dark:text-gray-100">{result.totalCommission.toLocaleString()} 원</span>
                                     </div>
                                     <div className="flex justify-between items-center group">
-                                        <span className="text-gray-500 dark:text-gray-400 text-sm font-bold text-red-500">지불할 세금</span>
+                                        <span className="text-gray-600 dark:text-gray-400 text-sm font-bold text-red-500">지불할 세금</span>
                                         <span className="font-black text-red-500">-{result.totalTax.toLocaleString()} 원</span>
                                     </div>
                                 </div>
 
                                 <div className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-2xl p-5 flex flex-col justify-center items-center text-center">
-                                    <p className="text-xs font-bold text-gray-400 mb-2 flex items-center gap-1">
+                                    <p className="text-xs font-bold text-gray-600 dark:text-gray-400 mb-2 flex items-center gap-1">
                                         ✅ 최소 익절가 가이드
                                         <span className="relative group/tip">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 text-gray-300 cursor-help" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 text-gray-400 dark:text-gray-500 cursor-help" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                             <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-[10px] rounded leading-relaxed opacity-0 group-hover/tip:opacity-100 transition-opacity pointer-events-none z-50">
                                                 수수료와 세금을 계산했을 때 손해가 나지 않는 최소 매도 가격입니다.
                                             </span>
@@ -324,7 +327,7 @@ export default function StockFee({ stockName, initialCode }: StockFeeProps) {
                                     <p className="text-lg font-black text-blue-600 dark:text-blue-400">
                                         {result.minSellPrice.toLocaleString()} 원
                                     </p>
-                                    <p className="text-[10px] text-gray-400 mt-1">이 가격 이상으로 팔아야 수익입니다!</p>
+                                    <p className="text-[10px] text-gray-600 dark:text-gray-400 mt-1">이 가격 이상으로 팔아야 수익입니다!</p>
                                 </div>
                             </div>
                         </div>

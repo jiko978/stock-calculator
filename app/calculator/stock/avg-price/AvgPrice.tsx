@@ -279,6 +279,7 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
                                     <td className="border border-gray-400 dark:border-gray-600 px-1 py-1 text-center">
                                         <input type="text" inputMode="numeric" placeholder="0" value={row.price}
                                             onChange={handleChange(row.id, "price")}
+                                            aria-label={`${idx + 1}차 매수가`}
                                             style={{ fontSize: getFontSize(row.price), width: "100%" }}
                                             className={`p-1 text-right border rounded bg-white dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 min-w-0 transition-all ${
                                                 errors.has(`price-${row.id}`) ? "border-red-500 ring-2 ring-red-200 dark:ring-red-900/30" : "dark:border-gray-600 focus:ring-blue-400"
@@ -287,6 +288,7 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
                                     <td className="border border-gray-400 dark:border-gray-600 px-1 py-1 text-center">
                                         <input type="text" inputMode="numeric" placeholder="0" value={row.qty}
                                             onChange={handleChange(row.id, "qty")}
+                                            aria-label={`${idx + 1}차 수량`}
                                             style={{ fontSize: getFontSize(row.qty), width: "100%" }}
                                             className={`p-1 text-right border rounded bg-white dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 min-w-0 transition-all ${
                                                 errors.has(`qty-${row.id}`) ? "border-red-500 ring-2 ring-red-200 dark:ring-red-900/30" : "dark:border-gray-600 focus:ring-blue-400"
@@ -338,12 +340,13 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
                 {/* 현재가 입력 (선택) */}
                 <div className="mt-4 bg-white dark:bg-gray-800 rounded-2xl shadow-md px-5 py-4">
                     <div className="flex items-center gap-4">
-                        <label className="shrink-0 text-sm font-semibold text-gray-600 dark:text-gray-300 flex items-center gap-1">
+                        <label htmlFor="stock-current-price" className="shrink-0 text-sm font-semibold text-gray-700 dark:text-gray-200 flex items-center gap-1">
                             현재가
-                            <span className="text-xs font-normal text-gray-400 dark:text-gray-500">(선택)</span>
+                            <span className="text-xs font-normal text-gray-600 dark:text-gray-400">(선택)</span>
                         </label>
                         <div className="flex items-center flex-1">
                             <input
+                                id="stock-current-price"
                                 ref={currentPriceRef}
                                 type="text" inputMode="numeric"
                                 placeholder="현재가를 입력하면 수익률을 계산해드려요"
@@ -386,7 +389,7 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
 
                             {/* 좌측: 결과 수치 */}
                             <div className="flex-1 bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-md space-y-3">
-                                <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400">계산 결과</h2>
+                                <h2 className="text-sm font-semibold text-gray-600 dark:text-gray-400">계산 결과</h2>
                                 <div className="flex justify-between items-center">
                                     <span className="text-gray-600 dark:text-gray-300">평균 단가</span>
                                     <strong className="text-blue-600 dark:text-blue-400 text-lg">
@@ -451,7 +454,7 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
 
                             {/* 우측: 그래프 */}
                             <div className="flex-1 bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-md flex flex-col">
-                                <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-4">차수별 매수 비중</h2>
+                                <h2 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-6">시각화 분석</h2>
 
                                 <div className="text-center mb-5">
                                     <div className="flex items-center justify-center gap-2 flex-wrap">

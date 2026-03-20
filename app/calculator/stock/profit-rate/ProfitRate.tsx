@@ -125,15 +125,16 @@ export default function ProfitRate({ stockName, initialCode }: ProfitRateProps) 
                 <div className="bg-white dark:bg-gray-800 shadow-md rounded-2xl p-8">
                     <div className="space-y-6">
                         {[
-                            { label: "매수가", unit: "원", value: buyPrice, setter: setBuyPrice, key: "buyPrice" },
-                            { label: "현재가", unit: "원", value: currentPrice, setter: setCurrentPrice, key: "currentPrice" },
-                            { label: "수량", unit: "개", value: quantity, setter: setQuantity, key: "quantity" },
-                        ].map(({ label, unit, value, setter, key }) => (
+                            { label: "매수가", unit: "원", value: buyPrice, setter: setBuyPrice, key: "buyPrice", id: "stock-buy-price" },
+                            { label: "현재가", unit: "원", value: currentPrice, setter: setCurrentPrice, key: "currentPrice", id: "stock-current-price" },
+                            { label: "수량", unit: "개", value: quantity, setter: setQuantity, key: "quantity", id: "stock-quantity" },
+                        ].map(({ label, unit, value, setter, key, id }) => (
                             <div key={label} className="flex flex-col gap-1">
                                 <div className="flex items-center gap-4">
-                                    <label className={`w-20 font-semibold shrink-0 ${errors.has(key) ? "text-red-500" : "text-gray-800 dark:text-gray-100"}`}>{label}</label>
+                                    <label htmlFor={id} className={`w-20 font-semibold shrink-0 ${errors.has(key) ? "text-red-500" : "text-gray-800 dark:text-gray-100"}`}>{label}</label>
                                     <div className="flex items-center flex-1">
                                         <input
+                                            id={id}
                                             type="text" inputMode="numeric" placeholder="0"
                                             value={value}
                                             onChange={handleChange(setter, key)}
@@ -178,7 +179,7 @@ export default function ProfitRate({ stockName, initialCode }: ProfitRateProps) 
 
                             {/* 좌측: 결과 수치 */}
                             <div className="flex-1 bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-md space-y-3">
-                                <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">계산 결과</h2>
+                                <h2 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">계산 결과</h2>
                                 <div className="flex justify-between items-center">
                                     <span className="text-gray-600 dark:text-gray-300">매수 금액</span>
                                     <strong className="text-gray-800 dark:text-gray-100">{result.buyTotal.toLocaleString()} 원</strong>
@@ -217,14 +218,14 @@ export default function ProfitRate({ stockName, initialCode }: ProfitRateProps) 
 
                             {/* 우측: 그래프 */}
                             <div className="flex-1 bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-md flex flex-col justify-center">
-                                <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-5">금액 비교</h2>
+                                <h2 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-5">금액 비교</h2>
 
                                 {/* 수익률 % 크게 표시 */}
                                 <div className="text-center mb-5">
                                     <span className={`text-4xl font-bold ${isProfit ? "text-red-500 dark:text-red-400" : "text-blue-500 dark:text-blue-400"}`}>
                                         {Number(result.rate) >= 0 ? "+" : ""}{result.rate}%
                                     </span>
-                                    <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
+                                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                         {isProfit ? "수익" : "손실"}
                                     </p>
                                 </div>
@@ -233,7 +234,7 @@ export default function ProfitRate({ stockName, initialCode }: ProfitRateProps) 
                                 <div className="space-y-3">
                                     {/* 매수금액 바 */}
                                     <div>
-                                        <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
+                                        <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400 mb-1">
                                             <span>매수 금액</span>
                                             <span>{result.buyTotal.toLocaleString()} 원</span>
                                         </div>
@@ -247,7 +248,7 @@ export default function ProfitRate({ stockName, initialCode }: ProfitRateProps) 
 
                                     {/* 현재금액 바 */}
                                     <div>
-                                        <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
+                                        <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400 mb-1">
                                             <span>현재 금액</span>
                                             <span>{result.currentTotal.toLocaleString()} 원</span>
                                         </div>

@@ -154,21 +154,22 @@ export default function Dividend({ stockName, initialCode }: DividendProps) {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-4">
                             {[
-                                { label: "매수가", unit: "원", value: buyPrice, setter: setBuyPrice, placeholder: "평균 매입 단가", key: "buyPrice" },
-                                { label: "현재가", unit: "원", value: currentPrice, setter: setCurrentPrice, placeholder: "현재 주식 가격", key: "currentPrice" },
-                                { label: "수량", unit: "주", value: quantity, setter: setQuantity, placeholder: "보유 주식 수", key: "quantity" },
-                            ].map(({ label, unit, value, setter, placeholder, key }) => (
+                                { label: "매수가", unit: "원", value: buyPrice, setter: setBuyPrice, placeholder: "평균 매입 단가", key: "buyPrice", id: "dividend-buy-price" },
+                                { label: "현재가", unit: "원", value: currentPrice, setter: setCurrentPrice, placeholder: "현재 주식 가격", key: "currentPrice", id: "dividend-current-price" },
+                                { label: "수량", unit: "주", value: quantity, setter: setQuantity, placeholder: "보유 주식 수", key: "quantity", id: "dividend-quantity" },
+                            ].map(({ label, unit, value, setter, placeholder, key, id }) => (
                                 <div key={label} className="flex flex-col gap-1">
-                                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">{label}</label>
+                                    <label htmlFor={id} className="text-sm font-semibold text-gray-700 dark:text-gray-300">{label}</label>
                                     <div className="flex items-center relative">
                                         <input
+                                            id={id}
                                             type="text" inputMode="numeric" placeholder={placeholder}
                                             value={value} onChange={handleChange(setter, key)}
                                             className={`w-full border rounded-xl px-4 py-3 text-right focus:outline-none focus:ring-2 bg-white dark:bg-gray-700 dark:text-white transition-all ${
                                                 errors.has(key) ? "border-red-500 ring-2 ring-red-200 dark:ring-red-900/30" : "border-gray-200 dark:border-gray-700 focus:ring-green-400"
                                             }`}
                                         />
-                                        <span className={`ml-2 text-sm w-4 shrink-0 ${errors.has(key) ? "text-red-500 font-bold" : "text-gray-500"}`}>{unit}</span>
+                                        <span className={`ml-2 text-sm w-4 shrink-0 ${errors.has(key) ? "text-red-500 font-bold" : "text-gray-600 dark:text-gray-400"}`}>{unit}</span>
                                     </div>
                                 </div>
                             ))}
@@ -176,16 +177,17 @@ export default function Dividend({ stockName, initialCode }: DividendProps) {
 
                         <div className="space-y-4">
                             <div className="flex flex-col gap-1">
-                                <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">주당 배당금</label>
+                                <label htmlFor="dividend-per-share" className="text-sm font-semibold text-gray-700 dark:text-gray-300">주당 배당금</label>
                                 <div className="flex items-center relative">
                                     <input
+                                        id="dividend-per-share"
                                         type="text" inputMode="numeric" placeholder="1주당 배당액"
                                         value={dividendPerShare} onChange={handleChange(setDividendPerShare, "dividendPerShare")}
                                         className={`w-full border rounded-xl px-4 py-3 text-right focus:outline-none focus:ring-2 bg-white dark:bg-gray-700 dark:text-white transition-all ${
                                             errors.has("dividendPerShare") ? "border-red-500 ring-2 ring-red-200 dark:ring-red-900/30" : "border-gray-200 dark:border-gray-700 focus:ring-green-400"
                                         }`}
                                     />
-                                    <span className={`ml-2 text-sm w-4 shrink-0 ${errors.has("dividendPerShare") ? "text-red-500 font-bold" : "text-gray-500"}`}>원</span>
+                                    <span className={`ml-2 text-sm w-4 shrink-0 ${errors.has("dividendPerShare") ? "text-red-500 font-bold" : "text-gray-600 dark:text-gray-400"}`}>원</span>
                                 </div>
                             </div>
 
@@ -209,17 +211,18 @@ export default function Dividend({ stockName, initialCode }: DividendProps) {
                             </div>
 
                             <div className="flex flex-col gap-1 pt-2">
-                                <label className="text-sm font-semibold text-orange-600 dark:text-orange-400 flex items-center gap-1">
+                                <label htmlFor="target-monthly-dividend" className="text-sm font-semibold text-orange-600 dark:text-orange-400 flex justify-between items-center gap-1">
                                     🚩 목표 월 배당금
-                                    <span className="text-[10px] font-normal text-gray-400 dark:text-gray-500 ml-auto whitespace-nowrap">(선택)</span>
+                                    <span className="text-[10px] font-normal text-gray-600 dark:text-gray-400 ml-auto whitespace-nowrap">(선택)</span>
                                 </label>
                                 <div className="flex items-center relative">
                                     <input
+                                        id="target-monthly-dividend"
                                         type="text" inputMode="numeric" placeholder="받고 싶은 월 배당금"
                                         value={targetMonthlyDividend} onChange={handleChange(setTargetMonthlyDividend)}
                                         className="w-full border border-orange-100 dark:border-orange-900/30 rounded-xl px-4 py-3 text-right focus:outline-none focus:ring-2 focus:ring-orange-400 bg-orange-50/30 dark:bg-orange-900/10 dark:text-white"
                                     />
-                                    <span className="ml-2 text-sm text-orange-500 w-4 shrink-0">원</span>
+                                    <span className="ml-2 text-sm text-orange-500 w-4 shrink-0 font-bold">원</span>
                                 </div>
                             </div>
                         </div>
@@ -255,12 +258,12 @@ export default function Dividend({ stockName, initialCode }: DividendProps) {
                         {/* 1. 메인 결과 카드: 세후 배당액 */}
                         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 border-t-4 border-green-500">
                             <div className="flex flex-col items-center py-4">
-                                <span className="text-sm text-gray-500 dark:text-gray-400 mb-1">실제 받는 세후 월 배당금</span>
+                                <span className="text-sm text-gray-600 dark:text-gray-400 font-bold mb-1">실제 받는 세후 월 배당금</span>
                                 <div className="flex items-baseline gap-1">
                                     <span className="text-4xl font-black text-green-600 dark:text-green-400">
                                         {Math.floor(result.monthlyTaxPost).toLocaleString()}
                                     </span>
-                                    <span className="text-xl font-bold text-gray-700 dark:text-gray-300">원</span>
+                                    <span className="text-xl font-bold text-gray-800 dark:text-gray-200">원</span>
                                 </div>
                                 <div className="mt-4 px-4 py-2 bg-green-50 dark:bg-green-900/20 rounded-full flex items-center gap-2">
                                     <span className="text-xl">{getLifeMetaphor(result.monthlyTaxPost).icon}</span>
@@ -318,14 +321,14 @@ export default function Dividend({ stockName, initialCode }: DividendProps) {
 
                                 <div className="space-y-3">
                                     <div className="flex justify-between items-center text-sm">
-                                        <span className="text-gray-500">목표까지 남은 수량</span>
+                                        <span className="text-gray-600 dark:text-gray-400 font-medium">목표까지 남은 수량</span>
                                         <span className="font-bold text-gray-800 dark:text-gray-100">{result.neededQty.toLocaleString()} 주</span>
                                     </div>
                                     <div className="flex justify-between items-center text-sm">
-                                        <span className="text-gray-500">필요 추가 투자금</span>
+                                        <span className="text-gray-600 dark:text-gray-400 font-medium">필요 추가 투자금</span>
                                         <span className="font-bold text-orange-600 dark:text-orange-400">{result.neededCapital.toLocaleString()} 원</span>
                                     </div>
-                                    <p className="text-[10px] text-gray-400 text-right mt-2">* 세후 실수령액 기준 및 현재 주가 기준 계산</p>
+                                    <p className="text-[10px] text-gray-500 dark:text-gray-400 text-right mt-2">* 세후 실수령액 기준 및 현재 주가 기준 계산</p>
                                 </div>
                             </div>
                         )}
