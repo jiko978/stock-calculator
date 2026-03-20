@@ -3,6 +3,7 @@
 import { useState } from "react";
 import NavBar from "@/app/calculator/components/NavBar";
 import { ANIMATION } from "@/app/config/animationConfig";
+import InstallBanner from "@/app/calculator/components/InstallBanner";
 
 interface ProfitRateProps {
     stockName?: string;
@@ -277,6 +278,7 @@ export default function ProfitRate({ stockName, initialCode }: ProfitRateProps) 
                         </div>
                     </div>
                 )}
+                <InstallBanner />
             </div>
         </div>
     );

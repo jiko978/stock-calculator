@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { ANIMATION } from "@/app/config/animationConfig";
+import InstallBanner from "@/app/calculator/components/InstallBanner";
 
 const MAX_ROWS = 10;
 
@@ -245,9 +246,7 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
                                 🏢 {stockName} {stockCode ? `(${stockCode})` : ""}
                             </span>
                         )}
-                        <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full font-semibold">💧 물타기</span>
-                        <span className="px-3 py-1 bg-red-100 text-red-600 rounded-full font-semibold">🔥 불타기</span>
-                        <span className="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full font-semibold">주식 평균단가 계산기</span>
+                        <span className="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full font-semibold">💧 주식 물타기 계산기</span>
                     </div>
                 </div>
 
@@ -551,6 +550,7 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
                         </div>
                     </div>
                 )}
+                <InstallBanner />
             </div>
         </div>
     );

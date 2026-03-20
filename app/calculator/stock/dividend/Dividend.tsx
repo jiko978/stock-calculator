@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ANIMATION } from "@/app/config/animationConfig";
+import InstallBanner from "@/app/calculator/components/InstallBanner";
 
 interface DividendProps {
     stockName?: string;
@@ -334,7 +335,7 @@ export default function Dividend({ stockName, initialCode }: DividendProps) {
                         )}
                     </div>
                 )}
-
+            <InstallBanner />
             </div>
     );
 }

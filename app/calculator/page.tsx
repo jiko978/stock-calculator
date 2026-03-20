@@ -3,12 +3,12 @@ import SiteQR from "./components/SiteQR";
 import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "../utils/seo";
 
 const mainCalculators = [
-    { title: "📈 주식 계산기", description: "주식 평균단가, 수익률, 배당금, 수수료 계산기", href: "/calculator/stock" },
+    { title: "📈 주식 계산기", description: "주식 물타기, 수익률, 배당금, 수수료 계산기", href: "/calculator/stock" },
     { title: "💵 금융 계산기", description: "예금 이자, 적금 이자, 대출 이자 계산기", href: "/calculator/finance" },
-    { title: "🏢 부동산 계산기", description: "LTV, DTI, DSR 중도상환수수료 계산기", href: "/calculator/realstate" },
-    { title: "🏠 생활 계산기", description: "나이/띠, 디데이/날짜수, 급여 계산기", href: "/calculator/life" },
-    { title: "💪 건강 계산기", description: "칼로리, 체지방률, 기초대사량, BMI, BMR 계산기", href: "/calculator/health" },
-    { title: "🧾 세금 계산기", description: "부가세, 양도세, 자동차세, 종소세 계산기", href: "/calculator/tax" }
+    { title: "🏢 부동산 계산기", description: "", href: "/calculator/realstate" },
+    { title: "🏠 생활 계산기", description: "", href: "/calculator/life" },
+    { title: "💪 건강 계산기", description: "비만도, 기초대사량, 칼로리, 배란일, 임신주수 계산기", href: "/calculator/health" },
+    { title: "🧾 세금 계산기", description: "", href: "/calculator/tax" }
 ];
 
 export default function Home() {
@@ -41,7 +41,7 @@ export default function Home() {
                             {calc.description}
                         </p>
                         <div className="flex items-center text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                            바로 지금 계산하기
+                            지금 바로 계산하기
                             <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                             </svg>

@@ -12,38 +12,38 @@ import FAQ from "@/app/calculator/components/FAQ";
 const BASE_URL = "https://jiko.kr";
 
 export const metadata: Metadata = {
-    title: "주식 평균단가 계산기 | 주식 물타기, 불타기, 평균단가 계산기 - JIKO 계산기",
+    title: "주식 물타기 계산기 | 주식 투자 평균단가 목표 달성 계산기 - JIKO 계산기",
     description:
-        "주식 물타기, 불타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다.",
-    keywords: ["주식 평균단가 계산기", "주식 물타기", "주식 불타기", "주식 평균단가"],
+        "주식 물타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다.",
+    keywords: ["주식 물타기 계산기", "주식 물타기", "주식 불타기", "주식 평균단가"],
     alternates: { canonical: `${BASE_URL}/calculator/stock/avg-price` },
     openGraph: {
-        title: "주식 평균단가 계산기 | 주식 물타기, 불타기, 평균단가 계산기 - JIKO 계산기",
+        title: "주식 물타기 계산기 | 주식 물타기, 불타기, 평균단가 계산기 - JIKO 계산기",
         description:
-            "주식 물타기, 불타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다.",
+            "주식 물타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다.",
         url: `${BASE_URL}/calculator/stock/avg-price`,
         images: [
             {
                 url: `${BASE_URL}/calculator/jiko-calculator-icon2.png`,
                 width: 1200,
                 height: 630,
-                alt: "주식 평균 단가 계산기",
+                alt: "주식 물타기 계산기",
             },
         ],
     },
     twitter: {
-        title: "주식 평균단가 계산기 | 주식 물타기, 불타기, 평균단가 계산기 - JIKO 계산기",
+        title: "주식 물타기 계산기 | 주식 투자 평균단가 목표 달성 계산기 - JIKO 계산기",
         description:
-            "주식 물타기, 불타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다.",
+            "주식 물타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다.",
     },
 };
 
 const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "주식 평균단가 계산기",
+    name: "주식 물타기 계산기",
     description:
-        "주식 물타기, 불타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다.",
+        "주식 물타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다.",
     url: `${BASE_URL}/calculator/stock/avg-price`,
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web",
@@ -57,7 +57,7 @@ const faqJsonLd = {
     mainEntity: [
         {
             "@type": "Question",
-            name: "주식 평균단가는 어떻게 계산하나요?",
+            name: "주식 물타기는 어떻게 계산하나요?",
             acceptedAnswer: {
                 "@type": "Answer",
                 text: "총 매수 금액을 총 주식 수로 나누면 평균 매입 단가를 계산할 수 있습니다."
@@ -65,10 +65,10 @@ const faqJsonLd = {
         },
         {
             "@type": "Question",
-            name: "물타기와 불타기는 무엇인가요?",
+            name: "주식 물타기와 불타기는 무엇인가요?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "물타기는 주가 하락 시 추가 매수로 평균 단가를 낮추는 전략이며 불타기는 상승 중 추가 매수를 의미합니다."
+                text: "물타기는 주가가 하락했을 때 추가 매수하여 평균 단가를 낮추는 방어적 전략입니다. 반대로 불타기는 주가가 상승 중에 추가 매수하여 비중을 늘리는 공격적 전략을 의미합니다."
             }
         }
     ]
@@ -76,11 +76,11 @@ const faqJsonLd = {
 
 const schema = {
     "@context": "https://schema.org",
-    "name": "주식 평균단가 계산기",
+    "name": "주식 물타기 계산기",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Web",
     "url": `${BASE_URL}/calculator/stock/avg-price`,
-    "description": "주식 물타기, 불타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다."
+    "description": "주식 물타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다."
 };
 
 export default function Page() {
@@ -93,7 +93,7 @@ export default function Page() {
 
     const faqList = [
         {
-            question: "주식 평균단가는 어떻게 계산하나요?",
+            question: "주식 물타기는 어떻게 계산하나요?",
             answer: "총 매수 금액을 총 주식 수로 나누면 정확한 평균 단가가 계산됩니다."
         },
         {
@@ -125,7 +125,7 @@ export default function Page() {
             />
 
             {/* 계산기 UI */}
-            <NavBar title="주식 평균단가 계산기" description="주식 물타기, 불타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다." position="top" />
+            <NavBar title="주식 물타기 계산기" description="주식 물타기 시 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산해드립니다." position="top" />
             <AvgPriceCalculator />
 
             {/* SEO 및 정보 영역 (계산기 하단에 자연스럽게 배치) */}
@@ -134,11 +134,11 @@ export default function Page() {
                 {/* H1 및 소개문 (검색엔진 최적화 및 사용자 안내) */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">📈</span> 주식 평균단가 계산기
+                        <span className="text-2xl">📈</span> 주식 물타기 계산기
                     </h1>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
                         주식을 여러 번 나누어 매수했을 때 평균 매입 단가를 계산할 수 있는 계산기입니다.
-                        물타기나 불타기를 할 때 현재 보유 주식의 전체 평균단가를 손쉽게 확인할 수 있습니다.
+                        물타기를 할 때 현재 보유 주식의 전체 평균단가를 손쉽게 확인할 수 있습니다.
                     </p>
                 </section>
 

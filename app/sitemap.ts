@@ -13,10 +13,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { url: "/", priority: 1.0, changeFrequency: "weekly" as const },
 
         // ── 주식 ──
+        { url: "/calculator/stock",  priority: 0.8, changeFrequency: "monthly" as const },
         { url: "/calculator/stock/avg-price",  priority: 0.8, changeFrequency: "monthly" as const },
         { url: "/calculator/stock/profit-rate", priority: 0.8, changeFrequency: "monthly" as const },
         { url: "/calculator/stock/dividend", priority: 0.8, changeFrequency: "monthly" as const },
         { url: "/calculator/stock/fee", priority: 0.8, changeFrequency: "monthly" as const },
+
+        // ── 금융 ──
+        { url: "/calculator/finance",  priority: 0.8, changeFrequency: "monthly" as const },
+        { url: "/calculator/finance/deposits",  priority: 0.8, changeFrequency: "monthly" as const },
+        { url: "/calculator/finance/savings", priority: 0.8, changeFrequency: "monthly" as const },
+        { url: "/calculator/finance/loans", priority: 0.8, changeFrequency: "monthly" as const },
 
         // ── policy ──
         { url: "/policy/about", priority: 0.5, changeFrequency: "monthly" as const },

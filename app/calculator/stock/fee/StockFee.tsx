@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ANIMATION } from "@/app/config/animationConfig";
+import InstallBanner from "@/app/calculator/components/InstallBanner";
 
 const MARKETS = [
     { label: "코스피", value: "KOSPI", tax: 0.0020 }, // 0.20% (거래세 0.05% + 농특세 0.15%)
@@ -341,7 +342,7 @@ export default function StockFee({ stockName, initialCode }: StockFeeProps) {
                         </div>
                     </div>
                 )}
-
+                <InstallBanner />
             </div>
         </div>
     );

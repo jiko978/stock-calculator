@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { ANIMATION } from "@/app/config/animationConfig";
+import InstallBanner from "@/app/calculator/components/InstallBanner";
 
 interface SavingsProps {
     productName?: string;
@@ -447,6 +448,7 @@ const Savings = ({ productName }: SavingsProps) => {
                         </div>
                     </div>
                 )}
+                <InstallBanner />
             </div>
         </div>
     );

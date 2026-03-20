@@ -31,7 +31,7 @@ const services: Service[] = [
         bgColor: "bg-blue-50 dark:bg-blue-900/20",
         borderColor: "border-blue-100 dark:border-blue-800",
         links: [
-            { label: "✔ 주식 평균단가 계산기", href: "/calculator/stock/avg-price" },
+            { label: "✔ 주식 물타기 계산기", href: "/calculator/stock/avg-price" },
             { label: "✔ 주식 수익률 계산기", href: "/calculator/stock/profit-rate" },
             { label: "✔ 주식 배당금 계산기", href: "/calculator/stock/dividend" },
             { label: "✔ 주식 수수료 계산기", href: "/calculator/stock/fee" }
@@ -72,7 +72,11 @@ const services: Service[] = [
         bgColor: "bg-rose-50 dark:bg-rose-900/20",
         borderColor: "border-rose-100 dark:border-rose-800",
         links: [
-            { label: "서비스 준비 중", href: "#", disabled: true }
+            { label: "✔ 비만도 계산기", href: "/calculator/health/bmi" },
+            { label: "✔ 기초대사량 계산기", href: "/calculator/health/bmr" },
+            { label: "✔ 칼로리 계산기", href: "/calculator/health/calorie" },
+            { label: "✔ 배란일 계산기", href: "/calculator/health/ovulation" },
+            { label: "✔ 임신주수 계산기", href: "/calculator/health/pregnancy" }
         ]
     },
     {
@@ -148,7 +152,7 @@ export default function Home() {
                                                         {link.label}
                                                     </h3>
                                                     <div className="flex items-center text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                                                        바로 지금 계산하기
+                                                        지금 바로 계산하기
                                                         <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                                         </svg>

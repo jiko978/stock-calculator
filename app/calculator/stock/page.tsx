@@ -4,15 +4,15 @@ import NavBar from "@/app/calculator/components/NavBar";
 import { generateBreadcrumbJsonLd, COMMON_BREADCRUMBS } from "../../utils/seo";
 
 export const metadata: Metadata = {
-    title: "주식 계산기 | 주식 평균단가, 수익률, 배당금, 수수료 계산기 - JIKO 계산기",
-    description: "주식 평균 단가, 수익률, 배당금, 수수료 계산까지 투자에 필요한 모든 계산기를 한곳에서 이용하세요.",
-    keywords: ["주식 계산기", "주식 평균단가 계산기", "주식 수익률 계산기", "주식 배당금 계산기", "주식 수수료 계산기"],
+    title: "주식 계산기 | 주식 물타기, 수익률, 배당금, 수수료 계산기 - JIKO 계산기",
+    description: "주식 물타기, 수익률, 배당금, 수수료 계산까지 투자에 필요한 모든 계산기를 한곳에서 이용하세요.",
+    keywords: ["주식 계산기", "주식 물타기 계산기", "주식 수익률 계산기", "주식 배당금 계산기", "주식 수수료 계산기"],
 };
 
 const stockCalculators = [
     {
-        title: "💧🔥 주식 평균단가 계산기",
-        description: "물타기, 불타기 시 주식 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산합니다.",
+        title: "💧 주식 물타기 계산기",
+        description: "물타기 시 주식 평균 매입 단가를 최대 10회에 걸쳐 간편하게 계산합니다.",
         href: "/calculator/stock/avg-price",
     },
     {
@@ -43,7 +43,7 @@ export default function StockHubPage() {
         <main className="bg-gray-50 dark:bg-gray-900 min-h-screen">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
-            <NavBar title="주식 계산기" description="주식 평균단가, 수익률, 배당금, 수수료 계산기 - JIKO 계산기" />
+            <NavBar title="주식 계산기" description="주식 물타기, 수익률, 배당금, 수수료 계산기 - JIKO 계산기" />
 
             <div className="flex-grow px-4 py-6">
                 <h1 className="text-4xl font-bold mb-2 text-center text-gray-800 dark:text-gray-100">📈 주식 계산기</h1>
@@ -64,7 +64,7 @@ export default function StockHubPage() {
                                     {calc.description}
                                 </p>
                                 <div className="flex items-center text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                                    바로 지금 계산하기
+                                    지금 바로 계산하기
                                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                     </svg>

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { ANIMATION } from "@/app/config/animationConfig";
+import InstallBanner from "@/app/calculator/components/InstallBanner";
 
 interface DepositsProps {
     productName?: string;
@@ -473,6 +474,7 @@ const Deposits = ({ productName }: DepositsProps) => {
                         </div>
                     </div>
                 )}
+                <InstallBanner />
             </div>
         </div>
     );

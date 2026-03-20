@@ -42,12 +42,12 @@ export async function generateMetadata(
     const displayCode = code ? `(${code})` : "";
 
     return {
-        title: `${name} 주식 평균단가 계산기 | ${code || ""} 주식 투자 수익 계산기 - JIKO 계산기`,
-        description: `${name} 평균단가 시뮬레이션. ${code || ""} 종목의 여러 매수 시점에 따른 최종 평단가와 수익률을 계산해보세요. 물타기/불타기 필수 도구.`,
-        keywords: [name, code, "평균단가", "물타기", "주식 계산기", `${name} 평단가`, `${code} 계산기`].filter(Boolean) as string[],
+        title: `${name} 주식 물타기 계산기 | ${code || ""} 주식 투자 수익 계산기 - JIKO 계산기`,
+        description: `${name} 물타기 시뮬레이션. ${code || ""} 종목의 여러 매수 시점에 따른 최종 평단가와 수익률을 계산해보세요. 물타기 필수 도구.`,
+        keywords: [name, code, "평균단가", "물타기", "주식 물타기 계산기", `${name} 물타기`, `${code} 물타기 계산기`].filter(Boolean) as string[],
         alternates: { canonical: `${BASE_URL}/calculator/stock/avg-price/${slug}` },
         openGraph: {
-            title: `${name}${displayCode} 주식 평균단가 계산기`,
+            title: `${name}${displayCode} 주식 물타기 계산기`,
             description: `${name} 보유 주식 평균 단가 및 수익률 시뮬레이션`,
             url: `${BASE_URL}/calculator/stock/avg-price/${slug}`,
             images: [`${BASE_URL}/calculator/jiko-calculator-icon2.png`],
@@ -98,7 +98,7 @@ export default async function Page({ params }: Props) {
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(stockSchema) }}
                 />
             )}
-             <NavBar title={`${name} 주식 평균단가 계산기`} description={`${name} 종목의 평균 단가 현황을 확인하세요.`} position="top" />
+             <NavBar title={`${name} 주식 물타기 계산기`} description={`${name} 종목의 평균 단가 현황을 확인하세요.`} position="top" />
              <AvgPrice stockName={name} initialCode={code} />
 
              <main className="max-w-3xl mx-auto px-4 pb-16 space-y-6">
