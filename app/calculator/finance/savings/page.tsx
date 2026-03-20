@@ -35,8 +35,8 @@ export default function SavingsPage() {
     const breadcrumbLd = generateBreadcrumbJsonLd([
         COMMON_BREADCRUMBS.HOME,
         COMMON_BREADCRUMBS.CALC_HOME,
-        { name: "금융 계산기", item: "https://jiko.kr/calculator/finance" },
-        { name: "적금 계산기", item: "https://jiko.kr/calculator/finance/savings" }
+        COMMON_BREADCRUMBS.FINANCE_HOME,
+        COMMON_BREADCRUMBS.SAVINGS
     ]);
 
     const softwareLd = {

@@ -18,18 +18,45 @@ export default function ProfitRate({ stockName, initialCode }: ProfitRateProps) 
     const [copied, setCopied] = useState(false);
     const [shaking, setShaking] = useState(false);
 
+    const [errors, setErrors] = useState<Set<string>>(new Set());
+    const [errorMessage, setErrorMessage] = useState("");
+
     const formatComma = (raw: string) =>
         raw.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    const handleChange = (setter: (v: string) => void) =>
+    const handleChange = (setter: (v: string) => void, key?: string) =>
         (e: React.ChangeEvent<HTMLInputElement>) => {
             setResult(null);
             const raw = e.target.value.replace(/[^0-9]/g, "");
             const noLeadingZero = raw.replace(/^0+/, "");
             setter(noLeadingZero === "" ? "" : formatComma(noLeadingZero));
+            setErrorMessage("");
+
+            if (key && noLeadingZero) {
+                setErrors(prev => {
+                    const next = new Set(prev);
+                    next.delete(key);
+                    return next;
+                });
+            }
         };
 
     const handleCalculate = () => {
+        const newErrors = new Set<string>();
+        if (!buyPrice) newErrors.add("buyPrice");
+        if (!currentPrice) newErrors.add("currentPrice");
+        if (!quantity) newErrors.add("quantity");
+
+        setErrors(newErrors);
+
+        if (newErrors.size > 0) {
+            setErrorMessage("필수 항목을 모두 입력해주세요.");
+            setShaking(true);
+            setTimeout(() => setShaking(false), 400);
+            return;
+        }
+
+        setErrorMessage("");
         const buy = Number(buyPrice.replace(/[^0-9]/g, ""));
         const current = Number(currentPrice.replace(/[^0-9]/g, ""));
         const qty = Number(quantity.replace(/[^0-9]/g, ""));
@@ -43,6 +70,7 @@ export default function ProfitRate({ stockName, initialCode }: ProfitRateProps) 
     const handleReset = () => {
         setBuyPrice(""); setCurrentPrice(""); setQuantity("");
         setResult(null); setCopied(false);
+        setErrors(new Set()); setErrorMessage("");
         setShaking(true);
         setTimeout(() => setShaking(false), 400);
     };
@@ -97,20 +125,24 @@ export default function ProfitRate({ stockName, initialCode }: ProfitRateProps) 
                 <div className="bg-white dark:bg-gray-800 shadow-md rounded-2xl p-8">
                     <div className="space-y-6">
                         {[
-                            { label: "매수가", unit: "원", value: buyPrice, setter: setBuyPrice },
-                            { label: "현재가", unit: "원", value: currentPrice, setter: setCurrentPrice },
-                            { label: "수량", unit: "개", value: quantity, setter: setQuantity },
-                        ].map(({ label, unit, value, setter }) => (
-                            <div key={label} className="flex items-center gap-4">
-                                <label className="w-20 font-semibold text-gray-800 dark:text-gray-100 shrink-0">{label}</label>
-                                <div className="flex items-center flex-1">
-                                    <input
-                                        type="text" inputMode="numeric" placeholder="0"
-                                        value={value}
-                                        onChange={handleChange(setter)}
-                                        className="w-full border rounded-lg px-4 py-2 text-right focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 text-base"
-                                    />
-                                    <span className="ml-2 w-8 text-gray-800 dark:text-gray-100 shrink-0">{unit}</span>
+                            { label: "매수가", unit: "원", value: buyPrice, setter: setBuyPrice, key: "buyPrice" },
+                            { label: "현재가", unit: "원", value: currentPrice, setter: setCurrentPrice, key: "currentPrice" },
+                            { label: "수량", unit: "개", value: quantity, setter: setQuantity, key: "quantity" },
+                        ].map(({ label, unit, value, setter, key }) => (
+                            <div key={label} className="flex flex-col gap-1">
+                                <div className="flex items-center gap-4">
+                                    <label className={`w-20 font-semibold shrink-0 ${errors.has(key) ? "text-red-500" : "text-gray-800 dark:text-gray-100"}`}>{label}</label>
+                                    <div className="flex items-center flex-1">
+                                        <input
+                                            type="text" inputMode="numeric" placeholder="0"
+                                            value={value}
+                                            onChange={handleChange(setter, key)}
+                                            className={`w-full border rounded-lg px-4 py-2 text-right focus:outline-none focus:ring-2 bg-white dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 text-base transition-all ${
+                                                errors.has(key) ? "border-red-500 ring-2 ring-red-200 dark:ring-red-900/30" : "border-gray-200 dark:border-gray-600 focus:ring-blue-400"
+                                            }`}
+                                        />
+                                        <span className={`ml-2 w-8 shrink-0 ${errors.has(key) ? "text-red-500 font-bold" : "text-gray-800 dark:text-gray-100"}`}>{unit}</span>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -118,15 +150,25 @@ export default function ProfitRate({ stockName, initialCode }: ProfitRateProps) 
                 </div>
 
                 {/* 버튼 */}
-                <div className="mt-6 flex justify-center gap-3">
-                    <button onClick={handleReset}
-                        className={`px-6 py-3 min-h-[44px] border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 active:bg-gray-200 transition-colors duration-150 text-base ${ANIMATION.resetShake && shaking ? "animate-shake" : ""}`}>
-                        초기화
-                    </button>
-                    <button onClick={handleCalculate}
-                        className="px-8 py-3 min-h-[44px] bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-colors duration-150 text-base">
-                        계산하기
-                    </button>
+                <div className="mt-6 flex flex-col items-center gap-3">
+                    <div className="flex justify-center gap-3 w-full">
+                        <button onClick={handleReset}
+                            className={`flex-1 px-6 py-3 min-h-[44px] border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 active:bg-gray-200 transition-colors duration-150 text-base ${ANIMATION.resetShake && shaking ? "animate-shake" : ""}`}>
+                            초기화
+                        </button>
+                        <button onClick={handleCalculate}
+                            className="flex-[2] px-8 py-3 min-h-[44px] bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-colors duration-150 text-base">
+                            계산하기
+                        </button>
+                    </div>
+                    {errorMessage && (
+                        <p className="text-center text-red-500 text-sm font-bold flex items-center justify-center gap-1 animate-pulse">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                            {errorMessage}
+                        </p>
+                    )}
                 </div>
 
                 {/* 결과 영역 — 모바일: 상하 / PC: 좌우 */}

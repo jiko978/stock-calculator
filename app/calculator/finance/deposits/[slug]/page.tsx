@@ -49,9 +49,9 @@ export default async function DepositSlugPage({ params }: Props) {
     const breadcrumbLd = generateBreadcrumbJsonLd([
         COMMON_BREADCRUMBS.HOME,
         COMMON_BREADCRUMBS.CALC_HOME,
-        { name: "금융 계산기", item: "https://jiko.kr/calculator/finance" },
-        { name: "예금 계산기", item: "https://jiko.kr/calculator/finance/deposits" },
-        { name: product.name, item: `https://jiko.kr/calculator/finance/deposits/${product.slug}` }
+        COMMON_BREADCRUMBS.FINANCE_HOME,
+        COMMON_BREADCRUMBS.DEPOSITS,
+        { name: product.name, item: `/calculator/finance/deposits/${product.slug}` }
     ]);
 
     return (

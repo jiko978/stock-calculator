@@ -34,7 +34,7 @@ export default function Footer() {
                 </div>
 
                 {/* Line 3: Copyright */}
-                <p className="text-[10px] text-gray-400 dark:text-gray-600 uppercase tracking-wider font-semibold">
+                <p className="text-[10px] text-gray-400 dark:text-gray-600 tracking-wider font-semibold">
                     © 2026 JIKO Platform. All rights reserved.
                 </p>
             </div>

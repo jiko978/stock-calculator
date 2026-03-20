@@ -129,7 +129,7 @@ export default function Page() {
             <AvgPriceCalculator />
 
             {/* SEO 및 정보 영역 (계산기 하단에 자연스럽게 배치) */}
-            <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
+            <main className="max-w-3xl mx-auto px-4 pb-16 space-y-6">
 
                 {/* H1 및 소개문 (검색엔진 최적화 및 사용자 안내) */}
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">

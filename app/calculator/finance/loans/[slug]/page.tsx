@@ -48,9 +48,9 @@ export default async function LoanSlugPage({ params }: Props) {
     const breadcrumbLd = generateBreadcrumbJsonLd([
         COMMON_BREADCRUMBS.HOME,
         COMMON_BREADCRUMBS.CALC_HOME,
-        { name: "금융 계산기", item: "https://jiko.kr/calculator/finance" },
-        { name: "대출 계산기", item: "https://jiko.kr/calculator/finance/loans" },
-        { name: product.name, item: `https://jiko.kr/calculator/finance/loans/${product.slug}` }
+        COMMON_BREADCRUMBS.FINANCE_HOME,
+        COMMON_BREADCRUMBS.LOANS,
+        { name: product.name, item: `/calculator/finance/loans/${product.slug}` }
     ]);
 
     return (

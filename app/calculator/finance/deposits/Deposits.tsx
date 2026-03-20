@@ -18,6 +18,8 @@ const Deposits = ({ productName }: DepositsProps) => {
     const [calculated, setCalculated] = useState(false);
     const [shaking, setShaking] = useState(false);
     const [copied, setCopied] = useState(false);
+    const [errors, setErrors] = useState<Set<string>>(new Set());
+    const [errorMessage, setErrorMessage] = useState("");
 
     const n = (v: string) => Number(v.replace(/[^0-9.]/g, ""));
     const formatComma = (raw: string) => raw.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -27,6 +29,14 @@ const Deposits = ({ productName }: DepositsProps) => {
         if (raw.length > 13) return;
         setAmount(raw === "" ? "" : formatComma(raw));
         setCalculated(false);
+        if (raw) {
+            setErrorMessage("");
+            setErrors(prev => {
+                const next = new Set(prev);
+                next.delete("amount");
+                return next;
+            });
+        }
     };
 
     const addAmount = (val: number) => {
@@ -35,6 +45,12 @@ const Deposits = ({ productName }: DepositsProps) => {
         if (next.toString().length > 13) return;
         setAmount(formatComma(next.toString()));
         setCalculated(false);
+        setErrors(prev => {
+            const nextSet = new Set(prev);
+            nextSet.delete("amount");
+            setErrorMessage("");
+            return nextSet;
+        });
     };
 
     const addTerm = (val: number) => {
@@ -43,6 +59,12 @@ const Deposits = ({ productName }: DepositsProps) => {
         if (next > 999) return;
         setTerm(next.toString());
         setCalculated(false);
+        setErrors(prev => {
+            const nextSet = new Set(prev);
+            nextSet.delete("term");
+            setErrorMessage("");
+            return nextSet;
+        });
     };
 
     const handleTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,6 +72,14 @@ const Deposits = ({ productName }: DepositsProps) => {
         if (raw.length > 3) return;
         setTerm(raw);
         setCalculated(false);
+        if (raw) {
+            setErrorMessage("");
+            setErrors(prev => {
+                const next = new Set(prev);
+                next.delete("term");
+                return next;
+            });
+        }
     };
 
     const handleRateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,6 +90,14 @@ const Deposits = ({ productName }: DepositsProps) => {
         if (n(raw) > 100) raw = "100";
         setRate(raw);
         setCalculated(false);
+        if (raw) {
+            setErrorMessage("");
+            setErrors(prev => {
+                const next = new Set(prev);
+                next.delete("rate");
+                return next;
+            });
+        }
     };
 
     const handleReset = () => {
@@ -70,8 +108,30 @@ const Deposits = ({ productName }: DepositsProps) => {
         setInterestType("simple");
         setTaxType("normal");
         setCalculated(false);
+        setErrors(new Set());
+        setErrorMessage("");
         setShaking(true);
         setTimeout(() => setShaking(false), 400);
+    };
+
+    const handleCalculate = () => {
+        const newErrors = new Set<string>();
+        if (!amount) newErrors.add("amount");
+        if (!term) newErrors.add("term");
+        if (!rate) newErrors.add("rate");
+
+        setErrors(newErrors);
+
+        if (newErrors.size > 0) {
+            setErrorMessage("필수 항목을 모두 입력해주세요.");
+            setCalculated(false);
+            setShaking(true);
+            setTimeout(() => setShaking(false), 400);
+            return;
+        }
+
+        setErrorMessage("");
+        setCalculated(true);
     };
 
     // 계산 로직
@@ -133,7 +193,7 @@ const Deposits = ({ productName }: DepositsProps) => {
 
                     {/* 예치금액 */}
                     <div className="space-y-3">
-                        <label className="block text-sm font-bold text-gray-700 dark:text-gray-200">예치금액</label>
+                        <label className={`block text-sm font-bold transition-colors ${errors.has("amount") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>예치금액</label>
                         <div className="relative">
                             <input
                                 type="text"
@@ -141,9 +201,11 @@ const Deposits = ({ productName }: DepositsProps) => {
                                 value={amount}
                                 onChange={handleAmountChange}
                                 placeholder="0"
-                                className="w-full h-16 px-5 pr-12 text-2xl font-bold bg-gray-50 dark:bg-gray-900/50 border-2 border-transparent focus:border-blue-500 rounded-2xl transition-all outline-none text-right dark:text-white"
+                                className={`w-full h-16 px-5 pr-12 text-2xl font-bold bg-gray-50 dark:bg-gray-900/50 border-2 rounded-2xl transition-all outline-none text-right dark:text-white ${
+                                    errors.has("amount") ? "border-red-500 focus:border-red-500 ring-4 ring-red-500/10" : "border-transparent focus:border-blue-500"
+                                }`}
                             />
-                            <span className="absolute right-5 top-1/2 -translate-y-1/2 font-bold text-gray-400">원</span>
+                            <span className={`absolute right-5 top-1/2 -translate-y-1/2 font-bold ${errors.has("amount") ? "text-red-500" : "text-gray-400"}`}>원</span>
                         </div>
                         <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                             {[5, 10, 50, 100, 1000, 10000].map(v => (
@@ -161,7 +223,7 @@ const Deposits = ({ productName }: DepositsProps) => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {/* 예금기간 */}
                         <div className="space-y-3">
-                            <label className="block text-sm font-bold text-gray-700 dark:text-gray-200">예금기간</label>
+                            <label className={`block text-sm font-bold transition-colors ${errors.has("term") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>예금기간</label>
                             <div className="flex gap-2">
                                 <div className="relative flex-1">
                                     <input
@@ -170,9 +232,11 @@ const Deposits = ({ productName }: DepositsProps) => {
                                         value={term}
                                         onChange={handleTermChange}
                                         placeholder="0"
-                                        className="w-full h-14 px-4 pr-12 text-xl font-bold bg-gray-50 dark:bg-gray-900/50 border-2 border-transparent focus:border-blue-500 rounded-2xl transition-all outline-none text-right dark:text-white"
+                                        className={`w-full h-14 px-4 pr-12 text-xl font-bold bg-gray-50 dark:bg-gray-900/50 border-2 rounded-2xl transition-all outline-none text-right dark:text-white ${
+                                            errors.has("term") ? "border-red-500 focus:border-red-500 ring-4 ring-red-500/10" : "border-transparent focus:border-blue-500"
+                                        }`}
                                     />
-                                    <span className="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-gray-400">
+                                    <span className={`absolute right-4 top-1/2 -translate-y-1/2 font-bold ${errors.has("term") ? "text-red-500" : "text-gray-400"}`}>
                                         {termUnit === "month" ? "개월" : "년"}
                                     </span>
                                 </div>
@@ -206,7 +270,7 @@ const Deposits = ({ productName }: DepositsProps) => {
 
                         {/* 연이자율 */}
                         <div className="space-y-3">
-                            <label className="block text-sm font-bold text-gray-700 dark:text-gray-200">연이자율</label>
+                            <label className={`block text-sm font-bold transition-colors ${errors.has("rate") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>연이자율</label>
                             <div className="relative">
                                 <input
                                     type="text"
@@ -214,9 +278,11 @@ const Deposits = ({ productName }: DepositsProps) => {
                                     value={rate}
                                     onChange={handleRateChange}
                                     placeholder="0.0"
-                                    className="w-full h-14 px-4 pr-12 text-xl font-bold bg-gray-50 dark:bg-gray-900/50 border-2 border-transparent focus:border-blue-500 rounded-2xl transition-all outline-none text-right dark:text-white"
+                                    className={`w-full h-14 px-4 pr-12 text-xl font-bold bg-gray-50 dark:bg-gray-900/50 border-2 rounded-2xl transition-all outline-none text-right dark:text-white ${
+                                        errors.has("rate") ? "border-red-500 focus:border-red-500 ring-4 ring-red-500/10" : "border-transparent focus:border-blue-500"
+                                    }`}
                                 />
-                                <span className="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-gray-400">%</span>
+                                <span className={`absolute right-4 top-1/2 -translate-y-1/2 font-bold ${errors.has("rate") ? "text-red-500" : "text-gray-400"}`}>%</span>
                             </div>
                             <div className="flex bg-gray-100 dark:bg-gray-700 p-1 rounded-2xl">
                                 <button
@@ -256,25 +322,29 @@ const Deposits = ({ productName }: DepositsProps) => {
                     </div>
 
                     {/* 제어 버튼 */}
-                    <div className="flex gap-3 pt-4">
-                        <button
-                            onClick={handleReset}
-                            className={`flex-1 h-14 border-2 border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 font-bold rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all active:scale-95 ${shaking ? "animate-shake" : ""}`}
-                        >
-                            초기화
-                        </button>
-                        <button
-                            onClick={() => {
-                                if (!amount || !term || !rate) {
-                                    alert("모든 항목을 입력해주세요.");
-                                    return;
-                                }
-                                setCalculated(true);
-                            }}
-                            className="flex-[2] h-14 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-blue-500/20 transition-all active:scale-[0.98]"
-                        >
-                            계산하기
-                        </button>
+                    <div className="space-y-3 pt-4">
+                        <div className="flex gap-3">
+                            <button
+                                onClick={handleReset}
+                                className={`flex-1 h-14 border-2 border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 font-bold rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all active:scale-95 ${shaking ? "animate-shake" : ""}`}
+                            >
+                                초기화
+                            </button>
+                            <button
+                                onClick={handleCalculate}
+                                className="flex-[2] h-14 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-blue-500/20 transition-all active:scale-[0.98]"
+                            >
+                                계산하기
+                            </button>
+                        </div>
+                        {errorMessage && (
+                            <p className="text-center text-red-500 text-sm font-bold flex items-center justify-center gap-1 animate-pulse">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                                {errorMessage}
+                            </p>
+                        )}
                     </div>
                 </div>
 
@@ -329,34 +399,72 @@ const Deposits = ({ productName }: DepositsProps) => {
                         </div>
 
                         {/* 비중 차트 카드 */}
-                        <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50">
-                            <h3 className="text-sm font-bold text-gray-400 dark:text-gray-500 mb-6 flex items-center gap-2">
+                        <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50">
+                            <h3 className="text-sm font-bold text-gray-400 dark:text-gray-500 mb-8 flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                                원금 대비 이자 비중
+                                만기 수령액 상세 구성
                             </h3>
 
-                            <div className="space-y-6">
-                                <div className="relative h-10 w-full bg-gray-100 dark:bg-gray-700 rounded-2xl overflow-hidden flex">
-                                    <div
-                                        className="h-full bg-blue-500 transition-all duration-1000 ease-out flex items-center px-4"
-                                        style={{ width: `${(principal / totalMaturity) * 100}%` }}
-                                    >
-                                        <span className="text-[10px] font-black text-white whitespace-nowrap">원금 {((principal / totalMaturity) * 100).toFixed(1)}%</span>
-                                    </div>
-                                    <div
-                                        className="h-full bg-indigo-400 dark:bg-indigo-500 transition-all duration-1000 ease-out flex items-center px-4"
-                                        style={{ width: `${(postTaxInterest / totalMaturity) * 100}%` }}
-                                    >
-                                        <span className="text-[10px] font-black text-white whitespace-nowrap">이자 {((postTaxInterest / totalMaturity) * 100).toFixed(1)}%</span>
+                            <div className="flex flex-col md:flex-row items-center justify-around gap-12">
+                                {/* 도넛 차트 */}
+                                <div className="relative w-48 h-48">
+                                    <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                                        <circle
+                                            cx="18" cy="18" r="15.915"
+                                            fill="transparent"
+                                            stroke="currentColor"
+                                            strokeWidth="3.5"
+                                            className="text-gray-100 dark:text-gray-700"
+                                        />
+                                        <circle
+                                            cx="18" cy="18" r="15.915"
+                                            fill="transparent"
+                                            stroke="currentColor"
+                                            strokeWidth="3.5"
+                                            strokeDasharray={`${(principal / totalMaturity) * 100} ${100 - (principal / totalMaturity) * 100}`}
+                                            className="text-blue-500 transition-all duration-1000 ease-out"
+                                        />
+                                        <circle
+                                            cx="18" cy="18" r="15.915"
+                                            fill="transparent"
+                                            stroke="currentColor"
+                                            strokeWidth="3.5"
+                                            strokeDasharray={`${(postTaxInterest / totalMaturity) * 100} ${100 - (postTaxInterest / totalMaturity) * 100}`}
+                                            strokeDashoffset={`-${(principal / totalMaturity) * 100}`}
+                                            className="text-indigo-400 dark:text-indigo-500 transition-all duration-1000 ease-out"
+                                        />
+                                    </svg>
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                                        <p className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-tighter">이자 비중</p>
+                                        <p className="text-2xl font-black text-indigo-500 leading-none">{((postTaxInterest / totalMaturity) * 100).toFixed(1)}%</p>
                                     </div>
                                 </div>
 
-                                <div className="bg-gray-50 dark:bg-gray-900/40 p-5 rounded-2xl flex items-center gap-4">
-                                    <div className="text-3xl">💡</div>
-                                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
-                                        이 예금으로 만기에 <span className="text-blue-600 dark:text-blue-400 font-bold">{postTaxInterest.toLocaleString()}원</span>의 추가 수익이 발생합니다.
-                                        이는 실효 수익률 기준 <span className="text-indigo-600 dark:text-indigo-400 font-bold">{((postTaxInterest / principal) * 100).toFixed(2)}%</span>에 해당합니다.
-                                    </p>
+                                {/* 범례 */}
+                                <div className="space-y-5 w-full max-w-[200px]">
+                                    <div className="flex items-center justify-between group">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-3 h-3 rounded-full bg-blue-500 shadow-sm shadow-blue-500/30"></div>
+                                            <span className="text-sm font-bold text-gray-600 dark:text-gray-300">총 원금</span>
+                                        </div>
+                                        <span className="text-sm font-black text-gray-900 dark:text-white uppercase tracking-tighter">{((principal / totalMaturity) * 100).toFixed(1)}%</span>
+                                    </div>
+                                    <div className="flex items-center justify-between group">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-3 h-3 rounded-full bg-indigo-400 dark:bg-indigo-500 shadow-sm shadow-indigo-500/30"></div>
+                                            <span className="text-sm font-bold text-gray-600 dark:text-gray-300">세후 이자</span>
+                                        </div>
+                                        <span className="text-sm font-black text-gray-900 dark:text-white uppercase tracking-tighter">{((postTaxInterest / totalMaturity) * 100).toFixed(1)}%</span>
+                                    </div>
+                                    <div className="pt-4 border-t border-gray-50 dark:border-gray-700/50">
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <span className="text-xl">💡</span>
+                                            <span className="text-xs font-bold text-gray-800 dark:text-gray-200">투자 분석</span>
+                                        </div>
+                                        <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                                            만기 시 원금 대비 <span className="text-indigo-500 font-bold">{((postTaxInterest / principal) * 100).toFixed(2)}%</span>의 이자 수익이 발생합니다.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

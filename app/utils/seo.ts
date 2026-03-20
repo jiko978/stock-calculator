@@ -29,4 +29,11 @@ export const COMMON_BREADCRUMBS = {
     PROFIT_RATE: { name: "주식 수익률 계산기", item: "/calculator/stock/profit-rate" },
     DIVIDEND: { name: "주식 배당금 계산기", item: "/calculator/stock/dividend" },
     FEE: { name: "주식 수수료 계산기", item: "/calculator/stock/fee" },
+
+    FINANCE_HOME: { name: "금융 계산기", item: "/calculator/finance" },
+    DEPOSITS: { name: "예금 이자 계산기", item: "/calculator/finance/deposits" },
+    SAVINGS: { name: "적금 이자 계산기", item: "/calculator/finance/savings" },
+    LOANS: { name: "대출 이자 계산기", item: "/calculator/finance/loans" },
+
+
 };

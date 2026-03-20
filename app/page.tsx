@@ -142,7 +142,20 @@ export default function Home() {
                                                 href={link.href}
                                                 className="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline flex items-center transition"
                                             >
-                                                {link.label}
+
+                                                <div className="h-full flex flex-col">
+                                                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                                        {link.label}
+                                                    </h3>
+                                                    <div className="flex items-center text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                                                        바로 지금 계산하기
+                                                        <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+
+
                                             </Link>
                                         )
                                     ))}

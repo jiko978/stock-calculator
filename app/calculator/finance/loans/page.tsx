@@ -35,8 +35,8 @@ export default function LoansPage() {
     const breadcrumbLd = generateBreadcrumbJsonLd([
         COMMON_BREADCRUMBS.HOME,
         COMMON_BREADCRUMBS.CALC_HOME,
-        { name: "금융 계산기", item: "https://jiko.kr/calculator/finance" },
-        { name: "대출 계산기", item: "https://jiko.kr/calculator/finance/loans" }
+        COMMON_BREADCRUMBS.FINANCE_HOME,
+        COMMON_BREADCRUMBS.LOANS
     ]);
 
     const softwareLd = {

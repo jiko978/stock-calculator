@@ -18,6 +18,8 @@ const Savings = ({ productName }: SavingsProps) => {
     const [calculated, setCalculated] = useState(false);
     const [shaking, setShaking] = useState(false);
     const [copied, setCopied] = useState(false);
+    const [errors, setErrors] = useState<Set<string>>(new Set());
+    const [errorMessage, setErrorMessage] = useState("");
 
     const n = (v: string) => Number(v.replace(/[^0-9.]/g, ""));
     const formatComma = (raw: string) => raw.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -27,6 +29,14 @@ const Savings = ({ productName }: SavingsProps) => {
         if (raw.length > 13) return;
         setMonthlyAmount(raw === "" ? "" : formatComma(raw));
         setCalculated(false);
+        if (raw) {
+            setErrorMessage("");
+            setErrors(prev => {
+                const next = new Set(prev);
+                next.delete("monthlyAmount");
+                return next;
+            });
+        }
     };
 
     const addAmount = (val: number) => {
@@ -35,6 +45,11 @@ const Savings = ({ productName }: SavingsProps) => {
         if (next.toString().length > 13) return;
         setMonthlyAmount(formatComma(next.toString()));
         setCalculated(false);
+        setErrors(prev => {
+            const nextSet = new Set(prev);
+            nextSet.delete("monthlyAmount");
+            return nextSet;
+        });
     };
 
     const addTerm = (val: number) => {
@@ -43,6 +58,11 @@ const Savings = ({ productName }: SavingsProps) => {
         if (next > 999) return;
         setTerm(next.toString());
         setCalculated(false);
+        setErrors(prev => {
+            const nextSet = new Set(prev);
+            nextSet.delete("term");
+            return nextSet;
+        });
     };
 
     const handleReset = () => {
@@ -53,8 +73,30 @@ const Savings = ({ productName }: SavingsProps) => {
         setInterestType("simple");
         setTaxType("normal");
         setCalculated(false);
+        setErrors(new Set());
+        setErrorMessage("");
         setShaking(true);
         setTimeout(() => setShaking(false), 400);
+    };
+
+    const handleCalculate = () => {
+        const newErrors = new Set<string>();
+        if (!monthlyAmount) newErrors.add("monthlyAmount");
+        if (!term) newErrors.add("term");
+        if (!rate) newErrors.add("rate");
+
+        setErrors(newErrors);
+
+        if (newErrors.size > 0) {
+            setErrorMessage("필수 항목을 모두 입력해주세요.");
+            setCalculated(false);
+            setShaking(true);
+            setTimeout(() => setShaking(false), 400);
+            return;
+        }
+
+        setErrorMessage("");
+        setCalculated(true);
     };
 
     // 적금 계산 로직
@@ -122,7 +164,7 @@ const Savings = ({ productName }: SavingsProps) => {
 
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50 space-y-6">
                     <div className="space-y-3">
-                        <label className="block text-sm font-bold text-gray-700 dark:text-gray-200">매월 납입액</label>
+                        <label className={`block text-sm font-bold transition-colors ${errors.has("monthlyAmount") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>매월 납입액</label>
                         <div className="relative">
                             <input
                                 type="text"
@@ -130,9 +172,11 @@ const Savings = ({ productName }: SavingsProps) => {
                                 value={monthlyAmount}
                                 onChange={handleAmountChange}
                                 placeholder="0"
-                                className="w-full h-16 px-5 pr-12 text-2xl font-bold bg-gray-50 dark:bg-gray-900/50 border-2 border-transparent focus:border-green-500 rounded-2xl transition-all outline-none text-right dark:text-white"
+                                className={`w-full h-16 px-5 pr-12 text-2xl font-bold bg-gray-50 dark:bg-gray-900/50 border-2 rounded-2xl transition-all outline-none text-right dark:text-white ${
+                                    errors.has("monthlyAmount") ? "border-red-500 focus:border-red-500 ring-4 ring-red-500/10" : "border-transparent focus:border-green-500"
+                                }`}
                             />
-                            <span className="absolute right-5 top-1/2 -translate-y-1/2 font-bold text-gray-400">원</span>
+                            <span className={`absolute right-5 top-1/2 -translate-y-1/2 font-bold ${errors.has("monthlyAmount") ? "text-red-500" : "text-gray-400"}`}>원</span>
                         </div>
                         <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                             {[5, 10, 50, 100, 1000, 10000].map(v => (
@@ -149,18 +193,28 @@ const Savings = ({ productName }: SavingsProps) => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-3">
-                            <label className="block text-sm font-bold text-gray-700 dark:text-gray-200">적립기간</label>
+                            <label className={`block text-sm font-bold transition-colors ${errors.has("term") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>적립기간</label>
                             <div className="flex gap-2">
                                 <div className="relative flex-1">
                                     <input
                                         type="text"
                                         inputMode="numeric"
                                         value={term}
-                                        onChange={(e) => { setTerm(e.target.value.replace(/[^0-9]/g, "")); setCalculated(false); }}
+                                        onChange={(e) => {
+                                            const val = e.target.value.replace(/[^0-9]/g, "");
+                                            setTerm(val);
+                                            setCalculated(false);
+                                            if (val) {
+                                                setErrorMessage("");
+                                                setErrors(prev => { const next = new Set(prev); next.delete("term"); return next; });
+                                            }
+                                        }}
                                         placeholder="0"
-                                        className="w-full h-14 px-4 pr-12 text-xl font-bold bg-gray-50 dark:bg-gray-900/50 border-2 border-transparent focus:border-green-500 rounded-2xl transition-all outline-none text-right dark:text-white"
+                                        className={`w-full h-14 px-4 pr-12 text-xl font-bold bg-gray-50 dark:bg-gray-900/50 border-2 rounded-2xl transition-all outline-none text-right dark:text-white ${
+                                            errors.has("term") ? "border-red-500 focus:border-red-500 ring-4 ring-red-500/10" : "border-transparent focus:border-green-500"
+                                        }`}
                                     />
-                                    <span className="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-gray-400">
+                                    <span className={`absolute right-4 top-1/2 -translate-y-1/2 font-bold ${errors.has("term") ? "text-red-500" : "text-gray-400"}`}>
                                         {termUnit === "month" ? "개월" : "년"}
                                     </span>
                                 </div>
@@ -190,17 +244,27 @@ const Savings = ({ productName }: SavingsProps) => {
                         </div>
 
                         <div className="space-y-3">
-                            <label className="block text-sm font-bold text-gray-700 dark:text-gray-200">연이자율</label>
+                            <label className={`block text-sm font-bold transition-colors ${errors.has("rate") ? "text-red-500" : "text-gray-700 dark:text-gray-200"}`}>연이자율</label>
                             <div className="relative">
                                 <input
                                     type="text"
                                     inputMode="decimal"
                                     value={rate}
-                                    onChange={(e) => { setRate(e.target.value.replace(/[^0-9.]/g, "")); setCalculated(false); }}
+                                    onChange={(e) => {
+                                        const val = e.target.value.replace(/[^0-9.]/g, "");
+                                        setRate(val);
+                                        setCalculated(false);
+                                        if (val) {
+                                            setErrorMessage("");
+                                            setErrors(prev => { const next = new Set(prev); next.delete("rate"); return next; });
+                                        }
+                                    }}
                                     placeholder="0.0"
-                                    className="w-full h-14 px-4 pr-12 text-xl font-bold bg-gray-50 dark:bg-gray-900/50 border-2 border-transparent focus:border-green-500 rounded-2xl transition-all outline-none text-right dark:text-white"
+                                    className={`w-full h-14 px-4 pr-12 text-xl font-bold bg-gray-50 dark:bg-gray-900/50 border-2 rounded-2xl transition-all outline-none text-right dark:text-white ${
+                                        errors.has("rate") ? "border-red-500 focus:border-red-500 ring-4 ring-red-500/10" : "border-transparent focus:border-green-500"
+                                    }`}
                                 />
-                                <span className="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-gray-400">%</span>
+                                <span className={`absolute right-4 top-1/2 -translate-y-1/2 font-bold ${errors.has("rate") ? "text-red-500" : "text-gray-400"}`}>%</span>
                             </div>
                             <div className="flex bg-gray-100 dark:bg-gray-700 p-1 rounded-2xl">
                                 {["simple", "compound"].map((t) => (
@@ -235,25 +299,29 @@ const Savings = ({ productName }: SavingsProps) => {
                         </div>
                     </div>
 
-                    <div className="flex gap-3 pt-4">
-                        <button
-                            onClick={handleReset}
-                            className={`flex-1 h-14 border-2 border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 font-bold rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all active:scale-95 ${shaking ? "animate-shake" : ""}`}
-                        >
-                            초기화
-                        </button>
-                        <button
-                            onClick={() => {
-                                if (!monthlyAmount || !term || !rate) {
-                                    alert("모든 항목을 입력해주세요.");
-                                    return;
-                                }
-                                setCalculated(true);
-                            }}
-                            className="flex-[2] h-14 bg-green-600 hover:bg-green-700 text-white font-bold rounded-2xl shadow-lg shadow-green-500/20 transition-all active:scale-[0.98]"
-                        >
-                            계산하기
-                        </button>
+                    <div className="space-y-3 pt-4">
+                        <div className="flex gap-3">
+                            <button
+                                onClick={handleReset}
+                                className={`flex-1 h-14 border-2 border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 font-bold rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all active:scale-95 ${shaking ? "animate-shake" : ""}`}
+                            >
+                                초기화
+                            </button>
+                            <button
+                                onClick={handleCalculate}
+                                className="flex-[2] h-14 bg-green-600 hover:bg-green-700 text-white font-bold rounded-2xl shadow-lg shadow-green-500/20 transition-all active:scale-[0.98]"
+                            >
+                                계산하기
+                            </button>
+                        </div>
+                        {errorMessage && (
+                            <p className="text-center text-red-500 text-sm font-bold flex items-center justify-center gap-1 animate-pulse">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                                {errorMessage}
+                            </p>
+                        )}
                     </div>
                 </div>
 
@@ -304,34 +372,73 @@ const Savings = ({ productName }: SavingsProps) => {
                             </div>
                         </div>
 
-                        <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50">
-                            <h3 className="text-sm font-bold text-gray-400 dark:text-gray-500 mb-6 flex items-center gap-2">
+                        {/* 비중 차트 카드 */}
+                        <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700/50">
+                            <h3 className="text-sm font-bold text-gray-400 dark:text-gray-500 mb-8 flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                                원금 대비 이자 비중
+                                만기 수령액 상세 구성
                             </h3>
 
-                            <div className="space-y-6">
-                                <div className="relative h-10 w-full bg-gray-100 dark:bg-gray-700 rounded-2xl overflow-hidden flex">
-                                    <div
-                                        className="h-full bg-green-500 transition-all duration-1000 ease-out flex items-center px-4"
-                                        style={{ width: `${(totalPrincipal / totalMaturity) * 100}%` }}
-                                    >
-                                        <span className="text-[10px] font-black text-white whitespace-nowrap">원금 {((totalPrincipal / totalMaturity) * 100).toFixed(1)}%</span>
-                                    </div>
-                                    <div
-                                        className="h-full bg-teal-400 dark:bg-teal-500 transition-all duration-1000 ease-out flex items-center px-4"
-                                        style={{ width: `${(postTaxInterest / totalMaturity) * 100}%` }}
-                                    >
-                                        <span className="text-[10px] font-black text-white whitespace-nowrap">이자 {((postTaxInterest / totalMaturity) * 100).toFixed(1)}%</span>
+                            <div className="flex flex-col md:flex-row items-center justify-around gap-12">
+                                {/* 도넛 차트 */}
+                                <div className="relative w-48 h-48">
+                                    <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                                        <circle
+                                            cx="18" cy="18" r="15.915"
+                                            fill="transparent"
+                                            stroke="currentColor"
+                                            strokeWidth="3.5"
+                                            className="text-gray-100 dark:text-gray-700"
+                                        />
+                                        <circle
+                                            cx="18" cy="18" r="15.915"
+                                            fill="transparent"
+                                            stroke="currentColor"
+                                            strokeWidth="3.5"
+                                            strokeDasharray={`${(totalPrincipal / totalMaturity) * 100} ${100 - (totalPrincipal / totalMaturity) * 100}`}
+                                            className="text-green-500 transition-all duration-1000 ease-out"
+                                        />
+                                        <circle
+                                            cx="18" cy="18" r="15.915"
+                                            fill="transparent"
+                                            stroke="currentColor"
+                                            strokeWidth="3.5"
+                                            strokeDasharray={`${(postTaxInterest / totalMaturity) * 100} ${100 - (postTaxInterest / totalMaturity) * 100}`}
+                                            strokeDashoffset={`-${(totalPrincipal / totalMaturity) * 100}`}
+                                            className="text-teal-400 dark:text-teal-500 transition-all duration-1000 ease-out"
+                                        />
+                                    </svg>
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                                        <p className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-tighter">이자 비중</p>
+                                        <p className="text-2xl font-black text-teal-500 leading-none">{((postTaxInterest / totalMaturity) * 100).toFixed(1)}%</p>
                                     </div>
                                 </div>
 
-                                <div className="bg-gray-50 dark:bg-gray-900/40 p-5 rounded-2xl flex items-center gap-4">
-                                    <div className="text-3xl">💡</div>
-                                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
-                                        적금의 실제 비중을 확인해보세요. 매달 쌓이는 목돈이 <span className="text-green-600 dark:text-green-400 font-bold">{totalMaturity.toLocaleString()}원</span>이 됩니다.
-                                        실효 수익률은 총 투자 원금 대비 <span className="text-teal-600 dark:text-teal-400 font-bold">{((postTaxInterest / totalPrincipal) * 100).toFixed(2)}%</span>입니다.
-                                    </p>
+                                {/* 범례 */}
+                                <div className="space-y-5 w-full max-w-[200px]">
+                                    <div className="flex items-center justify-between group">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-3 h-3 rounded-full bg-green-500 shadow-sm shadow-green-500/30"></div>
+                                            <span className="text-sm font-bold text-gray-600 dark:text-gray-300">총 원금</span>
+                                        </div>
+                                        <span className="text-sm font-black text-gray-900 dark:text-white uppercase tracking-tighter">{((totalPrincipal / totalMaturity) * 100).toFixed(1)}%</span>
+                                    </div>
+                                    <div className="flex items-center justify-between group">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-3 h-3 rounded-full bg-teal-400 dark:bg-teal-500 shadow-sm shadow-teal-500/30"></div>
+                                            <span className="text-sm font-bold text-gray-600 dark:text-gray-300">세후 이자</span>
+                                        </div>
+                                        <span className="text-sm font-black text-gray-900 dark:text-white uppercase tracking-tighter">{((postTaxInterest / totalMaturity) * 100).toFixed(1)}%</span>
+                                    </div>
+                                    <div className="pt-4 border-t border-gray-50 dark:border-gray-700/50">
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <span className="text-xl">💡</span>
+                                            <span className="text-xs font-bold text-gray-800 dark:text-gray-200">투자 분석</span>
+                                        </div>
+                                        <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                                            만기 시 원금 대비 <span className="text-teal-500 font-bold">{((postTaxInterest / totalPrincipal) * 100).toFixed(2)}%</span>의 이자 수익이 발생합니다.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

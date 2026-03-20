@@ -38,6 +38,8 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
     const [calculated, setCalculated] = useState(false);
     const [copied, setCopied] = useState(false);
     const [shaking, setShaking] = useState(false);
+    const [errors, setErrors] = useState<Set<string>>(new Set());
+    const [errorMessage, setErrorMessage] = useState("");
     const currentPriceRef = useRef<HTMLInputElement>(null);
     const [placeholderFontSize, setPlaceholderFontSize] = useState(16);
 
@@ -63,7 +65,7 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
         return () => observer.disconnect();
     }, []);
 
-    const n = (v: string) => Number(v.replace(/[^0-9]/g, ""));
+    const n = (v: string) => Number(v.replace(/[^0-9.]/g, ""));
     const formatComma = (raw: string) => raw.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
     // 입력 길이에 따라 폰트 크기 조절 (최대 10자리 기준)
@@ -120,16 +122,60 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
         (e: React.ChangeEvent<HTMLInputElement>) => {
             setCalculated(false); setCopied(false);
             const raw = e.target.value.replace(/[^0-9]/g, "").replace(/^0+/, "");
-            if (raw.length > 9) return; // 10자리 초과 입력 차단
+            if (raw.length > 9) return;
             setRows(prev => prev.map(r =>
                 r.id === id ? { ...r, [field]: raw === "" ? "" : formatComma(raw) } : r
             ));
+            if (raw) {
+                setErrorMessage("");
+                setErrors(prev => {
+                    const next = new Set(prev);
+                    next.delete(`${field}-${id}`);
+                    return next;
+                });
+            }
         };
+
+    const handleCalculate = () => {
+        const newErrors = new Set<string>();
+        let hasValidRow = false;
+
+        rows.forEach(r => {
+            const hasPrice = n(r.price) > 0;
+            const hasQty = n(r.qty) > 0;
+
+            if (hasPrice && hasQty) {
+                hasValidRow = true;
+            } else if (hasPrice && !hasQty) {
+                newErrors.add(`qty-${r.id}`);
+            } else if (!hasPrice && hasQty) {
+                newErrors.add(`price-${r.id}`);
+            }
+        });
+
+        if (!hasValidRow && newErrors.size === 0) {
+            newErrors.add(`price-${rows[0].id}`);
+            newErrors.add(`qty-${rows[0].id}`);
+        }
+
+        setErrors(newErrors);
+
+        if (newErrors.size > 0) {
+            setErrorMessage("항목을 정확히 입력해주세요.");
+            setCalculated(false);
+            setShaking(true);
+            setTimeout(() => setShaking(false), 400);
+            return;
+        }
+
+        setErrorMessage("");
+        setCalculated(true);
+    };
 
     const handleCurrentPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCalculated(false);
         const raw = e.target.value.replace(/[^0-9]/g, "").replace(/^0+/, "");
-        if (raw.length > 9) return; // 9자리 초과 입력 차단
+        if (raw.length > 9) return;
         setCurrentPrice(raw === "" ? "" : formatComma(raw));
     };
 
@@ -234,13 +280,17 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
                                         <input type="text" inputMode="numeric" placeholder="0" value={row.price}
                                             onChange={handleChange(row.id, "price")}
                                             style={{ fontSize: getFontSize(row.price), width: "100%" }}
-                                            className="p-1 text-right border rounded bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 min-w-0" />
+                                            className={`p-1 text-right border rounded bg-white dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 min-w-0 transition-all ${
+                                                errors.has(`price-${row.id}`) ? "border-red-500 ring-2 ring-red-200 dark:ring-red-900/30" : "dark:border-gray-600 focus:ring-blue-400"
+                                            }`} />
                                     </td>
                                     <td className="border border-gray-400 dark:border-gray-600 px-1 py-1 text-center">
                                         <input type="text" inputMode="numeric" placeholder="0" value={row.qty}
                                             onChange={handleChange(row.id, "qty")}
                                             style={{ fontSize: getFontSize(row.qty), width: "100%" }}
-                                            className="p-1 text-right border rounded bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 min-w-0" />
+                                            className={`p-1 text-right border rounded bg-white dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 min-w-0 transition-all ${
+                                                errors.has(`qty-${row.id}`) ? "border-red-500 ring-2 ring-red-200 dark:ring-red-900/30" : "dark:border-gray-600 focus:ring-blue-400"
+                                            }`} />
                                     </td>
                                     <td className="border border-gray-400 dark:border-gray-600 px-2 py-2 text-right text-gray-800 dark:text-gray-100 text-base whitespace-nowrap">
                                         {validAmounts[idx] > 0 ? validAmounts[idx].toLocaleString() : "-"}
@@ -308,15 +358,25 @@ export default function AvgPrice({ stockName, initialCode }: AvgPriceProps) {
                 </div>
 
                 {/* 버튼 */}
-                <div className="mt-4 flex justify-center gap-3">
-                    <button onClick={handleReset}
-                        className={`px-6 py-3 min-h-[44px] border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 active:bg-gray-200 transition-colors duration-150 text-base ${ANIMATION.resetShake && shaking ? "animate-shake" : ""}`}>
-                        초기화
-                    </button>
-                    <button onClick={() => setCalculated(true)}
-                        className="px-8 py-3 min-h-[44px] bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-colors duration-150 text-base">
-                        계산하기
-                    </button>
+                <div className="mt-4 flex flex-col items-center gap-3">
+                    <div className="flex justify-center gap-3 w-full">
+                        <button onClick={handleReset}
+                            className={`flex-1 px-6 py-3 min-h-[44px] border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 active:bg-gray-200 transition-colors duration-150 text-base ${ANIMATION.resetShake && shaking ? "animate-shake" : ""}`}>
+                            초기화
+                        </button>
+                        <button onClick={handleCalculate}
+                            className="flex-[2] px-8 py-3 min-h-[44px] bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-colors duration-150 text-base">
+                            계산하기
+                        </button>
+                    </div>
+                    {errorMessage && (
+                        <p className="text-center text-red-500 text-sm font-bold flex items-center justify-center gap-1 animate-pulse">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                            {errorMessage}
+                        </p>
+                    )}
                 </div>
 
                 {/* 결과 — 모바일: 상하 / PC: 좌우 */}

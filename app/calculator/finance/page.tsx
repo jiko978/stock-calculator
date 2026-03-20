@@ -22,7 +22,7 @@ const financeCalculators = [
     },
     {
         title: "📊 대출 이자 계산기",
-        description: "원리금균등, 원금균등 등 상환 방식에 따른 월 납입액과 총 이자를 분석합니다.",
+        description: "원리금균등, 원금균등 등 상환 방식에 따른 월 납입액과 총 이자를 계산합니다.",
         href: "/calculator/finance/loans",
     },
 ];
@@ -59,7 +59,7 @@ export default function FinanceHubPage() {
                                     {calc.description}
                                 </p>
                                 <div className="flex items-center text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                                    계산하기
+                                    바로 지금 계산하기
                                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                     </svg>
