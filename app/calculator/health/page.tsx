@@ -31,7 +31,7 @@ const healthCalculators = [
         href: "/calculator/health/ovulation",
     },
     {
-        title: "🍼 임신주수 계산기",
+        title: "👶 임신주수 계산기",
         description: "출산 예정일과 현재 임신 주수, 아기를 만나기까지의 D-Day를 확인하세요.",
         href: "/calculator/health/pregnancy",
     },

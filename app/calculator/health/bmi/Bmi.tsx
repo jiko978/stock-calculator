@@ -61,6 +61,14 @@ export default function Bmi() {
 
     return (
         <div className="w-full max-w-3xl mx-auto px-4 py-8">
+            {/* 헤더 섹션 */}
+            <div className="flex flex-col items-center gap-4 mb-8">
+                <div className="flex justify-center flex-wrap gap-2">
+                    <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">
+                        ⚖️ 비만도 계산기
+                    </span>
+                </div>
+            </div>
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                 <div className="space-y-6">
                     {/* 성별/나이 */}

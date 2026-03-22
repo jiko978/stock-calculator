@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const CALCULATORS = [
-    { name: "비만도(BMI) 계산기", href: "/calculator/health/bmi", emoji: "⚖️", description: "체질량지수를 통한 비만도 진단" },
-    { name: "기초대사량(BMR) 계산기", href: "/calculator/health/bmr", emoji: "🔥", description: "숨만 쉬어도 소모되는 칼로리" },
+    { name: "비만도 계산기", href: "/calculator/health/bmi", emoji: "⚖️", description: "체질량지수를 통한 비만도 진단" },
+    { name: "기초대사량 계산기", href: "/calculator/health/bmr", emoji: "🔥", description: "숨만 쉬어도 소모되는 칼로리" },
     { name: "칼로리 계산기", href: "/calculator/health/calorie", emoji: "🏃‍♂️", description: "활동량에 따른 일일 권장 칼로리" },
     { name: "배란일 계산기", href: "/calculator/health/ovulation", emoji: "📅", description: "가임기 및 배란일 예측" },
     { name: "임신주수 계산기", href: "/calculator/health/pregnancy", emoji: "👶", description: "출산 예정일 및 임신 주수 산정" },

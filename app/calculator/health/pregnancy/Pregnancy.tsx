@@ -108,6 +108,14 @@ export default function Pregnancy() {
 
     return (
         <div className="w-full max-w-3xl mx-auto px-4 py-8">
+            {/* 헤더 섹션 */}
+            <div className="flex flex-col items-center gap-4 mb-8">
+                <div className="flex justify-center flex-wrap gap-2">
+                    <span className="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold">
+                        👶 임신주수 계산기
+                    </span>
+                </div>
+            </div>
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                 <div className="space-y-6">
                     {/* 탭 헤더 */}
@@ -159,7 +167,7 @@ export default function Pregnancy() {
                         <div className="mt-8 p-6 bg-purple-50 dark:bg-purple-900/20 rounded-2xl border border-purple-100 dark:border-purple-800">
                             
                             <div className="flex flex-col items-center justify-center mb-6">
-                                <span className="text-sm font-bold text-purple-800 dark:text-purple-300 mb-1">우리 아기 만나는 날 🍼</span>
+                                <span className="text-sm font-bold text-purple-800 dark:text-purple-300 mb-1">우리 아기 만나는 날 👶</span>
                                 <span className="text-2xl font-black text-purple-700 dark:text-purple-400">{resultDueDate}</span>
                                 <span className="mt-2 px-3 py-1 bg-white dark:bg-gray-800 rounded-full text-purple-700 dark:text-purple-300 font-bold text-sm shadow-sm border border-purple-100 dark:border-purple-800">
                                     {resultDDay > 0 ? `D-${resultDDay}` : resultDDay === 0 ? "D-Day (오늘)" : `D+${Math.abs(resultDDay)} (예정일 지남)`}

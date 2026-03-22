@@ -9,7 +9,7 @@ import FAQ from "@/app/calculator/components/FAQ";
 const BASE_URL = "https://jiko.kr";
 
 export const metadata: Metadata = {
-    title: "배란일 계산기 | 나의 가임기, 다음 달 생리 예정일 계산 - JIKO 계산기",
+    title: "배란일 계산기 | 나의 생리주기, 가임기, 다음 달 생리 예정일 계산 - JIKO 계산기",
     description: "마지막 생리 시작일과 평균 주기를 통하여 다음 생리 예정일, 임신 가능성이 높은 가임기 및 배란일 캘린더를 간단히 계산해드립니다.",
     keywords: ["배란일 계산기", "생리달력", "임신 가임기", "생리주기 계산", "다음 생리일", "JIKO 계산기"],
     alternates: { canonical: `${BASE_URL}/calculator/health/ovulation` },
@@ -73,7 +73,7 @@ export default function Page() {
             <main className="max-w-3xl mx-auto px-4 pb-16 space-y-6">
                 <section className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">📅</span> 배란일/생리주기 계산기
+                        <span className="text-2xl">📅</span> 배란일(생리주기) 계산기
                     </h1>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
                         여성 건강 증진을 도모하고 임신 준비를 위해 자신의 신체 사이클을 달력처럼 날짜별로 직관적으로 파악해볼 수 있는 계산 모델입니다.
